@@ -1,0 +1,95 @@
+@font-face {
+  font-family: PoppinsLight;
+  src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: PoppinsItalic;
+  src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.25s linear;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-size: 18px;
+  color: #000000;
+  background-color: #F1F1F1;
+}
+
+button, input {
+  border: 0;
+  background: none;
+}
+
+button {
+  padding: 0.5rem 2.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 2px solid #029AA4;
+  color: #029AA4;
+}
+button:hover {
+  background-color: #029AA4;
+  color: #FFFFFF;
+}
+button.dark {
+  background-color: #029AA4;
+  color: #FFFFFF;
+}
+button.dark:hover {
+  background-color: #FFFFFF;
+  color: #029AA4;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
+  border: 2px solid #029AA4;
+  min-width: 200px;
+}
+
+select {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #029AA4;
+}
+select.dark {
+  background-color: #029AA4;
+  color: #FFFFFF;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100vh;
+}
+body img {
+  min-width: 200px;
+  width: 60%;
+  max-width: 500px;
+}
+body span {
+  color: #029AA4;
+  font-family: PoppinsItalic;
+}/*# sourceMappingURL=style.css.map */

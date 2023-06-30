@@ -1,0 +1,19 @@
+@import './patterns/resets';
+
+body {
+    // Estilo demonstrativo
+    @include flexBox($fd: column, $a: center, $j: center, $g: 2rem);
+    width: 100%;
+    height: 100vh;
+
+    img {
+        min-width: 200px;
+        width: 60%;
+        max-width: 500px;
+    }
+
+    span {
+        color: $extra-primary;
+        font-family: PoppinsItalic;
+    }
+}

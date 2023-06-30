@@ -1,0 +1,52 @@
+// COLORS
+
+$bg-primary: #F1F1F1;
+$bg-secondary: #FFFFFF;
+
+$default-color: #000000;
+
+$extra-primary: #029AA4;
+$extra-secondary: #1B9C85;
+
+// TYPOGRAPHY
+
+@font-face {
+    font-family: PoppinsLight;
+    // src: url(../../assets/fonts/Poppins/Poppins-Light.ttf);
+    src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    // src: url(../../assets/fonts/Poppins/Poppins-Regular.ttf);
+    src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: PoppinsBold;
+    // src: url(../../assets/fonts/Poppins/Poppins-Bold.ttf);
+    src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: PoppinsItalic;
+    // src: url(../../assets/fonts/Poppins/Poppins-Italic.ttf);
+    src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+
+// EXTRA VARIABLES
+
+$linear: all .25s linear;
+
+
+
+// MIXINS
+
+@mixin flexBox($fd: row, $a: unset, $j: unset, $g: 0, $fw: nowrap) {
+    display: flex;
+    flex-direction: $fd;
+    align-items: $a;
+    justify-content: $j;
+    gap: $g;
+    flex-wrap: $fw;
+}
