@@ -1,0 +1,12 @@
+@import '../../patterns/variables';
+
+main {
+    @include flexBox($fd: column, $j: flex-start);
+    flex: 1 1 auto;
+    padding: 2rem 1.5rem;
+
+    max-height: 100vh;
+    border: 1px solid red;
+
+    overflow: auto;
+}
