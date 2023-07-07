@@ -134,7 +134,7 @@ select.dark {
   max-width: 250px;
   height: 100vh;
   padding: 1rem 1rem 0.2rem;
-  overflow: auto;
+  overflow: hidden auto;
 }
 #side_menu #navigationBar {
   width: 100%;
@@ -375,7 +375,7 @@ main {
   justify-content: flex-start;
   gap: 0;
   flex-wrap: nowrap;
-  flex: 1 1 auto;
+  flex: 1 10 auto;
   padding: 2rem 1.5rem;
   max-height: 100vh;
   border: 1px solid red;
