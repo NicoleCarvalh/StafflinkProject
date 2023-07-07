@@ -327,10 +327,6 @@ select.dark {
 #side_menu .actions .link svg {
   width: 25px;
 }
-#side_menu.analysisMode {
-  width: -moz-fit-content;
-  width: fit-content;
-}
 #side_menu.analysisMode #navigationBar {
   width: -moz-fit-content;
   width: fit-content;
@@ -354,6 +350,87 @@ select.dark {
 }
 #side_menu.analysisMode .actions .link > :not(:first-child) {
   display: none;
+}
+@media (max-width: 500px) {
+  #side_menu:not(.analysisMode) {
+    position: fixed;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 1rem;
+    left: 0;
+    bottom: 0;
+  }
+  #side_menu:not(.analysisMode) #navigationBar, #side_menu:not(.analysisMode) hr {
+    display: none;
+  }
+  #side_menu:not(.analysisMode) .actions > :not(#analysisMode) {
+    display: none;
+  }
+  #side_menu .actions #analysisMode .bar {
+    transform: rotate(90deg);
+    height: 20px;
+  }
+  #side_menu .actions #analysisMode .bar::before, #side_menu .actions #analysisMode .bar::after {
+    height: inherit;
+  }
+  #side_menu .actions #analysisMode .bar::before {
+    left: -5px;
+  }
+  #side_menu .actions #analysisMode .bar::after {
+    left: 5px;
+  }
+  #side_menu.analysisMode {
+    max-width: unset;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #FFFFFF;
+  }
+  #side_menu.analysisMode #navigationBar {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+  #side_menu.analysisMode #navigationBar ul {
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    width: 100%;
+  }
+  #side_menu.analysisMode #navigationBar ul li {
+    justify-content: unset;
+  }
+  #side_menu.analysisMode #navigationBar ul li > :not(:first-child) {
+    display: unset;
+  }
+  #side_menu.analysisMode #navigationBar ul .container:has(.link_info li ul) {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  #side_menu.analysisMode .actions {
+    flex: 0 10 auto;
+  }
+  #side_menu.analysisMode .actions_option {
+    background-color: #F1F1F1;
+  }
+  #side_menu.analysisMode .actions_option > :not(:first-child) {
+    display: unset;
+  }
+  #side_menu.analysisMode .actions #analysisMode .bar {
+    transform: rotate(-45deg);
+    height: 20px;
+  }
+  #side_menu.analysisMode .actions #analysisMode .bar::before {
+    left: 0;
+    transform: rotate(90deg);
+  }
+  #side_menu.analysisMode .actions #analysisMode .bar::after {
+    display: none;
+  }
+  #side_menu.analysisMode .actions .link {
+    padding: 0.5rem;
+  }
+  #side_menu.analysisMode .actions .link > :not(:first-child) {
+    display: unset;
+  }
 }
 
 @font-face {

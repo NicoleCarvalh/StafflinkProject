@@ -225,7 +225,7 @@
 
     &.analysisMode {
         // background-color: red;
-        width: fit-content;
+        // width: fit-content;
 
         #navigationBar {
             width: fit-content;
@@ -247,8 +247,6 @@
                     // width: 0;
                 }
             }
-
-
         }
 
         .actions {
@@ -266,6 +264,132 @@
                 > :not(:first-child){
                     display: none;
                     // border: 1px solid green;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 500px) {
+        &:not(.analysisMode) {
+            position: fixed;
+            height: fit-content;
+            padding: 1rem;
+            left: 0;
+            bottom: 0;
+
+            #navigationBar, hr {
+                display: none;
+            }
+
+            .actions {
+                > :not(#analysisMode) {
+                    display: none;
+                }
+            }
+        }
+
+        .actions {
+            #analysisMode {
+                .bar {
+                    transform: rotate(90deg);
+                    height: 20px;
+
+                    &::before, &::after {
+                        height: inherit;
+                    }
+
+                    &::before {
+                        left: -5px;
+                    }
+
+                    &::after {
+                        left: 5px;
+                    }
+                }
+            }
+        }
+
+        &.analysisMode {
+            max-width: unset;
+            width: 100%;
+            // height: fit-content;
+
+            position: fixed;
+            bottom: 0;
+
+            background-color: $bg-secondary;
+
+            // overflow: unset;
+
+            // .actions .link > :not(:first-child)
+
+            #navigationBar {
+                width: 100%;
+                // flex: 0 1 auto;
+                flex: 1 1 auto;
+                // height: 100%;
+
+                ul {
+                    // flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 1rem 2rem;
+                    width: 100%;
+                    // height: fit-content;
+                    // justify-content: center;
+
+                    // .user {
+                    //     display: none;
+                    // }
+
+                    li {
+                        justify-content: unset;
+
+                        & > :not(:first-child) {
+                            display: unset;
+                        }
+                    }
+
+                    .container:has(.link_info li ul) {
+                        height: fit-content;
+                    }
+                }
+            }
+
+            .actions {
+                // flex-direction: row;
+                // justify-content: space-between;
+                flex: 0 10 auto;
+
+                &_option {
+                    background-color: $bg-primary;
+
+                    > :not(:first-child) {
+                        display: unset;
+                    }
+                }
+
+                #analysisMode {
+                    .bar {
+                        transform: rotate(-45deg);
+                        height: 20px;
+
+                        &::before {
+                            left: 0;
+                            transform: rotate(90deg);
+                        }
+
+                        &::after {
+                            display: none;
+                        }
+                    }
+                }
+
+                .link {
+                    padding: .5rem;
+
+                    > :not(:first-child) {
+                        display: unset;
+                    }
                 }
             }
         }
