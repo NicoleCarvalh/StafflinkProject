@@ -3,7 +3,8 @@
 #side_menu {
     @include flexBox($fd: column, $j: space-between, $g: 1rem);
     // flex: 1 1 auto;
-    flex: 0 1 auto;
+    // flex: 1 0 auto;
+    flex: 0 0 auto;
     max-width: 250px;
     height: 100vh;
     padding: 1rem 1rem .2rem;
@@ -84,6 +85,10 @@
                     height: 50px;
                     border-radius: .3rem;
                     overflow: hidden;
+
+                    img {
+                        object-fit: cover;
+                    }
                 }
 
                 &_info {
