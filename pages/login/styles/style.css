@@ -457,10 +457,123 @@ main {
   gap: 0;
   flex-wrap: nowrap;
   flex: 1 10 auto;
-  padding: 2rem 1.5rem;
+  padding: 1rem 1.5rem;
+  height: 100vh;
   max-height: 100vh;
   border: 1px solid red;
   overflow: auto;
+}
+main header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #029AA4;
+  padding-bottom: 1rem;
+}
+main header svg {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+main header .pageName {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+main header .pageName svg {
+  width: 50px;
+}
+main header .pageName h1 {
+  -webkit-text-decoration: 3px underline #029AA4;
+          text-decoration: 3px underline #029AA4;
+  font-family: PoppinsLight;
+}
+main header .searchBar {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0.7rem;
+  flex-wrap: nowrap;
+  background-color: #FFFFFF;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  flex: 10 1 auto;
+}
+main header .searchBar button, main header .searchBar input {
+  min-height: 100%;
+  border: none;
+  border-radius: unset;
+  padding: 0;
+  outline: none;
+  transition: all 0.25s linear;
+}
+main header .searchBar button:hover, main header .searchBar input:hover {
+  background: none;
+}
+main header .searchBar button {
+  height: 30px;
+  flex: 0 1 auto;
+}
+main header .searchBar button:focus svg path {
+  stroke: #1B9C85;
+}
+main header .searchBar input {
+  flex: 1 0 auto;
+  min-width: unset;
+}
+main header .searchBar input:-moz-placeholder-shown {
+  text-overflow: ellipsis;
+}
+main header .searchBar input:placeholder-shown {
+  text-overflow: ellipsis;
+}
+main header .options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex: 1 2 auto;
+}
+main header .options .option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  transition: all 0.25s linear;
+  flex-grow: 1;
+}
+main header .options .option svg {
+  height: 30px;
+}
+main header .options .option.newEmployee svg :not(:nth-child(odd)) {
+  stroke: #029AA4;
+}
+main header .options .option:hover {
+  background: unset;
+  color: #1B9C85;
+  background-color: #FFFFFF;
+}
+main header.analysisMode {
+  border: none;
+  padding: 0;
+}
+main header.analysisMode > *:not(.searchBar) {
+  display: none;
+}
+main header.analysisMode .searchBar {
+  max-width: 350px;
 }
 
 body {

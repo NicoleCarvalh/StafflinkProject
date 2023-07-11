@@ -194,8 +194,53 @@
 
     <main>
         <header>
-            <!-- Nome e ações rápidas da página -->
-            <!-- Exemplo: Funcionários    barra de pesquisa  criar novo funcionario   importart tabela -->
+            <div class="pageName">
+                <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 6.31094L9.69063 1L18.3813 6.31094" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2.93164 16.4502H16.4504" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7.75977 5.82812H11.6223" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3.89648 13.5532V8.7251" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7.75977 13.5532V8.7251" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11.6221 13.5532V8.7251" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.4844 13.5532V8.72504" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+                <h1>Finanças</h1>
+            </div>
+
+            <form class="searchBar">
+                <input type="search" name="search" placeholder="Digite o que deseja encontrar">
+
+                <button type="submit">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.21874 7.08127C3.21874 9.92554 5.52447 12.2313 8.36874 12.2313C11.213 12.2313 13.5187 9.92554 13.5187 7.08127C13.5187 4.23701 11.213 1.93127 8.36874 1.93127C5.52447 1.93127 3.21874 4.23701 3.21874 7.08127Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.93125 13.5188L4.73157 10.7184" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+
+            <div class="options">
+                <button type="button" class="option newEmployee">
+                    <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 16.4546V15.5455C1 12.0309 3.84911 9.18182 7.36366 9.18182C10.8782 9.18182 13.7273 12.0309 13.7273 15.5455V16.4546" stroke="black" stroke-linecap="round"/>
+                        <path d="M11.9091 11C11.9091 8.48963 13.9442 6.45453 16.4545 6.45453C18.9649 6.45453 21 8.48963 21 11V11.4545" stroke="black" stroke-linecap="round"/>
+                        <path d="M7.36294 9.18194C9.37122 9.18194 10.9993 7.55384 10.9993 5.54556C10.9993 3.53724 9.37122 1.90918 7.36294 1.90918C5.35462 1.90918 3.72656 3.53724 3.72656 5.54556C3.72656 7.55384 5.35462 9.18194 7.36294 9.18194Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.4538 6.45457C17.9601 6.45457 19.1811 5.23352 19.1811 3.72728C19.1811 2.22105 17.9601 1 16.4538 1C14.9476 1 13.7266 2.22105 13.7266 3.72728C13.7266 5.23352 14.9476 6.45457 16.4538 6.45457Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                    Criar novo funcionário
+                </button>
+
+                <button type="button" class="option">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5188 9.65625V12.2313C13.5188 12.5727 13.3831 12.9002 13.1417 13.1416C12.9002 13.3831 12.5727 13.5188 12.2313 13.5188H3.21877C2.87731 13.5188 2.54983 13.3831 2.30837 13.1416C2.06692 12.9002 1.93127 12.5727 1.93127 12.2313V9.65625" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.50623 6.4375L7.72498 9.65625L10.9437 6.4375" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.72498 9.65627V1.93127" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                    Importar nova planilha
+                </button>
+            </div>
         </header>
 
         <section>

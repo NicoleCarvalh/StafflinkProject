@@ -194,8 +194,47 @@
 
     <main>
         <header>
-            <!-- Nome e ações rápidas da página -->
-            <!-- Exemplo: Funcionários    barra de pesquisa  criar novo funcionario   importart tabela -->
+            <div class="pageName">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5712 8.24292L8.68227 15.1319C7.83836 15.9759 6.69371 16.45 5.50019 16.45C4.30666 16.45 3.16202 15.9759 2.31808 15.1319C1.47412 14.288 1 13.1433 1 11.9498C1 10.7562 1.47412 9.61164 2.31808 8.76765L9.207 1.87871C9.76966 1.31608 10.5328 1 11.3284 1C12.1241 1 12.8872 1.31608 13.4498 1.87871C14.0125 2.44135 14.3286 3.20444 14.3286 4.00012C14.3286 4.79581 14.0125 5.5589 13.4498 6.12153L6.5534 13.0105C6.27208 13.2918 5.89053 13.4498 5.49269 13.4498C5.09485 13.4498 4.7133 13.2918 4.43199 13.0105C4.15067 12.7291 3.99262 12.3477 3.99262 11.9498C3.99262 11.5519 4.15067 11.1704 4.43199 10.8891L10.7962 4.53235" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+                <h1>Documentos</h1>
+            </div>
+
+            <form class="searchBar">
+                <input type="search" name="search" placeholder="Digite o que deseja encontrar">
+
+                <button type="submit">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.21874 7.08127C3.21874 9.92554 5.52447 12.2313 8.36874 12.2313C11.213 12.2313 13.5187 9.92554 13.5187 7.08127C13.5187 4.23701 11.213 1.93127 8.36874 1.93127C5.52447 1.93127 3.21874 4.23701 3.21874 7.08127Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M1.93125 13.5188L4.73157 10.7184" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+
+            <div class="options">
+                <button type="button" class="option newEmployee">
+                    <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 16.4546V15.5455C1 12.0309 3.84911 9.18182 7.36366 9.18182C10.8782 9.18182 13.7273 12.0309 13.7273 15.5455V16.4546" stroke="black" stroke-linecap="round"/>
+                        <path d="M11.9091 11C11.9091 8.48963 13.9442 6.45453 16.4545 6.45453C18.9649 6.45453 21 8.48963 21 11V11.4545" stroke="black" stroke-linecap="round"/>
+                        <path d="M7.36294 9.18194C9.37122 9.18194 10.9993 7.55384 10.9993 5.54556C10.9993 3.53724 9.37122 1.90918 7.36294 1.90918C5.35462 1.90918 3.72656 3.53724 3.72656 5.54556C3.72656 7.55384 5.35462 9.18194 7.36294 9.18194Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.4538 6.45457C17.9601 6.45457 19.1811 5.23352 19.1811 3.72728C19.1811 2.22105 17.9601 1 16.4538 1C14.9476 1 13.7266 2.22105 13.7266 3.72728C13.7266 5.23352 14.9476 6.45457 16.4538 6.45457Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                    Criar novo funcionário
+                </button>
+
+                <button type="button" class="option">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5188 9.65625V12.2313C13.5188 12.5727 13.3831 12.9002 13.1417 13.1416C12.9002 13.3831 12.5727 13.5188 12.2313 13.5188H3.21877C2.87731 13.5188 2.54983 13.3831 2.30837 13.1416C2.06692 12.9002 1.93127 12.5727 1.93127 12.2313V9.65625" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4.50623 6.4375L7.72498 9.65625L10.9437 6.4375" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.72498 9.65627V1.93127" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                    Importar nova planilha
+                </button>
+            </div>
         </header>
 
         <section>

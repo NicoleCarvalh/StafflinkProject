@@ -9,6 +9,10 @@ const handleSideMenu = (button = document.getElementById("analysisMode")) => {
     sideMenu.classList.toggle(analysisClass)
 
     button.classList.toggle("active")
+
+    if(mobileDeviceVerify()) return
+    
+    document.querySelector("main header").classList.toggle('analysisMode')
 }
 
 const preLoadSideMenuStatus = () => {
@@ -26,7 +30,6 @@ export const sideMenuControl = () => {
     if(!mobileDeviceVerify()) {
         preLoadSideMenuStatus()
     } else {
-        // analysisModeButton.innerHTML = "Menu"
         const analysisModeButtonElements = [...analysisModeButton.children]
         
         analysisModeButtonElements.forEach(element => element.className === "name" ? element.innerHTML = "Menu" : null)
@@ -34,8 +37,10 @@ export const sideMenuControl = () => {
 
     analysisModeButton?.addEventListener("click", () => {
         handleSideMenu()
+
+        if(mobileDeviceVerify()) return
        
-        analysisModeStatus && !mobileDeviceVerify() ? setLocalData("analysisModeStatus", false) : setLocalData("analysisModeStatus", true)
+        analysisModeStatus ? setLocalData("analysisModeStatus", false) : setLocalData("analysisModeStatus", true)
     })
     
     allCustomLinks?.forEach(element => handlePageByLink(element))
