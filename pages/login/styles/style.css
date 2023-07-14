@@ -576,6 +576,202 @@ main header.analysisMode .searchBar {
   max-width: 350px;
 }
 
+@font-face {
+  font-family: PoppinsLight;
+  src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: PoppinsItalic;
+  src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+#showNotes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  border: 0;
+  padding: 1rem 2rem;
+  transition: all 0.25s linear;
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  color: inherit;
+  background-color: #FFFFFF;
+}
+#showNotes svg {
+  transition: all 0.3s linear;
+}
+#showNotes svg path {
+  stroke-width: 2px;
+}
+#showNotes:hover {
+  color: #029AA4;
+}
+#showNotes:hover svg {
+  transform: rotate(180deg);
+}
+@media (max-width: 500px) {
+  #showNotes {
+    display: none;
+  }
+}
+
+#notesContainer {
+  transition: all 0.25s linear;
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  background-color: #FFFFFF;
+  position: absolute;
+  height: 100%;
+  width: 400px;
+  padding: 1rem;
+  transform: translateX(110%);
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+#notesContainer.visible {
+  transform: translateX(0);
+}
+#notesContainer > .title {
+  width: 100%;
+  text-align: center;
+}
+#notesContainer .notes {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
+  overflow: hidden auto;
+}
+#notesContainer .notes .card {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 1rem;
+  background-color: #F1F1F1;
+  overflow: hidden;
+  flex: 1 0 auto;
+}
+#notesContainer .notes .card > div {
+  padding: 0.7rem;
+}
+#notesContainer .notes .card_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+  font-size: 0.9rem;
+}
+#notesContainer .notes .card_header .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+#notesContainer .notes .card_header .actions_option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  border: none;
+  padding: 0.5rem;
+  transition: all 0.25s linear;
+  border-radius: 0;
+}
+#notesContainer .notes .card_header .actions_option:hover {
+  background-color: unset;
+  transform: scale(1.2);
+}
+#notesContainer .notes .card_header .actions_option svg {
+  width: 20px;
+}
+#notesContainer .notes .card_body {
+  font-size: 0.8rem;
+}
+#notesContainer .notes .card_footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+#notesContainer .generalActions {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+#notesContainer .generalActions #closeNotes, #notesContainer .generalActions #showNewNotesForm {
+  border: 0;
+  color: #000000;
+  background-color: #F1F1F1;
+}
+#notesContainer .generalActions #closeNotes {
+  flex: 0 1 auto;
+  padding: 1rem;
+  height: 100%;
+}
+#notesContainer .generalActions #closeNotes svg {
+  transform: rotate(45deg);
+}
+#notesContainer .generalActions #closeNotes svg path {
+  stroke-width: 2px;
+  stroke: red;
+}
+#notesContainer .generalActions #showNewNotesForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  padding: 1rem 2rem;
+  transition: all 0.25s linear;
+  flex: 1 0 auto;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+#notesContainer .generalActions #showNewNotesForm svg {
+  width: 30px;
+}
+#notesContainer .generalActions #showNewNotesForm:hover {
+  color: #1B9C85;
+}
+@media (max-width: 500px) {
+  #notesContainer {
+    display: none;
+  }
+}
+
 body {
   display: flex;
   flex-direction: row;
@@ -585,6 +781,10 @@ body {
   flex-wrap: nowrap;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
+}
+body .blurredOut {
+  filter: blur(10px);
 }
 
 body {

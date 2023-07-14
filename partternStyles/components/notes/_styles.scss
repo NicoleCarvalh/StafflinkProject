@@ -1,0 +1,161 @@
+@import '../../patterns/variables';
+
+#showNotes {
+    @include flexBox($a: center, $g: 1rem);
+    border: 0;
+    padding: 1rem 2rem;
+    transition: $linear;
+
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+
+    color: inherit;
+    background-color: $bg-secondary;
+
+    svg {
+        transition: $normal;
+
+        path {
+            stroke-width: 2px;
+        }
+    }
+
+    &:hover {
+        color: $extra-primary;
+
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    @media (max-width: 500px) {
+        display: none;
+    }
+}
+
+#notesContainer {
+    transition: $linear;
+
+    &.visible {
+        transform: translateX(0);
+    }
+
+    @include flexBox($fd: column, $j: flex-start, $g: 1rem);
+    background-color: $bg-secondary;
+    position: absolute;
+    height: 100%;
+    width: 400px;
+    padding: 1rem;
+    transform: translateX(110%);
+
+    right: 0;
+    top: 0;
+
+    z-index: 100;
+
+    & > .title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .notes {
+        @include flexBox($fd: column, $g: 1rem);
+        flex: 1 1 auto;
+        overflow: hidden auto;
+
+        .card {
+            width: 100%;
+            height: max-content;
+            border-radius: 1rem;
+            background-color: $bg-primary;
+            overflow: hidden;
+            flex: 1 0 auto;
+
+            & > div{
+                padding: .7rem;
+            }
+
+            &_header {
+                @include flexBox($a: center, $j: space-between);
+                width: 100%;
+                font-size: .9rem;
+                
+                .actions {
+                    @include flexBox($a: center, $g: .5rem);
+                    
+                    &_option {
+                        @include flexBox($a: center, $j: center);
+                        border: none;
+                        padding: .5rem;
+                        transition: $linear;
+                        border-radius: 0;
+
+                        &:hover {
+                            background-color: unset;
+                            transform: scale(1.2);
+                        }
+
+                        svg {
+                            width: 20px;
+                        }
+                    }
+                }
+            }
+
+            &_body {
+                font-size: .8rem;
+            }
+
+            &_footer {
+                @include flexBox($a: center, $j: space-between);
+            }
+        }
+    }
+
+    .generalActions {
+        @include flexBox($fd: row-reverse, $a: center, $j: space-between, $g: .5rem);
+        width: 100%;
+
+        #closeNotes, #showNewNotesForm {
+            border: 0;
+            color: $default-color;
+            background-color: $bg-primary;
+        }
+
+        #closeNotes {
+            flex: 0 1 auto;
+            padding: 1rem;
+            height: 100%;
+
+            svg {
+                transform: rotate(45deg);
+                
+                path {
+                    stroke-width: 2px;
+                    stroke: red;
+                }
+            }
+        }
+
+        #showNewNotesForm {
+            @include flexBox($a: center, $g: 1rem);
+            padding: 1rem 2rem;
+            transition: $linear;
+            flex: 1 0 auto;
+            height: fit-content;
+    
+            svg {
+                width: 30px;
+            }
+    
+            &:hover {
+                color: $extra-secondary;
+            }
+        } 
+    }
+
+    @media (max-width: 500px) {
+        display: none;
+    }
+}

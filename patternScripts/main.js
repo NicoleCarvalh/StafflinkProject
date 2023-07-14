@@ -1,3 +1,4 @@
+import { notesControl } from "./components/notes/index.js";
 import { sideMenuControl } from "./components/sideMenu/index.js";
 import { getLocalData, setLocalData } from "./localStorageControl/getData.js";
 import { mobileDeviceVerify } from "./windowControl/device.js";
@@ -9,4 +10,7 @@ export const allUtils = {
     getLocalData: getLocalData,
     isMobile: mobileDeviceVerify,
     getPage: getCurrentPagePath,
+    setPage: setCurrentPagePath,
+    handlePageByCustomLink: handlePageByLink,
+    notes: notesControl
 }

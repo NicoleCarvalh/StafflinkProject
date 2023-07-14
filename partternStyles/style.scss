@@ -1,9 +1,15 @@
 @import './patterns/resets';
 @import 'components/side_menu/style';
 @import 'components/main/style';
+@import 'components/notes/styles';
 
 body {
     @include flexBox($fd: row, $a: center, $j: space-between);
     width: 100%;
     height: 100vh;
+    overflow: hidden;
+
+    .blurredOut {
+        filter: blur(10px);
+    }
 }
