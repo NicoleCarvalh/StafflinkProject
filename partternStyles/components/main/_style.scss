@@ -4,6 +4,7 @@ main {
     @include flexBox($fd: column, $j: flex-start);
     flex: 1 10 auto;
     padding: 1rem 1.5rem;
+    transition: $linear;
 
     height: 100vh;
     max-height: 100vh;

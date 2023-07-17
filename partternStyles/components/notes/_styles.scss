@@ -29,7 +29,7 @@
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 780px) {
         display: none;
     }
 }
@@ -63,54 +63,6 @@
         @include flexBox($fd: column, $g: 1rem);
         flex: 1 1 auto;
         overflow: hidden auto;
-
-        .card {
-            width: 100%;
-            height: max-content;
-            border-radius: 1rem;
-            background-color: $bg-primary;
-            overflow: hidden;
-            flex: 1 0 auto;
-
-            & > div{
-                padding: .7rem;
-            }
-
-            &_header {
-                @include flexBox($a: center, $j: space-between);
-                width: 100%;
-                font-size: .9rem;
-                
-                .actions {
-                    @include flexBox($a: center, $g: .5rem);
-                    
-                    &_option {
-                        @include flexBox($a: center, $j: center);
-                        border: none;
-                        padding: .5rem;
-                        transition: $linear;
-                        border-radius: 0;
-
-                        &:hover {
-                            background-color: unset;
-                            transform: scale(1.2);
-                        }
-
-                        svg {
-                            width: 20px;
-                        }
-                    }
-                }
-            }
-
-            &_body {
-                font-size: .8rem;
-            }
-
-            &_footer {
-                @include flexBox($a: center, $j: space-between);
-            }
-        }
     }
 
     .generalActions {
@@ -155,7 +107,100 @@
         } 
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 780px) {
         display: none;
+    }
+}
+
+.card {
+    @include flexBox($fd: column, $j: space-between, $g: .5rem);
+    width: 100%;
+    height: max-content;
+    max-height: 220px;
+    border-radius: 1rem;
+    background-color: $bg-primary;
+    overflow: hidden;
+    flex: 1 0 auto;
+
+    & > div{
+        padding: .7rem;
+    }
+
+    &_header {
+        @include flexBox($a: center, $j: space-between);
+        width: 100%;
+        font-size: .9rem;
+
+        .title {
+            flex-grow: 1;
+        }
+        
+        .actions {
+            @include flexBox($a: center, $g: .5rem);
+            
+            &_option {
+                @include flexBox($a: center, $j: center);
+                border: none;
+                padding: .5rem;
+                transition: $linear;
+                border-radius: 0;
+
+                &:hover {
+                    background-color: unset;
+                    transform: scale(1.2);
+                }
+
+                svg {
+                    width: 20px;
+                }
+
+                &:disabled {
+                    opacity: .4;
+                }
+            }
+        }
+    }
+
+    &_body {
+        font-size: .8rem;
+        flex-grow: 1;
+    }
+
+    &_footer {
+        @include flexBox($a: center, $j: space-between);
+    }
+}
+
+.newNoteContainer {
+    @include flexBox($fd: column, $g: 1rem);
+    position: absolute;
+    inset: 0;
+    margin: auto;
+
+    height: fit-content;
+    width: fit-content;
+
+    padding: 1rem;
+    z-index: 10000;
+
+    .card {
+        width: 400px;
+        min-height: 200px;
+
+        background-color: $bg-secondary;
+    }
+
+    button {
+        transition: $linear;
+
+        &#cancel {
+            border-color: red;
+            color: red;
+
+            &:hover {
+                color: $bg-secondary;
+                background-color: red;
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@
     padding: 1rem 1rem .2rem;
     // border: 1px solid blue;
     overflow: hidden auto;
+    transition: $linear;
 
     #navigationBar {
         width: 100%;
@@ -269,7 +270,7 @@
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 780px) {
         &:not(.analysisMode) {
             position: fixed;
             height: fit-content;
