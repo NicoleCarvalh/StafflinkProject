@@ -52,7 +52,7 @@ a {
     color: $default-color;
 }
 
-button, input {
+button, input, textarea {
     border: 0;
     background: none;
 }
@@ -87,6 +87,14 @@ input {
     border-radius: 5rem;
     border: 2px solid $extra-primary;
     min-width: 200px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 2px solid $extra-primary;
 }
 
 select {

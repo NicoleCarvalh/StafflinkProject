@@ -65,7 +65,7 @@ a {
   color: #000000;
 }
 
-button, input {
+button, input, textarea {
   border: 0;
   background: none;
 }
@@ -95,6 +95,14 @@ input {
   border-radius: 5rem;
   border: 2px solid #029AA4;
   min-width: 200px;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #029AA4;
 }
 
 select {
@@ -663,6 +671,32 @@ main header.analysisMode .searchBar {
   flex: 1 1 auto;
   overflow: hidden auto;
 }
+#notesContainer .notes > p {
+  width: 100%;
+  font-size: 0.8;
+  opacity: 0.65;
+  text-align: center;
+}
+#notesContainer .notes .card input, #notesContainer .notes .card textarea {
+  transition: all 0.25s linear;
+}
+#notesContainer .notes .card input:disabled, #notesContainer .notes .card textarea:disabled {
+  padding: 0;
+  border: none;
+}
+#notesContainer .notes .card input {
+  width: 100%;
+}
+#notesContainer .notes .card input:disabled {
+  font-size: 1rem;
+}
+#notesContainer .notes .card textarea {
+  height: 100%;
+}
+#notesContainer .notes .card textarea:disabled {
+  font-size: 0.8rem;
+  border-radius: 0;
+}
 #notesContainer .generalActions {
   display: flex;
   flex-direction: row-reverse;
@@ -724,7 +758,7 @@ main header.analysisMode .searchBar {
   width: 100%;
   height: -moz-max-content;
   height: max-content;
-  max-height: 220px;
+  max-height: 230px;
   border-radius: 1rem;
   background-color: #F1F1F1;
   overflow: hidden;
@@ -733,12 +767,15 @@ main header.analysisMode .searchBar {
 .card > div {
   padding: 0.7rem;
 }
+.card > div.card_body {
+  padding: 0 0.7rem;
+}
 .card_header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 0;
+  gap: 1rem;
   flex-wrap: nowrap;
   width: 100%;
   font-size: 0.9rem;
@@ -776,6 +813,10 @@ main header.analysisMode .searchBar {
 .card_header .actions_option:disabled {
   opacity: 0.4;
 }
+.card_header .actions_option[title=edit].active svg path {
+  stroke: #029AA4;
+  fill: #029AA4;
+}
 .card_body {
   font-size: 0.8rem;
   flex-grow: 1;
@@ -788,39 +829,65 @@ main header.analysisMode .searchBar {
   gap: 0;
   flex-wrap: nowrap;
 }
+.card input {
+  border-radius: 0.5rem;
+}
+.card textarea {
+  font-style: italic;
+}
 
 .newNoteContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  z-index: 10000;
+}
+.newNoteContainer input, .newNoteContainer textarea {
+  width: 100%;
+  border: 1px solid rgba(2, 154, 164, 0.7);
+  opacity: 0.7;
+  transition: all 0.25s linear;
+}
+.newNoteContainer input:focus, .newNoteContainer input:checked, .newNoteContainer textarea:focus, .newNoteContainer textarea:checked {
+  opacity: 1;
+}
+.newNoteContainer textarea {
+  min-height: 150px;
+}
+.newNoteContainer > div {
   display: flex;
   flex-direction: column;
   align-items: unset;
   justify-content: unset;
   gap: 1rem;
   flex-wrap: nowrap;
-  position: absolute;
-  inset: 0;
-  margin: auto;
   height: -moz-fit-content;
   height: fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 1rem;
-  z-index: 10000;
+  width: 400px;
 }
 .newNoteContainer .card {
-  width: 400px;
   min-height: 200px;
+  max-height: unset;
   background-color: #FFFFFF;
 }
 .newNoteContainer button {
   transition: all 0.25s linear;
 }
 .newNoteContainer button#cancel {
-  border-color: red;
-  color: red;
-}
-.newNoteContainer button#cancel:hover {
-  color: #FFFFFF;
   background-color: red;
+  color: #FFFFFF;
+  border: red;
 }
 
 body {
