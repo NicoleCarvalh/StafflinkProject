@@ -65,7 +65,7 @@ a {
   color: #000000;
 }
 
-button, input, textarea {
+button, input, textarea, select {
   border: 0;
   background: none;
 }
@@ -114,6 +114,10 @@ select.dark {
   background-color: #029AA4;
   color: #FFFFFF;
 }
+select:hover {
+  background-color: #029AA4;
+  color: #FFFFFF;
+}
 
 @font-face {
   font-family: PoppinsLight;
@@ -144,6 +148,7 @@ select.dark {
   padding: 1rem 1rem 0.2rem;
   overflow: hidden auto;
   transition: all 0.25s linear;
+  z-index: 100000;
 }
 #side_menu #navigationBar {
   width: 100%;
@@ -463,17 +468,17 @@ main {
   flex-direction: column;
   align-items: unset;
   justify-content: flex-start;
-  gap: 0;
+  gap: 1rem;
   flex-wrap: nowrap;
   flex: 1 10 auto;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   transition: all 0.25s linear;
-  height: 100vh;
+  min-height: 100vh;
   max-height: 100vh;
   border: 1px solid red;
   overflow: auto;
 }
-main header {
+main > header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -483,11 +488,11 @@ main header {
   border-bottom: 2px solid #029AA4;
   padding-bottom: 1rem;
 }
-main header svg {
+main > header svg {
   width: -moz-fit-content;
   width: fit-content;
 }
-main header .pageName {
+main > header .pageName {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -495,15 +500,15 @@ main header .pageName {
   gap: 1rem;
   flex-wrap: wrap;
 }
-main header .pageName svg {
+main > header .pageName svg {
   width: 50px;
 }
-main header .pageName h1 {
+main > header .pageName h1 {
   -webkit-text-decoration: 3px underline #029AA4;
           text-decoration: 3px underline #029AA4;
   font-family: PoppinsLight;
 }
-main header .searchBar {
+main > header .searchBar {
   display: flex;
   flex-direction: row-reverse;
   align-items: unset;
@@ -515,7 +520,7 @@ main header .searchBar {
   border-radius: 0.5rem;
   flex: 10 1 auto;
 }
-main header .searchBar button, main header .searchBar input {
+main > header .searchBar button, main > header .searchBar input {
   min-height: 100%;
   border: none;
   border-radius: unset;
@@ -523,27 +528,27 @@ main header .searchBar button, main header .searchBar input {
   outline: none;
   transition: all 0.25s linear;
 }
-main header .searchBar button:hover, main header .searchBar input:hover {
+main > header .searchBar button:hover, main > header .searchBar input:hover {
   background: none;
 }
-main header .searchBar button {
+main > header .searchBar button {
   height: 30px;
   flex: 0 1 auto;
 }
-main header .searchBar button:focus svg path {
+main > header .searchBar button:focus svg path {
   stroke: #1B9C85;
 }
-main header .searchBar input {
+main > header .searchBar input {
   flex: 1 0 auto;
   min-width: unset;
 }
-main header .searchBar input:-moz-placeholder-shown {
+main > header .searchBar input:-moz-placeholder-shown {
   text-overflow: ellipsis;
 }
-main header .searchBar input:placeholder-shown {
+main > header .searchBar input:placeholder-shown {
   text-overflow: ellipsis;
 }
-main header .options {
+main > header .options {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -552,7 +557,7 @@ main header .options {
   flex-wrap: wrap;
   flex: 1 2 auto;
 }
-main header .options .option {
+main > header .options .option {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -564,26 +569,173 @@ main header .options .option {
   transition: all 0.25s linear;
   flex-grow: 1;
 }
-main header .options .option svg {
+main > header .options .option svg {
   height: 30px;
 }
-main header .options .option.newEmployee svg :not(:nth-child(odd)) {
+main > header .options .option.newEmployee svg :not(:nth-child(odd)) {
   stroke: #029AA4;
 }
-main header .options .option:hover {
+main > header .options .option:hover {
   background: unset;
   color: #1B9C85;
   background-color: #FFFFFF;
 }
-main header.analysisMode {
+main > header.analysisMode {
   border: none;
   padding: 0;
 }
-main header.analysisMode > *:not(.searchBar) {
+main > header.analysisMode > *:not(.searchBar) {
   display: none;
 }
-main header.analysisMode .searchBar {
+main > header.analysisMode .searchBar {
   max-width: 350px;
+}
+
+@font-face {
+  font-family: PoppinsLight;
+  src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: PoppinsItalic;
+  src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+#main_content {
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+}
+
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+}
+.tableContainer .tableContainer_header {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: space-between;
+  gap: 0;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+}
+.tableContainer .tableContainer_header .tableName {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.tableContainer .tableContainer_header .tableName h2 {
+  font-family: "PoppinsLight";
+}
+.tableContainer .tableContainer_header .tableFilters .filter {
+  transition: all 0.25s linear;
+  padding: 0.5rem;
+}
+.tableContainer .tableContainer_header .tableFilters select.filter {
+  padding: 0.5rem 1rem;
+}
+.tableContainer::before {
+  position: absolute;
+  content: "";
+  left: -25px;
+  top: -25px;
+  background-color: #029AA4;
+  width: 50px;
+  height: 50px;
+  transform: rotate(45deg);
+}
+.tableContainer .table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.tableContainer .table .table_content {
+  width: 100%;
+  display: table;
+  border-spacing: unset;
+}
+.tableContainer .table .table_content th {
+  padding: 0 0.5rem;
+}
+.tableContainer .table .table_content th, .tableContainer .table .table_content tr {
+  text-align: left;
+}
+.tableContainer .table .table_content .header {
+  width: 100%;
+  font-size: 0.75rem;
+}
+.tableContainer .table .table_content .body {
+  font-size: 0.85rem;
+}
+.tableContainer .table .table_content .body tr:nth-child(odd) {
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+.tableContainer .table .table_content .body tr td {
+  padding: 0.5rem;
+}
+.tableContainer .table .table_content .body tr td .employeeCode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+.tableContainer .table .table_content .body tr td .employeeCode .employeePhoto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-radius: 0.1rem;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #029AA4;
+}
+.tableContainer .table .table_content .body tr td .employeeCode .employeePhoto img {
+  transform: rotate(-45deg);
+  min-width: 50px;
+  min-height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.tableContainer .table .table_content .body tr td.employee .office {
+  display: block;
+  font-style: italic;
+  color: #1B9C85;
+  font-size: 0.65rem;
+}
+.tableContainer .table .table_content .body tr td.actions .viewMore {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  border: none;
+  transition: all 0.25s linear;
+}
+.tableContainer .table .table_content .body tr td.actions .viewMore:hover {
+  background: none;
+  transform: scale(1.1);
+}
+.tableContainer .table .table_content .body tr td.actions .viewMore svg {
+  width: 30px;
 }
 
 @font-face {
@@ -617,6 +769,7 @@ main header.analysisMode .searchBar {
   right: 1.5rem;
   color: inherit;
   background-color: #FFFFFF;
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
 }
 #showNotes svg {
   transition: all 0.3s linear;
@@ -898,7 +1051,6 @@ body {
   gap: 0;
   flex-wrap: nowrap;
   width: 100%;
-  height: 100vh;
   overflow: hidden auto;
 }
 body .blurredOut {

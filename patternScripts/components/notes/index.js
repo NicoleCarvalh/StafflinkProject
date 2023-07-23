@@ -4,6 +4,7 @@ import { createNote } from "./noteCreation.js"
 import { noteCardModal } from "./noteModal.js"
 
 const notesContainer = document.getElementById("notesContainer")
+const allButtonOnNotesContainer = notesContainer?.querySelectorAll('button')
 const notesList = document.querySelector("#notesContainer .notes")
 const closeNotesContainer = document.getElementById("closeNotes")
 const showNotes = document.getElementById("showNotes")
@@ -11,6 +12,12 @@ const showNewNoteForm = document.getElementById("showNewNotesForm")
 
 const handleNotesContainer = () => {
     notesContainer.classList.toggle("visible")
+
+    allButtonOnNotesContainer.forEach((button) => {
+        console.log(button)
+        const tabindex = button.getAttribute('data-tabindex')
+        button.setAttribute('tabindex', tabindex)
+    })
 }
 
 const listAllNotes = () => {
@@ -161,5 +168,11 @@ export const notesControl = () => {
 
     window.addEventListener('load', () => {
         listAllNotes()
+        
+        allButtonOnNotesContainer.forEach((button, index) => {
+            const tabindex = index + 1
+            button.setAttribute('data-tabindex', tabindex)
+            button.setAttribute('tabindex', '-1')
+        })
     })
 }

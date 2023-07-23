@@ -12,6 +12,7 @@
 
     color: inherit;
     background-color: $bg-secondary;
+    box-shadow: $innerShadow;
 
     svg {
         transition: $normal;

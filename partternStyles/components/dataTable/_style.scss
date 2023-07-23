@@ -1,0 +1,166 @@
+@import '../../patterns/variables';
+
+#main_content {
+    background-color: $bg-secondary;
+
+    border-radius: 1rem;
+}
+
+.tableContainer {
+    @include flexBox($fd: column, $g: 1rem);
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+
+    & .tableContainer_header {
+        @include flexBox($j: space-between, $fw: wrap);
+        padding: 1rem 1.5rem;
+
+        .tableName {
+            height: fit-content;
+            h2 {
+                font-family: "PoppinsLight";
+            }
+        }
+
+        .tableFilters {
+            .filter {
+                transition: $linear;
+                padding: .5rem;
+            }
+
+            select.filter {
+                padding: .5rem 1rem;
+            }
+        }
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        left: -25px;
+        top: -25px;
+        background-color: $extra-primary;
+
+        width: 50px;
+        height: 50px;
+
+        transform: rotate(45deg);
+    }
+
+    .table {
+        max-width: 100%;
+        overflow-x: auto;
+
+        .table_content {
+            // @include flexBox($fd: column);
+            width: 100%;
+            display: table;
+            border-spacing: unset;
+    
+            th {
+                // position: sticky;
+                padding: 0 .5rem;
+            }
+    
+            th, tr {
+                text-align: left;
+                // @include flexBox($g: .5rem);
+                // min-width: 100%;
+                // max-width: 100%;
+                // padding: 0 1rem;
+    
+                // td {
+                //     flex: 1 1 0;
+                // }
+            }
+    
+            .header {
+                width: 100%;
+                font-size: .75rem;
+    
+                // .actions {
+                //     min-width: 100px;
+                // }
+            }
+    
+            .body {
+                font-size: .85rem;
+    
+                tr {
+
+                    &:nth-child(odd) {
+                        // background-color: red;
+                        box-shadow: $innerShadow;
+                    }
+    
+                    td {
+                        padding: .5rem;
+    
+                        // &:not(.employeeCode){
+                        //     overflow: hidden;
+                        //     word-break: break-all;
+                        // }
+    
+                        .employeeCode {
+                            @include flexBox($a: center, $j: center, $g: 1rem);
+                            // padding-left: 1rem;
+                            // min-height: 100%;
+    
+                            .employeePhoto {
+                                @include flexBox($a: center, $j: center);
+                                transform: rotate(45deg);
+                                overflow: hidden;
+                                border-radius: .1rem;
+                                width: 35px;
+                                height: 35px;
+                                border: 1px solid $extra-primary;
+                
+                                img {
+                                    transform: rotate(-45deg);
+                                    min-width: 50px;
+                                    min-height: 50px;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+    
+                        &.employee {
+                            // @include flexBox($fd: column, $g: .1rem);
+    
+                            .office {
+                                display: block;
+                                font-style: italic;
+                                color: $extra-secondary;
+                                font-size: .65rem;
+                            }
+                        }
+    
+                        // &.employeeEmail {
+                        //     flex-grow: 2;
+                        // }
+    
+                        &.actions {
+                            .viewMore {
+                                @include flexBox();
+                                
+                                padding: 1rem;
+                                border: none;
+                                transition: $linear;
+
+                                &:hover {
+                                    background: none;
+                                    transform: scale(1.1);
+                                }
+
+                                svg {
+                                    width: 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

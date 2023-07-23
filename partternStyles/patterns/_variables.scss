@@ -8,6 +8,8 @@ $default-color: #000000;
 $extra-primary: #029AA4;
 $extra-secondary: #1B9C85;
 
+$innerShadow: inset 0 0 5px 2px rgba($color: $default-color, $alpha: 0.1);
+
 // TYPOGRAPHY
 
 @font-face {

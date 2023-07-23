@@ -13,6 +13,10 @@ export const setCurrentPagePath = (page) => {
     window.location.href = `/pages/${page}/index.html`
 }
 
+export const backToPreviousPage = () => {
+    history.back()
+}
+
 export const handlePageByLink = (element) => {
     const {currentPath, currentPage} = getCurrentPagePath()
     const pageLinkElement = element.getAttribute("data-link-to")

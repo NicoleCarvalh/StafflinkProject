@@ -11,6 +11,7 @@
     // border: 1px solid blue;
     overflow: hidden auto;
     transition: $linear;
+    z-index: 100000;
 
     #navigationBar {
         width: 100%;

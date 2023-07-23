@@ -1,12 +1,15 @@
 @import './patterns/resets';
-@import 'components/side_menu/style';
-@import 'components/main/style';
-@import 'components/notes/styles';
+@import './components/side_menu/style';
+@import './components/main/style';
+
+// Reavaliar quais páginas precisam dos imports abaixo para realiza-los somente nos arquivos correspondentes
+@import './components/dataTable/style';
+@import './components/notes/styles';
 
 body {
     @include flexBox($fd: row, $a: center, $j: space-between);
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     overflow: hidden auto;
 
     .blurredOut {

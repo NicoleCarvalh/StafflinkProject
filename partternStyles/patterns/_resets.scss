@@ -52,7 +52,7 @@ a {
     color: $default-color;
 }
 
-button, input, textarea {
+button, input, textarea, select {
     border: 0;
     background: none;
 }
@@ -61,7 +61,6 @@ button {
     padding: .5rem 2.5rem;
     border-radius: .5rem;
     cursor: pointer;
-
 
     border: 2px solid $extra-primary;
     color: $extra-primary;
@@ -103,6 +102,11 @@ select {
     border: 2px solid $extra-primary;
 
     &.dark {
+        background-color: $extra-primary;
+        color: $bg-secondary;
+    }
+
+    &:hover {
         background-color: $extra-primary;
         color: $bg-secondary;
     }

@@ -1,18 +1,19 @@
 @import '../../patterns/variables';
 
 main {
-    @include flexBox($fd: column, $j: flex-start);
+    @include flexBox($fd: column, $j: flex-start, $g: 1rem);
     flex: 1 10 auto;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem;
     transition: $linear;
 
-    height: 100vh;
+    // height: 100vh;
+    min-height: 100vh;
     max-height: 100vh;
     border: 1px solid red;
 
     overflow: auto;
 
-    header {
+    > header {
         @include flexBox($a: center, $j: space-between, $g: 1rem, $fw: wrap);
         border-bottom: 2px solid $extra-primary;
         padding-bottom: 1rem;
