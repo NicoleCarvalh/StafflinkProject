@@ -2,15 +2,28 @@
 
 #main_content {
     background-color: $bg-secondary;
+    position: relative;
+    overflow: hidden;
 
     border-radius: 1rem;
+
+    &::before {
+        position: absolute;
+        content: '';
+        left: -25px;
+        top: -25px;
+        background-color: $extra-primary;
+
+        width: 50px;
+        height: 50px;
+
+        transform: rotate(45deg);
+    }
 }
 
 .tableContainer {
     @include flexBox($fd: column, $g: 1rem);
     flex: 1 1 auto;
-    position: relative;
-    overflow: hidden;
 
     & .tableContainer_header {
         @include flexBox($j: space-between, $fw: wrap);
@@ -35,19 +48,6 @@
         }
     }
 
-    &::before {
-        position: absolute;
-        content: '';
-        left: -25px;
-        top: -25px;
-        background-color: $extra-primary;
-
-        width: 50px;
-        height: 50px;
-
-        transform: rotate(45deg);
-    }
-
     .table {
         max-width: 100%;
         overflow-x: auto;
@@ -64,7 +64,7 @@
             }
     
             th, tr {
-                text-align: left;
+                text-align: center;
                 // @include flexBox($g: .5rem);
                 // min-width: 100%;
                 // max-width: 100%;
@@ -88,6 +88,7 @@
                 font-size: .85rem;
     
                 tr {
+                    height: 85px;
 
                     &:nth-child(odd) {
                         // background-color: red;
@@ -96,7 +97,8 @@
     
                     td {
                         padding: .5rem;
-    
+                        white-space: nowrap;
+
                         // &:not(.employeeCode){
                         //     overflow: hidden;
                         //     word-break: break-all;
@@ -105,23 +107,25 @@
                         .employeeCode {
                             @include flexBox($a: center, $j: center, $g: 1rem);
                             // padding-left: 1rem;
-                            // min-height: 100%;
-    
-                            .employeePhoto {
-                                @include flexBox($a: center, $j: center);
-                                transform: rotate(45deg);
-                                overflow: hidden;
-                                border-radius: .1rem;
-                                width: 35px;
-                                height: 35px;
-                                border: 1px solid $extra-primary;
-                
-                                img {
-                                    transform: rotate(-45deg);
-                                    min-width: 50px;
-                                    min-height: 50px;
-                                    object-fit: cover;
-                                }
+                            // min-height: 100%; 
+                        }
+
+                        .employeePhoto {
+                            @include flexBox($a: center, $j: center);
+                            transform: rotate(45deg);
+                            overflow: hidden;
+                            border-radius: .1rem;
+                            width: 35px;
+                            height: 35px;
+                            border: 1px solid $extra-primary;
+                            
+                            img {
+                                transform: rotate(-45deg);
+                                min-width: 50px;
+                                width: 50px;
+                                min-height: 50px;
+                                height: 50px;
+                                object-fit: cover;
                             }
                         }
     
@@ -156,6 +160,16 @@
                                 svg {
                                     width: 30px;
                                 }
+                            }
+                        }
+
+                        &.additional {
+                            &.negative {
+                                color: $extra-terciary;
+                            }
+
+                            &.positive {
+                                color: $extra-secondary;
                             }
                         }
                     }

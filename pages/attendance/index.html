@@ -239,8 +239,112 @@
             </div>
         </header>
 
-        <section>
+        <section id="main_content" class="tableContainer">
+            <header class="tableContainer_header">
+                <div class="tableName">
+                    <h2>Controle de ponto</h2>
+                </div>
 
+                <div class="tableFilters">
+                    <button type="button" class="filter">
+                        Todos
+                    </button>
+
+                    <select class="filter" title="filtro de ordenação">
+                        <option value="">
+                            Filtrar por
+                        </option>
+
+                        <option value="a-to-z">A - Z</option>
+                        <option value="z-to-a">Z - A</option>
+                    </select>
+                </div>
+            </header>
+
+            <div class="table">
+                <table class="table_content">
+                    <thead class="table header">
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Setor</th>
+                            <th>Jornada</th>
+
+                            <th>Data</th>
+                            <th>Entrada</th>
+                            <th>Saída</th>
+                            <th>Horas complementares</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Rerificar a necessidade/preferência de adicionar paginação na tabela-->
+                    <tbody class="table body">              
+                        <tr>
+                            <td>
+                                <div class="employeeCode">
+                                    <span class="employeePhoto">
+                                        <img src="https://source.unsplash.com/random/dog" alt="funcionário">
+                                    </span>
+                                    Arthur Mendes Martins
+                                </div>
+                            </td>
+                            <td>Financeiro</td>
+                            <td>08:00 - 17:00</td>
+                            <td>08/05/2023</td>
+                            <td>08:15</td>
+                            <td>17:15</td>
+                            <td class="additional positive">00:00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employeeCode">
+                                    <span class="employeePhoto">
+                                        <img src="https://source.unsplash.com/random/dog" alt="funcionário">
+                                    </span>
+                                    Arthur Mendes Martins
+                                </div>
+                            </td>
+                            <td>Estoque</td>
+                            <td>08:00 - 17:00</td>
+                            <td>08/05/2023</td>
+                            <td>08:15</td>
+                            <td>16:50</td>
+                            <td class="additional negative">-00:10</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employeeCode">
+                                    <span class="employeePhoto">
+                                        <img src="https://source.unsplash.com/random/dog" alt="funcionário">
+                                    </span>
+                                    Arthur Mendes Martins
+                                </div>
+                            </td>
+                            <td>Financeiro</td>
+                            <td>08:00 - 17:00</td>
+                            <td>08/05/2023</td>
+                            <td>08:15</td>
+                            <td>17:15</td>
+                            <td class="additional positive">00:00</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="employeeCode">
+                                    <span class="employeePhoto">
+                                        <img src="https://source.unsplash.com/random/dog" alt="funcionário">
+                                    </span>
+                                    Arthur Mendes Martins
+                                </div>
+                            </td>
+                            <td>Estoque</td>
+                            <td>08:00 - 17:00</td>
+                            <td>08/05/2023</td>
+                            <td>08:15</td>
+                            <td>16:50</td>
+                            <td class="additional negative">-00:10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <button type="button" id="showNotes">

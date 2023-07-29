@@ -474,7 +474,6 @@ main {
   padding: 1rem 1rem;
   transition: all 0.25s linear;
   min-height: 100vh;
-  max-height: 100vh;
   border: 1px solid red;
   overflow: auto;
 }
@@ -590,6 +589,11 @@ main > header.analysisMode > *:not(.searchBar) {
 main > header.analysisMode .searchBar {
   max-width: 350px;
 }
+@media (min-width: 780px) {
+  main {
+    max-height: 100vh;
+  }
+}
 
 @font-face {
   font-family: PoppinsLight;
@@ -609,7 +613,19 @@ main > header.analysisMode .searchBar {
 }
 #main_content {
   background-color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
   border-radius: 1rem;
+}
+#main_content::before {
+  position: absolute;
+  content: "";
+  left: -25px;
+  top: -25px;
+  background-color: #029AA4;
+  width: 50px;
+  height: 50px;
+  transform: rotate(45deg);
 }
 
 .tableContainer {
@@ -620,8 +636,6 @@ main > header.analysisMode .searchBar {
   gap: 1rem;
   flex-wrap: nowrap;
   flex: 1 1 auto;
-  position: relative;
-  overflow: hidden;
 }
 .tableContainer .tableContainer_header {
   display: flex;
@@ -646,16 +660,6 @@ main > header.analysisMode .searchBar {
 .tableContainer .tableContainer_header .tableFilters select.filter {
   padding: 0.5rem 1rem;
 }
-.tableContainer::before {
-  position: absolute;
-  content: "";
-  left: -25px;
-  top: -25px;
-  background-color: #029AA4;
-  width: 50px;
-  height: 50px;
-  transform: rotate(45deg);
-}
 .tableContainer .table {
   max-width: 100%;
   overflow-x: auto;
@@ -669,7 +673,7 @@ main > header.analysisMode .searchBar {
   padding: 0 0.5rem;
 }
 .tableContainer .table .table_content th, .tableContainer .table .table_content tr {
-  text-align: left;
+  text-align: center;
 }
 .tableContainer .table .table_content .header {
   width: 100%;
@@ -678,11 +682,15 @@ main > header.analysisMode .searchBar {
 .tableContainer .table .table_content .body {
   font-size: 0.85rem;
 }
+.tableContainer .table .table_content .body tr {
+  height: 85px;
+}
 .tableContainer .table .table_content .body tr:nth-child(odd) {
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
 }
 .tableContainer .table .table_content .body tr td {
   padding: 0.5rem;
+  white-space: nowrap;
 }
 .tableContainer .table .table_content .body tr td .employeeCode {
   display: flex;
@@ -692,7 +700,7 @@ main > header.analysisMode .searchBar {
   gap: 1rem;
   flex-wrap: nowrap;
 }
-.tableContainer .table .table_content .body tr td .employeeCode .employeePhoto {
+.tableContainer .table .table_content .body tr td .employeePhoto {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -706,10 +714,12 @@ main > header.analysisMode .searchBar {
   height: 35px;
   border: 1px solid #029AA4;
 }
-.tableContainer .table .table_content .body tr td .employeeCode .employeePhoto img {
+.tableContainer .table .table_content .body tr td .employeePhoto img {
   transform: rotate(-45deg);
   min-width: 50px;
+  width: 50px;
   min-height: 50px;
+  height: 50px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -736,6 +746,12 @@ main > header.analysisMode .searchBar {
 }
 .tableContainer .table .table_content .body tr td.actions .viewMore svg {
   width: 30px;
+}
+.tableContainer .table .table_content .body tr td.additional.negative {
+  color: #980D0D;
+}
+.tableContainer .table .table_content .body tr td.additional.positive {
+  color: #1B9C85;
 }
 
 @font-face {
