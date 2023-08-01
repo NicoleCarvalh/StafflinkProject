@@ -1,1 +1,78 @@
 @import '../../../partternStyles/style.scss';
+
+#main_content {
+    .tableContainer_header {
+        padding-bottom: 0;
+    }
+
+    .scrollVisible {
+        @include flexBox($fd: column, $g: 3rem);
+        overflow: hidden auto;
+    }
+
+    .container {
+        @include flexBox($fd: column, $g: 1rem);
+        padding: 0 1.5rem;
+
+        .content {
+            @include flexBox($j: space-between, $g: 1rem);
+
+            .cards {
+                @include flexBox($g: 1rem, $fw: wrap);
+            }
+
+            .extraDatas {
+                flex: 1 0 auto;
+
+                .dataCard {
+                    height: 100%;
+
+                    hr {
+                        width: 100%;
+                        border: 1px solid $extra-secondary;
+                    }
+                }
+            }
+
+            .dataCard {
+                @include flexBox($fd: column, $a: center, $j: space-between, $g: 1rem);
+                padding: .5rem 1.5rem;
+                border: 2px solid $extra-secondary;
+                border-radius: 1rem;
+                // background-color: $bg-primary;
+                box-shadow: $innerShadow;
+                width: 300px;
+
+                .cardHeader {
+                    text-align: center;
+                    h4 {
+                        font-family: 'PoppinsLight';
+                    }
+                }
+
+                .cardbody {
+                    color: $extra-primary;
+                }
+
+                .cardFooter {
+                    width: 100%;
+                    font-size: .8rem;
+                }
+            }
+        }
+
+        &.graphics {
+            .content {
+                flex-wrap: wrap;
+            }
+
+            img {
+                // max-width: 250px;
+                flex: 1 1 auto;
+                max-width: 100%;
+                height: 300px;
+                object-fit: cover;    
+            }
+        }
+    }
+}

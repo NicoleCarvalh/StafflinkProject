@@ -614,7 +614,7 @@ main > header.analysisMode .searchBar {
 #main_content {
   background-color: #FFFFFF;
   position: relative;
-  overflow: hidden;
+  overflow: hidden auto;
   border-radius: 1rem;
 }
 #main_content::before {
