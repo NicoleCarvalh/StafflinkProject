@@ -1,1 +1,109 @@
 @import '../../../partternStyles/style.scss';
+
+#main_content {
+    .tableContainer_header {
+
+        .tableName {
+            @include flexBox($g: .5rem);
+
+            .monthControl {
+                @include flexBox($a: center, $j: center);
+                border: 0;
+                padding: .5rem;
+                
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    transition: $linear;
+                }
+
+                &:hover {
+                    background-color: unset;
+                    color: unset;
+
+                    svg {
+                        transform: scale(1.15);
+                    }
+                }
+            }
+        }
+
+        .globalStatus {
+            @include flexBox($a: center, $j: center, $g: 1.5rem, $fw: wrap);
+            padding: .5rem 1rem;
+            border-radius: .5rem;
+            border: 2px solid $extra-secondary;
+
+            .status {
+                @include flexBox($fd: row-reverse, $a: center, $g: .5rem);
+                padding: 0;
+                border: 0;
+                color: $default-color;
+                font-size: 1rem;
+
+                &.active {
+                    color: $extra-secondary;
+                    
+                    h5 {
+                        opacity: 1;
+                    }
+                }
+
+                &:not(.active) {
+                    h5 {
+                        opacity: .5;
+                    }
+                }
+
+                &:hover {
+                    color: $extra-secondary;
+                    background-color: unset;
+                }
+
+                .counter {
+                    @include flexBox($a: center, $j: center);
+                    border-radius: 50%;
+                    padding: .2rem;
+                    background-color: $extra-secondary;
+                    color: $bg-primary;
+                    width: 25px;
+                    height: 25px;
+                    font-size: .6rem;
+                }
+            }
+        }
+    }
+
+    .table {
+        min-height: 100%;
+
+        .table_content {
+            min-height: 100%;
+
+            // .header {
+                
+            // }
+
+            .body {
+                min-height: 100%;
+                border: 2px solid rgba($color: $default-color, $alpha: .5);
+
+                tr {
+                    min-height: 100%;
+
+                    &:nth-child(odd) {
+                        box-shadow: $innerShadow;
+                    }
+
+                    td {
+                        border: 1px solid rgba($color: $default-color, $alpha: .5);
+
+                        &.nextMonth {
+                            opacity: .5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

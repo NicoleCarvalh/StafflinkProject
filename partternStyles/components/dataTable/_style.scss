@@ -26,7 +26,7 @@
     flex: 1 1 auto;
 
     & .tableContainer_header {
-        @include flexBox($j: space-between, $fw: wrap);
+        @include flexBox($a: center, $j: space-between, $g: 1rem, $fw: wrap);
         padding: 1rem 1.5rem;
 
         .tableName {

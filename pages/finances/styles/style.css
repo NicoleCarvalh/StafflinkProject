@@ -74,6 +74,7 @@ button {
   padding: 0.5rem 2.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: all 0.25s linear;
   border: 2px solid #029AA4;
   color: #029AA4;
 }
@@ -640,9 +641,9 @@ main > header.analysisMode .searchBar {
 .tableContainer .tableContainer_header {
   display: flex;
   flex-direction: row;
-  align-items: unset;
+  align-items: center;
   justify-content: space-between;
-  gap: 0;
+  gap: 1rem;
   flex-wrap: wrap;
   padding: 1rem 1.5rem;
 }
