@@ -1,9 +1,6 @@
 @import './patterns/resets';
 @import './components/side_menu/style';
 @import './components/main/style';
-
-// Reavaliar quais páginas precisam dos imports abaixo para realiza-los somente nos arquivos correspondentes
-@import './components/dataTable/style';
 @import './components/notes/styles';
 
 body {

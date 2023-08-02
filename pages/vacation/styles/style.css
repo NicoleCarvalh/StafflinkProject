@@ -590,35 +590,13 @@ main > header.analysisMode > *:not(.searchBar) {
 main > header.analysisMode .searchBar {
   max-width: 350px;
 }
-@media (min-width: 780px) {
-  main {
-    max-height: 100vh;
-  }
-}
-
-@font-face {
-  font-family: PoppinsLight;
-  src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
-}
-@font-face {
-  font-family: Poppins;
-  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
-}
-@font-face {
-  font-family: PoppinsBold;
-  src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
-}
-@font-face {
-  font-family: PoppinsItalic;
-  src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
-}
-#main_content {
+main #main_content {
   background-color: #FFFFFF;
   position: relative;
   overflow: hidden auto;
   border-radius: 1rem;
 }
-#main_content::before {
+main #main_content::before {
   position: absolute;
   content: "";
   left: -25px;
@@ -628,131 +606,10 @@ main > header.analysisMode .searchBar {
   height: 50px;
   transform: rotate(45deg);
 }
-
-.tableContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: unset;
-  justify-content: unset;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  flex: 1 1 auto;
-}
-.tableContainer .tableContainer_header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 1rem 1.5rem;
-}
-.tableContainer .tableContainer_header .tableName {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-.tableContainer .tableContainer_header .tableName h2 {
-  font-family: "PoppinsLight";
-}
-.tableContainer .tableContainer_header .tableFilters .filter {
-  transition: all 0.25s linear;
-  padding: 0.5rem;
-}
-.tableContainer .tableContainer_header .tableFilters select.filter {
-  padding: 0.5rem 1rem;
-}
-.tableContainer .table {
-  max-width: 100%;
-  overflow-x: auto;
-}
-.tableContainer .table .table_content {
-  width: 100%;
-  display: table;
-  border-spacing: unset;
-}
-.tableContainer .table .table_content th {
-  padding: 0 0.5rem;
-}
-.tableContainer .table .table_content th, .tableContainer .table .table_content tr {
-  text-align: center;
-}
-.tableContainer .table .table_content .header {
-  width: 100%;
-  font-size: 0.75rem;
-}
-.tableContainer .table .table_content .body {
-  font-size: 0.85rem;
-}
-.tableContainer .table .table_content .body tr {
-  height: 85px;
-}
-.tableContainer .table .table_content .body tr:nth-child(odd) {
-  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
-}
-.tableContainer .table .table_content .body tr td {
-  padding: 0.5rem;
-  white-space: nowrap;
-}
-.tableContainer .table .table_content .body tr td .employeeCode {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: nowrap;
-}
-.tableContainer .table .table_content .body tr td .employeePhoto {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: nowrap;
-  transform: rotate(45deg);
-  overflow: hidden;
-  border-radius: 0.1rem;
-  width: 35px;
-  height: 35px;
-  border: 1px solid #029AA4;
-}
-.tableContainer .table .table_content .body tr td .employeePhoto img {
-  transform: rotate(-45deg);
-  min-width: 50px;
-  width: 50px;
-  min-height: 50px;
-  height: 50px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.tableContainer .table .table_content .body tr td.employee .office {
-  display: block;
-  font-style: italic;
-  color: #1B9C85;
-  font-size: 0.65rem;
-}
-.tableContainer .table .table_content .body tr td.actions .viewMore {
-  display: flex;
-  flex-direction: row;
-  align-items: unset;
-  justify-content: unset;
-  gap: 0;
-  flex-wrap: nowrap;
-  padding: 1rem;
-  border: none;
-  transition: all 0.25s linear;
-}
-.tableContainer .table .table_content .body tr td.actions .viewMore:hover {
-  background: none;
-  transform: scale(1.1);
-}
-.tableContainer .table .table_content .body tr td.actions .viewMore svg {
-  width: 30px;
-}
-.tableContainer .table .table_content .body tr td.additional.negative {
-  color: #980D0D;
-}
-.tableContainer .table .table_content .body tr td.additional.positive {
-  color: #1B9C85;
+@media (min-width: 780px) {
+  main {
+    max-height: 100vh;
+  }
 }
 
 @font-face {
@@ -1072,6 +929,148 @@ body {
 }
 body .blurredOut {
   filter: blur(10px);
+}
+
+@font-face {
+  font-family: PoppinsLight;
+  src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: PoppinsBold;
+  src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: PoppinsItalic;
+  src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
+}
+.tableContainer .tableContainer_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.5rem;
+}
+.tableContainer .tableContainer_header .tableName {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.tableContainer .tableContainer_header .tableName h2 {
+  font-family: "PoppinsLight";
+}
+.tableContainer .tableContainer_header .tableFilters .filter {
+  transition: all 0.25s linear;
+  padding: 0.5rem;
+}
+.tableContainer .tableContainer_header .tableFilters select.filter {
+  padding: 0.5rem 1rem;
+}
+.tableContainer .table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.tableContainer .table .table_content {
+  width: 100%;
+  display: table;
+  border-spacing: unset;
+}
+.tableContainer .table .table_content th {
+  padding: 0 0.5rem;
+}
+.tableContainer .table .table_content th, .tableContainer .table .table_content tr {
+  text-align: center;
+}
+.tableContainer .table .table_content .header {
+  width: 100%;
+  font-size: 0.75rem;
+}
+.tableContainer .table .table_content .body {
+  font-size: 0.85rem;
+}
+.tableContainer .table .table_content .body tr {
+  height: 85px;
+}
+.tableContainer .table .table_content .body tr:nth-child(odd) {
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+.tableContainer .table .table_content .body tr td {
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+.tableContainer .table .table_content .body tr td .employeeCode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+.tableContainer .table .table_content .body tr td .employeePhoto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  transform: rotate(45deg);
+  overflow: hidden;
+  border-radius: 0.1rem;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #029AA4;
+}
+.tableContainer .table .table_content .body tr td .employeePhoto img {
+  transform: rotate(-45deg);
+  min-width: 50px;
+  width: 50px;
+  min-height: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.tableContainer .table .table_content .body tr td.employee .office {
+  display: block;
+  font-style: italic;
+  color: #1B9C85;
+  font-size: 0.65rem;
+}
+.tableContainer .table .table_content .body tr td.actions .viewMore {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  border: none;
+  transition: all 0.25s linear;
+}
+.tableContainer .table .table_content .body tr td.actions .viewMore:hover {
+  background: none;
+  transform: scale(1.1);
+}
+.tableContainer .table .table_content .body tr td.actions .viewMore svg {
+  width: 30px;
+}
+.tableContainer .table .table_content .body tr td.additional.negative {
+  color: #980D0D;
+}
+.tableContainer .table .table_content .body tr td.additional.positive {
+  color: #1B9C85;
 }
 
 #main_content .tableContainer_header .tableName {
