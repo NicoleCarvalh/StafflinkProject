@@ -1,3 +1,4 @@
 import { allUtils } from "../../../patternScripts/main.js";
 
-// allUtils.sideMenu()
+console.log(document.getElementById('loginContainer'))
+console.log(document.getElementById('loginContainer').children)

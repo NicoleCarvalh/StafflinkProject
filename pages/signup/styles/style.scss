@@ -135,7 +135,7 @@ main {
         }
 
         .fieldContainer {
-            @include flexBox($j: space-between, $g: 1rem);
+            @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
 
             :first-child {
                 flex: 1 0 auto;
