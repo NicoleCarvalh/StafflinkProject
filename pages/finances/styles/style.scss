@@ -18,8 +18,12 @@
         .content {
             @include flexBox($j: space-between, $g: 1rem);
 
+            // Remover quando exister a versão mobile adaptada para o usuário diferente de RH
+            overflow: auto;
+
             .cards {
                 @include flexBox($g: 1rem, $fw: wrap);
+                flex: 0 1 auto;
             }
 
             .extraDatas {
@@ -27,6 +31,8 @@
 
                 .dataCard {
                     height: 100%;
+                    // width: fit-content;
+                    max-width: 250px;
 
                     hr {
                         width: 100%;

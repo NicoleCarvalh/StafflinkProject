@@ -15,6 +15,102 @@
     <script src="scripts/main.js" type="module" defer></script>
 </head>
 <body>
+    <aside id="sideContent">
+        <h1>Controle a sua equipe em um só lugar</h1>
+
+        <img src="../../assets/images/collaboration.svg" alt="Colaboradores">
+    </aside>
+
+    <main>
+        <header>
+            <div class="logo">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="../../assets/images/Stafflink_logo_dark.svg">
+                    <source media="(min-width: 769px)" srcset="../../assets/images/Stafflink_logo_light.svg">
+
+                    <img src="../../assets/images/Stafflink_logo_dark.svg" alt="Stafflink logo">
+                </picture>
+            </div>
+
+            <div class="title">
+                <h2>Bem vindo(a) ao Stefflink</h2>
+                <p>A plataforma certa para te auxiliar no gerenciamento completo dos recursos humanos da sua empresa!</p>
+            </div>
+
+            <div class="signUpStatus">
+                <div class="step active">
+                    <div class="number">
+                        <span><h5>1</h5></span>
+                    </div>
+                    <div class="name">Empresa</div>
+                </div>
+                <div class="step">
+                    <div class="number">
+                        <span><h5>2</h5></span>
+                    </div>
+                    <div class="name">Endereço</div>
+                </div>
+                <div class="step">
+                    <div class="number">
+                        <span><h5>3</h5></span>
+                    </div>
+                    <div class="name">Acesso geral</div>
+                </div>
+                <div class="step">
+                    <div class="number">
+                        <span><h5>4</h5></span>
+                    </div>
+                    <div class="name">Concluir cadastro</div>
+                </div>
+            </div>
+
+            <div class="stepDescription">
+                <p>Por favor, insira as informações da empresa abaixo</p>
+            </div>
+        </header>
+
+        <section id="loginContainer">
+            <form>
+                <div class="field">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name">
+                </div>
+
+                <div class="field">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj">
+                </div>
+
+                <div class="fieldContainer">
+                    <div class="field">
+                        <label for="stateRegistration">Inscrição estadual</label>
+                        <input type="text" id="stateRegistration" name="stateRegistration">
+                    </div>
     
+                    <div class="field">
+                        <label for="openingDate">Data de abertura</label>
+                        <input type="date" id="openingDate" name="openingDate">
+                    </div>
+                </div>
+                
+
+                <div class="field">
+                    <label for="corporateName">Razão social</label>
+                    <input type="text" id="corporateName" name="corporateName">
+                </div>
+
+                <div class="field">
+                    <label for="email">E-mail <span>(Utilizado pelo adimistrador geral)</span></label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="actions">
+                    <button type="button" id="back">Voltar</button>
+                    <button type="button" id="clear">Limpar formulário</button>
+                    <button type="button" id="continue">Continuar</button>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

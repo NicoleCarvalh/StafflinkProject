@@ -1,1 +1,197 @@
 @import '../../../patternStyles/style.scss';
+
+@media (max-width: 768px) {
+    body {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            content: 'Favor realizar cadastro em um dispositivo desktop!';
+            font-size: 2rem;
+            height: fit-content;
+            width: fit-content;
+            text-align: center;
+        }
+    }
+    main {
+        display: none;
+    }
+
+    aside#sideContent {
+        display: none;
+
+        // * {
+        //     display: none;
+        // }
+    }
+}
+
+body {
+    flex-direction: row;
+    justify-content: inherit;
+    text-align: unset;
+}
+
+main {
+    // justify-content: center;
+    align-items: center;
+    max-width: 50%;
+    padding: 2rem 4rem;
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        padding: 0;
+        // max-width: 500px;
+
+        .title {
+            @include flexBox($fd: column);
+
+            h2 {
+                font-size: 2rem;
+                color: #015E64;
+                font-family: 'PoppinsBold';
+            }
+
+            p {
+                font-size: .8rem;
+                color: rgba($color: $default-color, $alpha: .7);
+                font-family: 'PoppinsLight';
+            }
+        }
+
+        .signUpStatus {
+            @include flexBox($j: space-between, $g: 1rem);
+            width: 100%;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid $extra-primary;
+
+            .step {
+                @include flexBox($a: center);
+
+                &:has(:first-child, :last-child) {
+                    padding: 0 .5rem;
+                }
+
+                &.active {
+                    gap: 1rem;
+                    .number {
+                        span {
+                            background-color: $extra-primary;
+                            color: $bg-primary;
+                        }
+                    }
+
+                    .name {
+                        width: 100%;
+                    }
+                }
+
+                .number {
+                    span {
+                        @include flexBox($a: center, $j: center);
+                        border: 2px solid $extra-primary;
+                        border-radius: .25rem;
+                        transform: rotate(45deg);
+                        width: 40px;
+                        height: 40px;
+                        transition: $normal;
+
+                        h5 {
+                            transform: rotate(-45deg);
+                        }
+                    }
+                }
+
+                .name {
+                    width: 0;
+                    overflow: hidden;
+                    transition: $normal;
+                }
+            }
+        }
+
+        .stepDescription {
+            width: 100%;
+            text-align: left;
+            font-size: .8rem;
+            opacity: .7;
+        }
+    }
+
+    #loginContainer {
+        @include flexBox($fd: column, $a: center);
+        width: 100%;
+
+        form {
+            @include flexBox($fd: column, $a: initial, $g: .8rem);
+            width: 100%;
+            // max-width: 300px;
+        }
+
+        .fieldContainer {
+            @include flexBox($j: space-between, $g: 1rem);
+
+            :first-child {
+                flex: 1 0 auto;
+            }
+        }
+
+        .field {
+            @include flexBox($fd: column, $a: flex-start, $g: .5rem);
+            // width: fit-content;
+            
+            input {
+                width: 100%;
+                // max-width: 300px;
+            }
+        }
+
+        .actions {
+            @include flexBox($a: center, $j: space-between, $g: .5rem);
+            font-size: .8rem;
+            margin-top: 1.5rem;
+            
+            button {
+
+                &#continue {
+                    background-color: $extra-secondary;
+                    color: $bg-primary;
+                }
+            }
+        }
+    }
+}
+
+.logo {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+
+    width: 100%;
+    max-width: 200px;
+}
+
+#sideContent {
+    @include flexBox($fd: column, $j: flex-end, $g: 5rem);
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    background-color: $extra-primary;
+    width: 50%;
+    min-height: 100vh;
+    
+    h1 {
+        max-width: 500px;
+        font-size: 2rem;
+        color: $bg-primary;
+    }
+
+    img {
+        height: fit-content;
+        max-width: 500px;
+    }
+}
