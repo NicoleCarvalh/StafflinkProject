@@ -80,18 +80,38 @@ function changeStep() {
 
 function cepControl() {
     const cepInput = document.getElementById('cep')
-    console.log(cepInput)
-    cepInput.addEventListener('keydown', () => {
-        if(cepInput.value.length == 8) {
-            console.log(cepInput.length)
-            console.log(cepInput.value)
 
+    cepInput.addEventListener('keyup', () => {
+        if(cepInput.value.length == 8) {
             fetch(`https://viacep.com.br/ws/${cepInput.value}/json`).then(result => {
                 return result.json()
-            }).then(json => console.log(json)).catch(error => console.log(error))
+            }).then(cepInfos => {
+                if(cepInfos.erro) {
+                    cepInput.style.borderColor = "red"
+                    return
+                }
+                cepInput.style.borderColor = "green"
+
+                getCurrentFields().forEach(inp => {
+                    switch(inp.name) {
+                        case 'address':
+                            inp.value = cepInfos.logradouro
+                            break
+                        case 'neighborhood':
+                            inp.value = cepInfos.bairro
+                            break
+                        case 'city':
+                            inp.value = cepInfos.localidade
+                            break
+                        case 'state':
+                            inp.value = cepInfos.uf
+                            break
+                    }
+                })
+
+            }).catch(error => console.log(error))
         }
     })
-    
 }
 
 form.addEventListener('submit', (e) => {
