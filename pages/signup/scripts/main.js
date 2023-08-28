@@ -30,6 +30,8 @@ const nextStepButton = document.getElementById('continue')
 
 const previousStepButton = document.getElementById('back')
 previousStepButton.addEventListener('click', () => {
+    if(currentStep <= 1) return
+
     nextStepButton.textContent != 'Continuar' && (nextStepButton.textContent = 'Continuar')
 
     getCurrentFields().forEach((inp, key, node) => {
