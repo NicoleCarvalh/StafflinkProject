@@ -41,6 +41,7 @@ $innerShadow: inset 0 0 5px 2px rgba($color: $default-color, $alpha: 0.1);
 
 $linear: all .25s linear;
 $normal: all .3s linear;
+$slow: all .45s ease-in-out;
 
 
 // MIXINS

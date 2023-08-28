@@ -71,43 +71,110 @@
 
         <section id="loginContainer">
             <form>
-                <div class="field">
-                    <label for="name">Nome</label>
-                    <input type="text" id="name" name="name">
-                </div>
-
-                <div class="field">
-                    <label for="cnpj">CNPJ</label>
-                    <input type="text" id="cnpj" name="cnpj">
-                </div>
-
-                <div class="fieldContainer">
+                <div class="fieldsContainer visible">
                     <div class="field">
-                        <label for="stateRegistration">Inscrição estadual</label>
-                        <input type="text" id="stateRegistration" name="stateRegistration">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required autofocus>
                     </div>
     
                     <div class="field">
-                        <label for="openingDate">Data de abertura</label>
-                        <input type="date" id="openingDate" name="openingDate">
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" id="cnpj" name="cnpj" required>
+                    </div>
+    
+                    <div class="fieldContainer">
+                        <div class="field">
+                            <label for="stateRegistration">Inscrição estadual</label>
+                            <input type="text" id="stateRegistration" name="stateRegistration" required>
+                        </div>
+        
+                        <div class="field">
+                            <label for="openingDate">Data de abertura</label>
+                            <input type="date" id="openingDate" name="openingDate" required>
+                        </div>
+                    </div>
+    
+                    <div class="field">
+                        <label for="corporateName">Razão social</label>
+                        <input type="text" id="corporateName" name="corporateName" required>
                     </div>
                 </div>
                 
+                <div class="fieldsContainer">
+                    <div class="field">
+                        <label for="cep">CEP</label>
+                        <input type="number" name="cep" id="cep">
+                    </div>
 
-                <div class="field">
-                    <label for="corporateName">Razão social</label>
-                    <input type="text" id="corporateName" name="corporateName">
+                    <div class="fieldContainer">
+                        <div class="field">
+                            <label for="address">Endereço</label>
+                            <input type="text" name="address" id="address">
+                        </div>
+    
+                        <div class="field">
+                            <label for="number">Número</label>
+                            <input type="number" name="number" id="number">
+                        </div>
+                    </div>
+
+                    <div class="fieldContainer">
+                        <div class="field">
+                            <label for="neighborhood">Bairro</label>
+                            <input type="text" name="neighborhood" id="neighborhood">
+                        </div>
+
+                        <div class="field">
+                            <label for="city">Cidade</label>
+                            <input type="text" name="city" id="city">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="state">Estado</label>
+                        <input type="text" name="state" id="state">
+                    </div>
                 </div>
 
-                <div class="field">
-                    <label for="email">E-mail <span>(Utilizado pelo adimistrador geral)</span></label>
-                    <input type="email" id="email" name="email">
+                <div class="fieldsContainer">
+                    <h2>Administrador geral</h2>
+                    
+                    <div class="field">
+                        <label for="email">E-mail <span>(Utilizado pelo adimistrador geral)</span></label>
+                        <input type="email" name="email">
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmEmail">Confirme o e-mail</label>
+                        <input type="email" name="confirmEmail">
+                    </div>
+
+                    <div class="fieldContainer">
+                        <div class="field">
+                            <label for="password">Senha</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+
+                        <div class="field">
+                            <label for="confirmPassword">Confirme a senha</label>
+                            <input type="password" name="confirmPassword" id="confirmPassword">
+                        </div>
+                    </div>
+
+                    <p>
+                        Após ser direcionado ao sistema, será necessário inserir novamente essas informações para que seja cadastrado como funcionário. Onde então, poderá ser cadastrado os demais funcionários (RH e ou demais)
+                    </p>
+                </div>
+
+                <div class="fieldsContainer">
+                    <h3>Para finalizar, foi enviado um código de validação para o email cadastrado na etapa anterior.</h3>
+                    <input type="text" name="finalCode" id="finalCode" placeholder="Cole o código aqui">
                 </div>
 
                 <div class="actions">
                     <button type="button" id="back">Voltar</button>
-                    <button type="button" id="clear">Limpar formulário</button>
-                    <button type="button" id="continue">Continuar</button>
+                    <button type="reset" id="clear">Limpar formulário</button>
+                    <button type="submit" id="continue">Continuar</button>
                 </div>
             </form>
         </section>

@@ -930,31 +930,6 @@ body .blurredOut {
   filter: blur(10px);
 }
 
-@media (max-width: 768px) {
-  body {
-    height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-  body::before {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    content: "Favor realizar cadastro em um dispositivo desktop!";
-    font-size: 2rem;
-    height: -moz-fit-content;
-    height: fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    text-align: center;
-  }
-  main {
-    display: none;
-  }
-  aside#sideContent {
-    display: none;
-  }
-}
 body {
   flex-direction: row;
   justify-content: inherit;
@@ -1034,7 +1009,7 @@ main header .signUpStatus .step .number span {
   transform: rotate(45deg);
   width: 40px;
   height: 40px;
-  transition: all 0.3s linear;
+  transition: all 0.45s ease-in-out;
 }
 main header .signUpStatus .step .number span h5 {
   transform: rotate(-45deg);
@@ -1058,15 +1033,31 @@ main #loginContainer {
   gap: 0;
   flex-wrap: nowrap;
   width: 100%;
+  flex: 1 0 auto;
 }
 main #loginContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: initial;
+  justify-content: space-between;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+  flex: 1 0 auto;
+}
+main #loginContainer form .fieldsContainer {
   display: flex;
   flex-direction: column;
   align-items: initial;
   justify-content: unset;
   gap: 0.8rem;
   flex-wrap: nowrap;
+  flex: 1 0 auto;
   width: 100%;
+  height: 100%;
+}
+main #loginContainer form .fieldsContainer:not(.visible) {
+  display: none;
 }
 main #loginContainer .fieldContainer {
   display: flex;
@@ -1074,7 +1065,7 @@ main #loginContainer .fieldContainer {
   align-items: unset;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 main #loginContainer .fieldContainer :first-child {
   flex: 1 0 auto;
@@ -1096,9 +1087,12 @@ main #loginContainer .actions {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   font-size: 0.8rem;
   margin-top: 1.5rem;
+}
+main #loginContainer .actions button {
+  flex: 1 1 auto;
 }
 main #loginContainer .actions button#continue {
   background-color: #1B9C85;
