@@ -1078,6 +1078,9 @@ main #loginContainer .field {
   gap: 0.5rem;
   flex-wrap: nowrap;
 }
+main #loginContainer .field:has(input:disabled) {
+  opacity: 0.6;
+}
 main #loginContainer .field input {
   width: 100%;
 }

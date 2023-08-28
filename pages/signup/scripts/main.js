@@ -24,6 +24,7 @@ const steps = {
 
 firstStepFields.forEach(inp => steps['1'][inp.name] = inp)
 
+
 const form = document.querySelector('form')
 
 const nextStepButton = document.getElementById('continue')
@@ -69,10 +70,28 @@ function changeStep() {
         }
     })
 
+    currentStep == 2 && cepControl()
+
     getCurrentFields().forEach((inp, key, node) => {
         node[0].focus()
         inp.required = true
     })
+}
+
+function cepControl() {
+    const cepInput = document.getElementById('cep')
+    console.log(cepInput)
+    cepInput.addEventListener('keydown', () => {
+        if(cepInput.value.length == 8) {
+            console.log(cepInput.length)
+            console.log(cepInput.value)
+
+            fetch(`https://viacep.com.br/ws/${cepInput.value}/json`).then(result => {
+                return result.json()
+            }).then(json => console.log(json)).catch(error => console.log(error))
+        }
+    })
+    
 }
 
 form.addEventListener('submit', (e) => {

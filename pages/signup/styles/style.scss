@@ -159,6 +159,11 @@ main {
         .field {
             @include flexBox($fd: column, $a: flex-start, $g: .5rem);
             // width: fit-content;
+
+            &:has(input:disabled) {
+                opacity: .6;
+
+            }
             
             input {
                 width: 100%;
