@@ -182,4 +182,5 @@ form.addEventListener('submit', (e) => {
     })
 
     console.log(allData)
+    window.location.href = '/'
 })
