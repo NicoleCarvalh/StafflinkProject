@@ -127,7 +127,7 @@ function passwordControl() {
         if(inp.type != 'password' && (inp.name !== 'password' || 'confirmPassword')) return
 
         if(inp.name == 'password') {
-            inp.addEventListener('keypress', () => {
+            inp.addEventListener('keyup', () => {
                 correct = RegExp(regex).test(inp.value)
 
                 if(!correct) {
