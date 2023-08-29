@@ -928,4 +928,87 @@ body {
 }
 body .blurredOut {
   filter: blur(10px);
+}
+
+.logo {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+body {
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0;
+  flex-wrap: nowrap;
+  padding: 2rem;
+  max-width: 800px;
+  max-height: unset;
+}
+main .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: 100%;
+}
+main video {
+  max-width: 100%;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+}
+main .container:not(.visible) {
+  display: none;
+}
+main .illustration {
+  width: 100%;
+  max-width: 600px;
+}
+main .message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+main .message h2 {
+  color: #1B9C85;
+}
+main .message p {
+  font-size: 0.8rem;
+}
+main .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+main .actions .action {
+  flex: 1 0 auto;
+  max-width: 100%;
+}
+main .actions .action#watchVideo {
+  background-color: #029AA4;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-top: 3rem;
+  }
 }/*# sourceMappingURL=style.css.map */
