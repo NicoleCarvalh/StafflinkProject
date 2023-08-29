@@ -152,12 +152,18 @@
                     <div class="fieldContainer">
                         <div class="field">
                             <label for="password">Senha</label>
-                            <input type="password" name="password" id="password">
+                            <input type="password" name="password" id="password" minlength="8" maxlength="16">
+                            <span class="spanAlert password">
+                                A senha deve conter de 8 a 16 caracteres, possuir letras maiúsculas, minúsculas, numeros e um caracter especial (! @ # $ % ^ & * _ = + -).
+                            </span>
                         </div>
 
                         <div class="field">
                             <label for="confirmPassword">Confirme a senha</label>
-                            <input type="password" name="confirmPassword" id="confirmPassword">
+                            <input type="password" name="confirmPassword" id="confirmPassword" minlength="8" maxlength="16">
+                            <span class="spanAlert confirmPassword">
+                                A senha deve ser igual a colocada no campo anterior.
+                            </span>
                         </div>
                     </div>
 
@@ -179,5 +185,8 @@
             </form>
         </section>
     </main>
+
+    <img src="../../assets/images/SideWave.svg" alt="Wave" class="wave" id="top">
+    <img src="../../assets/images/SideWave.svg" alt="Wave" class="wave" id="bottom">
 </body>
 </html>

@@ -936,6 +936,10 @@ body {
   text-align: unset;
 }
 
+.wave {
+  display: none;
+}
+
 main {
   align-items: center;
   max-width: 50%;
@@ -971,7 +975,7 @@ main header .signUpStatus {
   align-items: unset;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
   padding-bottom: 1rem;
   border-bottom: 2px solid #029AA4;
@@ -1077,12 +1081,20 @@ main #loginContainer .field {
   justify-content: unset;
   gap: 0.5rem;
   flex-wrap: nowrap;
+  flex: 1 0 auto;
+  max-width: 100%;
 }
 main #loginContainer .field:has(input:disabled) {
   opacity: 0.6;
 }
 main #loginContainer .field input {
   width: 100%;
+}
+main #loginContainer .field .spanAlert {
+  display: none;
+  color: red;
+  font-style: italic;
+  font-size: 0.8rem;
 }
 main #loginContainer .actions {
   display: flex;
@@ -1131,4 +1143,38 @@ main #loginContainer .actions button#continue {
   height: -moz-fit-content;
   height: fit-content;
   max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  #sideContent {
+    display: none;
+  }
+  .wave {
+    display: block;
+    position: fixed;
+    z-index: -100;
+    width: 100%;
+    width: 70vw;
+    max-width: 400px;
+    height: -moz-fit-content;
+    height: fit-content;
+    filter: brightness(1000);
+  }
+  .wave#top {
+    transform: rotate(180deg);
+    top: 0;
+    right: 0;
+  }
+  .wave#bottom {
+    bottom: 0;
+    left: 0;
+  }
+  main {
+    max-width: 100%;
+    padding: 1.5rem;
+    z-index: 1;
+  }
+  main .logo {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

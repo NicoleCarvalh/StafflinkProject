@@ -12,6 +12,7 @@ function getCurrentFields() {
 const allStepCounters = [...document.querySelectorAll('.step')]
 const fieldsContainers = [...document.querySelectorAll('.fieldsContainer')]
 let currentStep = 1
+let chengeStepConfirm = true
 
 let allData = {}
 
@@ -54,6 +55,7 @@ clearButton.addEventListener('click', (ev) => {
 })
 
 function changeStep() {
+    
     allStepCounters.forEach(step => {
         if(allStepCounters.indexOf(step) + 1 == currentStep) {
             step.classList.toggle('active')
@@ -71,6 +73,7 @@ function changeStep() {
     })
 
     currentStep == 2 && cepControl()
+    currentStep == 3 && passwordControl()
 
     getCurrentFields().forEach((inp, key, node) => {
         node[0].focus()
@@ -114,8 +117,54 @@ function cepControl() {
     })
 }
 
+// pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
+
+function passwordControl() {
+    getCurrentFields().forEach(inp => {
+        let correct = false
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/gm 
+        
+        if(inp.type != 'password' && (inp.name !== 'password' || 'confirmPassword')) return
+
+        if(inp.name == 'password') {
+            inp.addEventListener('keypress', () => {
+                correct = RegExp(regex).test(inp.value)
+
+                if(!correct) {
+                    inp.style.borderColor = 'red'
+
+                    document.querySelector('.spanAlert.password').style.display = 'block'
+                } else {
+                    inp.style.borderColor = 'green'
+                    document.querySelector('.spanAlert.password').style.display = 'none'
+                }
+            })
+        } else if(inp.name == 'confirmPassword') {
+            inp.addEventListener('keyup', () => {
+                const passwordInput = [...getCurrentFields()].filter(element => element.name == 'password')[0]
+
+                if(inp.value !== passwordInput.value) {
+                    inp.style.borderColor = 'red'
+
+                    document.querySelector('.spanAlert.confirmPassword').style.display = 'block'
+
+                    chengeStepConfirm = false
+                } else {
+                    inp.style.borderColor = 'green'
+
+                    document.querySelector('.spanAlert.confirmPassword').style.display = 'none'
+
+                    chengeStepConfirm = true
+                }
+            })
+        }
+    })
+}
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
+
+    if(!chengeStepConfirm) return
 
     if(currentStep <= 3) {
         currentStep == 3 && (nextStepButton.textContent = 'Finalizar')
