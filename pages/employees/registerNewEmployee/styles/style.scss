@@ -1,0 +1,41 @@
+@import '../../../../patternStyles/style.scss';
+@import '../../../../patternStyles/components/dataTable/style';
+
+#main_content {
+    padding-bottom: 4rem;
+}
+
+.formContainer {
+    width: 100%;
+    padding: 0 1.5rem;
+
+    form {
+        @include flexBox($fd: column, $a: flex-start, $g: 2.5rem, $fw: wrap);
+
+        .fieldsSection {
+            @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
+
+            h3 {
+                width: 100%;
+            }
+
+            .field {
+                @include flexBox($fd: column, $g: .5rem);
+                flex: 1 0 200px;
+                max-width: 500px;
+
+                &.small {
+                    flex: 0 1 auto;
+                }
+
+                &.big {
+                    flex: 2 0 300px;
+                }
+
+                &:has(input:disabled) {
+                    opacity: .6;
+                }
+            }
+        }
+    }
+}
