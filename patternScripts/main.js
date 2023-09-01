@@ -1,3 +1,4 @@
+import { getCepInfos } from "./api/viacep.js";
 import { notesControl } from "./components/notes/index.js";
 import { sideMenuControl } from "./components/sideMenu/index.js";
 import { getLocalData, setLocalData } from "./localStorageControl/getData.js";
@@ -14,5 +15,6 @@ export const allUtils = {
     getPage: getCurrentPagePath,
     setPage: setCurrentPagePath,
     handlePageByCustomLink: handlePageByLink,
-    notes: notesControl
+    notes: notesControl,
+    getCepInfos: getCepInfos
 }

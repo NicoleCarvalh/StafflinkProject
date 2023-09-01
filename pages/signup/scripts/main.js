@@ -86,14 +86,14 @@ function cepControl() {
 
     cepInput.addEventListener('keyup', () => {
         if(cepInput.value.length == 8) {
-            fetch(`https://viacep.com.br/ws/${cepInput.value}/json`).then(result => {
-                return result.json()
-            }).then(cepInfos => {
+            allUtils.getCepInfos(cepInput.value).then(cepInfos => {
                 if(cepInfos.erro) {
                     cepInput.style.borderColor = "red"
+                    cepInput.style.outlineColor = "red"
                     return
                 }
                 cepInput.style.borderColor = "green"
+                cepInput.style.outlineColor = "green"
 
                 getCurrentFields().forEach(inp => {
                     switch(inp.name) {
