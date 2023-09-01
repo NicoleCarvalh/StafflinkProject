@@ -29,3 +29,16 @@ cepInput.addEventListener('keyup', () => {
         })
     }
 })
+
+const birthdayInput = document.getElementById('birthday')
+birthdayInput.addEventListener('blur', () => {
+    if(!birthdayInput.value) {
+        return
+    }
+
+    const date = new Date(birthdayInput.value)
+    const diff = new Date(Date.now() - date)
+    const diffInYears = Math.abs(diff.getUTCFullYear() - 1970)
+    
+    document.getElementById('age').value = diffInYears
+})
