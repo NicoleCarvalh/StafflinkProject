@@ -12,8 +12,21 @@
     form {
         @include flexBox($fd: column, $a: flex-start, $g: 2.5rem, $fw: wrap);
 
+        hr {
+            border: 2px solid $extra-secondary;
+            width: 100%;
+            border-radius: .5rem;
+        }
+
         .fieldsSection {
             @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
+            width: 100%;
+
+            &:has(.field.inline):has(input[type='checkbox']) {
+                .field {
+                    flex: unset;
+                }
+            }
 
             h3 {
                 width: 100%;
@@ -22,7 +35,22 @@
             .field {
                 @include flexBox($fd: column, $g: .5rem);
                 flex: 1 0 200px;
-                max-width: 500px;
+                // max-width: 500px;
+
+                &.inline {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+
+                    &:has(input[type='checkbox']) {
+                        flex-basis: unset;
+                        flex-wrap: nowrap;
+
+                        input {
+                            min-width: unset;
+                            width: 20px;
+                        }
+                    }
+                }
 
                 &.small {
                     flex: 0 1 auto;
@@ -35,6 +63,13 @@
                 &:has(input:disabled) {
                     opacity: .6;
                 }
+            }
+        }
+
+        .actions {
+            #register {
+                background-color: $extra-primary;
+                color: $bg-secondary;
             }
         }
     }

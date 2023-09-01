@@ -108,7 +108,7 @@ textarea {
 
 select {
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 5rem;
   border: 2px solid #029AA4;
 }
 select.dark {
@@ -1081,7 +1081,6 @@ main #loginContainer .field {
   justify-content: unset;
   gap: 0.5rem;
   flex-wrap: nowrap;
-  flex: 1 0 auto;
   max-width: 100%;
 }
 main #loginContainer .field:has(input:disabled) {

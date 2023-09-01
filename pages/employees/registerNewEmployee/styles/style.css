@@ -108,7 +108,7 @@ textarea {
 
 select {
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 5rem;
   border: 2px solid #029AA4;
 }
 select.dark {
@@ -1088,6 +1088,11 @@ body .blurredOut {
   gap: 2.5rem;
   flex-wrap: wrap;
 }
+.formContainer form hr {
+  border: 2px solid #1B9C85;
+  width: 100%;
+  border-radius: 0.5rem;
+}
 .formContainer form .fieldsSection {
   display: flex;
   flex-direction: row;
@@ -1095,6 +1100,10 @@ body .blurredOut {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+  width: 100%;
+}
+.formContainer form .fieldsSection:has(.field.inline):has(input[type=checkbox]) .field {
+  flex: unset;
 }
 .formContainer form .fieldsSection h3 {
   width: 100%;
@@ -1107,7 +1116,18 @@ body .blurredOut {
   gap: 0.5rem;
   flex-wrap: nowrap;
   flex: 1 0 200px;
-  max-width: 500px;
+}
+.formContainer form .fieldsSection .field.inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.formContainer form .fieldsSection .field.inline:has(input[type=checkbox]) {
+  flex-basis: unset;
+  flex-wrap: nowrap;
+}
+.formContainer form .fieldsSection .field.inline:has(input[type=checkbox]) input {
+  min-width: unset;
+  width: 20px;
 }
 .formContainer form .fieldsSection .field.small {
   flex: 0 1 auto;
@@ -1117,4 +1137,8 @@ body .blurredOut {
 }
 .formContainer form .fieldsSection .field:has(input:disabled) {
   opacity: 0.6;
+}
+.formContainer form .actions #register {
+  background-color: #029AA4;
+  color: #FFFFFF;
 }/*# sourceMappingURL=style.css.map */
