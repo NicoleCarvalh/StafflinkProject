@@ -42,3 +42,27 @@ birthdayInput.addEventListener('blur', () => {
     
     document.getElementById('age').value = diffInYears
 })
+
+const form = document.querySelector('form#newEmployee')
+form.addEventListener('submit', (ev) => {
+    ev.preventDefault()
+    let allData = {
+        benefits: []
+    }
+
+    const allElements = form.querySelectorAll('input, select')
+    allElements.forEach(element => {
+        if(element.type == 'checkbox') {
+            if(element.checked) {
+                allData.benefits = [
+                    ...allData.benefits,
+                    element.id
+                ]
+            }
+        } else {
+            allData[element.name] = element.value
+        }
+    })
+
+    console.log(allData)
+})
