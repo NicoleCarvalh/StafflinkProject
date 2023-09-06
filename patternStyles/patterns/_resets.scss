@@ -83,10 +83,13 @@ button {
 }
 
 input {
-    padding: .5rem 1rem;
-    border-radius: 5rem;
-    border: 2px solid $extra-primary;
     min-width: 200px;
+    
+    &:not([type=file]) {
+        padding: .5rem 1rem;
+        border-radius: 5rem;
+        border: 2px solid $extra-primary;
+    }
 }
 
 textarea {

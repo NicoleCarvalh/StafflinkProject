@@ -92,10 +92,12 @@ button.dark:hover {
 }
 
 input {
+  min-width: 200px;
+}
+input:not([type=file]) {
   padding: 0.5rem 1rem;
   border-radius: 5rem;
   border: 2px solid #029AA4;
-  min-width: 200px;
 }
 
 textarea {
@@ -1072,10 +1074,6 @@ body .blurredOut {
   color: #1B9C85;
 }
 
-#main_content {
-  padding-bottom: 4rem;
-}
-
 .formContainer {
   width: 100%;
   padding: 0 1.5rem;
@@ -1138,7 +1136,24 @@ body .blurredOut {
 .formContainer form .fieldsSection .field:has(input:disabled) {
   opacity: 0.6;
 }
+.formContainer form .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-self: center;
+}
+.formContainer form .actions button {
+  flex: 1 0 auto;
+  max-width: 100%;
+}
 .formContainer form .actions #register {
   background-color: #029AA4;
   color: #FFFFFF;
+}
+
+#main_content {
+  padding-bottom: 4rem;
 }/*# sourceMappingURL=style.css.map */

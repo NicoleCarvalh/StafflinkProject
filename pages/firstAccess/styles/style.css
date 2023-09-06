@@ -92,10 +92,12 @@ button.dark:hover {
 }
 
 input {
+  min-width: 200px;
+}
+input:not([type=file]) {
   padding: 0.5rem 1rem;
   border-radius: 5rem;
   border: 2px solid #029AA4;
-  min-width: 200px;
 }
 
 textarea {

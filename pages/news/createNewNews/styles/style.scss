@@ -1,0 +1,33 @@
+@import '../../../../patternStyles/style.scss';
+@import '../../../../patternStyles/components/form/styles';
+
+.formContainer {
+    padding: 0;
+}
+
+.field:has(input[type=file]) {
+    input {
+        display: none;
+    }
+
+    label {
+        @include flexBox($g: .3rem);
+        cursor: pointer;
+
+        img {
+            width: 25px;
+        }
+    }
+
+    #preview {
+        &[src="#"] {
+            display: none;
+        }
+    
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: .5rem;
+        align-self: center;
+    }
+}

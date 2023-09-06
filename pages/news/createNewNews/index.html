@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Notícias | Stafflink</title>
+    <title>Criar nova notícia | Stafflink</title>
 
-    <link rel="shortcut icon" href="../../assets/images/Stafflink_favicon_light.svg" type="image/x-icon" media="(prefers-color-scheme: dark)">
-    <link rel="shortcut icon" href="../../assets/images/Stafflink_favicon_dark.svg" type="image/x-icon" media="(prefers-color-scheme: light)">
+    <link rel="shortcut icon" href="../../../assets/images/Stafflink_favicon_light.svg" type="image/x-icon" media="(prefers-color-scheme: dark)">
+    <link rel="shortcut icon" href="../../../assets/images/Stafflink_favicon_dark.svg" type="image/x-icon" media="(prefers-color-scheme: light)">
 
     <meta name="description" content="O Stafflink é um sistema pensado para gerenciar a área de Recursos Humanos de uma empresa, podendo ser de pequeno a médio porte. O objetivo desse projeto é trazer mais agilidade e produtividade nos procedimentos por um baixo custo.">
     
@@ -213,23 +213,50 @@
                     </svg>
                 </button>
             </form>
-
-            <div class="options">
-                <button type="button" class="option newNews" data-link-to="news/createNewNews">
-                    <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 16.4546V15.5455C1 12.0309 3.84911 9.18182 7.36366 9.18182C10.8782 9.18182 13.7273 12.0309 13.7273 15.5455V16.4546" stroke="black" stroke-linecap="round"/>
-                        <path d="M11.9091 11C11.9091 8.48963 13.9442 6.45453 16.4545 6.45453C18.9649 6.45453 21 8.48963 21 11V11.4545" stroke="black" stroke-linecap="round"/>
-                        <path d="M7.36294 9.18194C9.37122 9.18194 10.9993 7.55384 10.9993 5.54556C10.9993 3.53724 9.37122 1.90918 7.36294 1.90918C5.35462 1.90918 3.72656 3.53724 3.72656 5.54556C3.72656 7.55384 5.35462 9.18194 7.36294 9.18194Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16.4538 6.45457C17.9601 6.45457 19.1811 5.23352 19.1811 3.72728C19.1811 2.22105 17.9601 1 16.4538 1C14.9476 1 13.7266 2.22105 13.7266 3.72728C13.7266 5.23352 14.9476 6.45457 16.4538 6.45457Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                    Criar nova notícia
-                </button>
-            </div>
         </header>
 
-        <section>
-            
+        <section class="formContainer">
+            <form id="registerNewNews">
+                <div class="fieldsSection">
+                    <h3>Criar nova notíica</h3>
+                    <div class="field">
+                        <label for="title">Título da notícia</label>
+                        <input type="text" name="title" id="title" required autofocus>
+                    </div>
+
+                    <div class="field small">
+                        <label for="expirationDate">Data de expiração</label>
+                        <input type="datetime-local" name="expirationDate" id="expirationDate" required>
+                    </div>
+                </div>
+
+                <div class="fieldsSection">
+                    <div class="field">
+                        <label for="description">Descrição</label>
+                        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+                    </div>
+                </div>
+
+                <div class="fieldsSection">
+                    <h3>Capa da notícia</h3>
+
+                    <div class="field">
+                        <label for="bannerFile">
+                            <img src="../../../assets/images/download.svg" alt="download"> 
+                            <span data-default-text="Selecinar arquivo" id="fileName">Selecinar arquivo</span>
+
+                            <input type="file" name="bannerFile" id="bannerFile" required accept=".png,.jpeg,.jpg">
+                        </label>
+
+                        <img src="#" alt="preview" id="preview">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="reset" id="clear">Limpar formulário</button>
+                    <button type="submit" id="register">Cadastrar nova notícia</button>
+                </div>
+            </form>
         </section>
 
         <button type="button" id="showNotes">
