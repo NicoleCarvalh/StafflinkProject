@@ -110,7 +110,7 @@ textarea {
 
 select {
   padding: 0.5rem 1rem;
-  border-radius: 5rem;
+  border-radius: 0.5rem;
   border: 2px solid #029AA4;
 }
 select.dark {
@@ -930,4 +930,110 @@ body {
 }
 body .blurredOut {
   filter: blur(10px);
+}
+
+main {
+  overflow: hidden;
+}
+
+#chatScreen {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex: 1 0 auto;
+  max-height: 100vh;
+}
+#chatScreen .content {
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  flex: 1 0 auto;
+  overflow: hidden auto;
+  max-width: 100%;
+}
+#chatScreen .content.contacts {
+  position: relative;
+}
+#chatScreen .content.contacts::before {
+  position: absolute;
+  content: "";
+  left: -25px;
+  top: -25px;
+  background-color: #029AA4;
+  width: 50px;
+  height: 50px;
+  transform: rotate(45deg);
+}
+#chatScreen .content.contacts .titleHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+}
+#chatScreen .content.contacts .listContainer {
+  max-height: 100vh;
+  overflow: auto;
+}
+#chatScreen .content.contacts .list {
+  width: 100%;
+}
+#chatScreen .content.contacts .list li {
+  position: relative;
+  padding: 1rem;
+}
+#chatScreen .content.contacts .list li:nth-child(odd) {
+  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  background-color: #F1F1F1;
+}
+#chatScreen .content.contacts .list li p {
+  font-style: italic;
+  color: #1B9C85;
+}
+#chatScreen .content.contacts .list li::before {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 80%;
+  border-radius: 0.5rem;
+  background-color: rgb(195, 192, 192);
+  left: 0.3rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+#chatScreen .content.conversations {
+  flex: 2 0 auto;
+  padding: 1.5rem;
+}
+#chatScreen .content.conversations .listContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+#chatScreen .content.conversations #currentContact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+#chatScreen .content.conversations #currentContact img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+#chatScreen .content.conversations #currentContact h1 {
+  border-bottom: 2px solid #029AA4;
 }/*# sourceMappingURL=style.css.map */

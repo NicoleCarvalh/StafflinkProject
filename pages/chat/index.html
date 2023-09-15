@@ -241,8 +241,78 @@
             </div>
         </header>
 
-        <section>
+        <section id="chatScreen">
+            <div class="content contacts">
+                <div class="titleHeader">
+                    <h2>Mensagens</h2>
 
+                    <div class="filters">
+                        <select class="filter" title="filtro de ordenação">
+                            <option value="">
+                                Filtrar por
+                            </option>
+    
+                            <option value="a-to-z">A - Z</option>
+                            <option value="z-to-a">Z - A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="listContainer">
+                    <ul class="list">
+                        <li>
+                            <h3>Nicole Carvalho</h3>
+                            <p>Técnica de TI</p>
+                        </li>
+                        <li>
+                            <h3>Arthur Mendes</h3>
+                            <p>Gerente de RH</p>
+                        </li>
+                        <li>
+                            <h3>Antonio Mendes</h3>
+                            <p>Gerente de produção</p>
+                        </li>
+                        <li>
+                            <h3>Gilberto Oliveira</h3>
+                            <p>Gerente do Financeiro</p>
+                        </li>
+                        <li>
+                            <h3>Marcia Gringa</h3>
+                            <p>Segurança</p>
+                        </li>
+                        <li>
+                            <h3>Rodrigo Pato</h3>
+                            <p>Auxiliar técnico</p>
+                        </li>
+                        <li>
+                            <h3>Marcia Gringa</h3>
+                            <p>Segurança</p>
+                        </li>
+                        <li>
+                            <h3>Nicole Carvalho</h3>
+                            <p>Técnica de TI</p>
+                        </li>
+                        <li>
+                            <h3>Arthur Mendes</h3>
+                            <p>Gerente de RH</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content conversations">
+                <div id="currentContact">
+                    <img src="https://source.unsplash.com/random/?people" alt="Current contact">
+                    <h1>Cleiton Domingues</h1>
+                </div>
+
+                <div class="listContainer">
+                    <div id="currentConversation">
+                        
+                    </div>
+                    <input type="text" name="chatMessage">
+                </div>
+            </div>
         </section>
 
         <button type="button" id="showNotes">

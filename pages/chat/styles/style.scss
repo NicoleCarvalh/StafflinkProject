@@ -1,1 +1,103 @@
 @import '../../../patternStyles/style.scss';
+
+main {
+    overflow: hidden;
+}
+
+#chatScreen {
+    @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
+    flex: 1 0 auto;
+    max-height: 100vh;
+
+    .content {
+        background-color: $bg-secondary;
+        border-radius: 1rem;
+        flex: 1 0 auto;
+        overflow: hidden auto;
+        max-width: 100%;
+
+        &.contacts {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: '';
+                left: -25px;
+                top: -25px;
+                background-color: $extra-primary;
+        
+                width: 50px;
+                height: 50px;
+        
+                transform: rotate(45deg);
+            }
+
+            .titleHeader {
+                @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
+                padding: 1.5rem;
+            }
+
+            .listContainer {
+                max-height: 100vh;
+                overflow: auto;
+            }
+
+            .list {
+                width: 100%;
+
+                li {
+                    position: relative;
+                    padding: 1rem;
+
+                    &:nth-child(odd) {
+                        box-shadow: $innerShadow;
+                        background-color: $bg-primary;
+                    }
+
+                    p {
+                        font-style: italic;
+                        color: $extra-secondary;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 3px;
+                        height: 80%;
+                        border-radius: .5rem;
+                        background-color: rgb(195, 192, 192);
+                        left: .3rem;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+
+        &.conversations {
+            flex: 2 0 auto;
+            padding: 1.5rem;
+
+            .listContainer {
+                @include flexBox($fd: column, $j: space-between, $g: 1rem);
+                height: 100%;
+            }
+
+            #currentContact {
+                @include flexBox($a: center, $g: 1rem, $fw: wrap);
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                h1 {
+                    border-bottom: 2px solid $extra-primary;
+                }
+            }
+        }
+    }
+}

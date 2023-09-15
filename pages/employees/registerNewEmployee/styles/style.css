@@ -110,7 +110,7 @@ textarea {
 
 select {
   padding: 0.5rem 1rem;
-  border-radius: 5rem;
+  border-radius: 0.5rem;
   border: 2px solid #029AA4;
 }
 select.dark {
@@ -1156,4 +1156,8 @@ body .blurredOut {
 
 #main_content {
   padding-bottom: 4rem;
+}
+
+select {
+  border-radius: 5rem;
 }/*# sourceMappingURL=style.css.map */
