@@ -1160,4 +1160,32 @@ body .blurredOut {
 
 select {
   border-radius: 5rem;
+}
+
+.field:has(input[type=file]) input {
+  display: none;
+}
+.field:has(input[type=file]) label {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0.3rem;
+  flex-wrap: nowrap;
+  cursor: pointer;
+}
+.field:has(input[type=file]) label img {
+  width: 25px;
+}
+.field:has(input[type=file]) #preview {
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+  align-self: center;
+}
+.field:has(input[type=file]) #preview[src="#"] {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

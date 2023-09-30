@@ -66,3 +66,24 @@ form.addEventListener('submit', (ev) => {
 
     console.log(allData)
 })
+
+
+const employeePhoto = document.getElementById('employeePhoto')
+const previewImage = document.getElementById('preview')
+const fileName = document.getElementById('fileName')
+const clearButton = document.getElementById('clear')
+
+employeePhoto.addEventListener('change', () => {
+    if(!employeePhoto.files[0]) return
+
+    previewImage.src = URL.createObjectURL(employeePhoto.files[0])
+
+    fileName.textContent = employeePhoto.files[0].name
+    // console.log(bannerFileInput.files[0])
+})
+
+clearButton.addEventListener('click', () => {
+    previewImage.src = '#'
+    fileName.textContent = fileName.getAttribute('data-default-text')
+    form.querySelector('input').focus()
+})

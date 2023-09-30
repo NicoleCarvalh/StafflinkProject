@@ -298,6 +298,21 @@
                     </div>
 
                     <div class="fieldsSection">
+                        <h3>Foto</h3>
+
+                        <div class="field">
+                            <label for="employeePhoto">
+                                <img src="../../../assets/images/download.svg" alt="download"> 
+                                <span data-default-text="Selecinar arquivo" id="fileName">Selecinar foto</span>
+    
+                                <input type="file" name="employeePhoto" id="employeePhoto" required accept=".png,.jpeg,.jpg">
+                            </label>
+    
+                            <img src="#" alt="preview" id="preview">
+                        </div>
+                    </div>
+
+                    <div class="fieldsSection">
                         <h3>Documentos</h3>
 
                         <div class="field">
@@ -411,6 +426,20 @@
                         <div class="field">
                             <label for="contract">Contrato</label>
                             <input type="text" name="contract" id="contract" required>
+                        </div>
+
+                        <div class="fieldsSection">
+                            <h3>Jornada</h3>
+
+                            <div class="field">
+                                <label for="journeyInit">Início</label>
+                                <input type="time" name="journeyInit" id="journeyInit" required>
+                            </div>
+
+                            <div class="field">
+                                <label for="journeyEnd">Final</label>
+                                <input type="time" name="journeyEnd" id="journeyEnd" required>
+                            </div>
                         </div>
 
                         <div class="field">

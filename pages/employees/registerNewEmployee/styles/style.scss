@@ -9,3 +9,31 @@
 select {
     border-radius: 5rem;
 }
+
+.field:has(input[type=file]) {
+    input {
+        display: none;
+    }
+
+    label {
+        @include flexBox($g: .3rem);
+        cursor: pointer;
+
+        img {
+            width: 25px;
+        }
+    }
+
+    #preview {
+        &[src="#"] {
+            display: none;
+        }
+    
+        width: 100%;
+        max-width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: .5rem;
+        align-self: center;
+    }
+}
