@@ -1,2 +1,25 @@
 @import '../../../patternStyles/style.scss';
 @import '../../../patternStyles/components/dataTable/style';
+
+.popUp {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    margin: auto;
+    background-color: $bg-primary;
+    width: 70%;
+    height: 70%;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: $innerShadow;
+    overflow: hidden auto;
+
+    .closeButton {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        padding: .5rem 1rem;
+        font-size: 1rem;
+        font-weight: 800;
+    }
+}
