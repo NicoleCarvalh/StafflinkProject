@@ -59,6 +59,8 @@ form.addEventListener('submit', (ev) => {
                     element.id
                 ]
             }
+        } else if(element.type == 'file') {
+            allData.employeePhoto = element.files[0]
         } else {
             allData[element.name] = element.value
         }
