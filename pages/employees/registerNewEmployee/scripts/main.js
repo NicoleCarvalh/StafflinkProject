@@ -60,7 +60,13 @@ form.addEventListener('submit', (ev) => {
                 ]
             }
         } else if(element.type == 'file') {
-            allData.employeePhoto = element.files[0]
+            // allData.employeePhoto = element.files[0]
+
+            const photoFormData = new FormData()
+            photoFormData.append("image", element.files[0])
+
+            allData.employeePhoto = photoFormData
+            
         } else {
             allData[element.name] = element.value
         }
