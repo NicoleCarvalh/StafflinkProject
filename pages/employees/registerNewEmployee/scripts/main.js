@@ -51,33 +51,33 @@ form.addEventListener('submit', (ev) => {
     // }
 
     const allElements = form.querySelectorAll('input, select')
-    const FormData = new FormData()
+    const employeeData = new FormData()
 
     allElements.forEach(element => {
         if(element.type == 'checkbox') {
             if(element.checked) {
-                FormData.append('benefits', element.id)
+                employeeData.append('benefits', element.id)
             }
         } else if(element.type == 'file') {
             // allData.employeePhoto = element.files[0]
-            // FormData.append("image", element.files[0])
-            // allData.employeePhoto = FormData
+            // employeeData.append("image", element.files[0])
+            // allData.employeePhoto = employeeData
 
-            FormData.append('image', element.files[0])
+            employeeData.append('image', element.files[0])
 
         } else {
-            FormData.append(element.name, element.id)
+            employeeData.append(element.name, element.id)
         }
     })
 
-    console.log(FormData)
+    console.log(employeeData)
 
     fetch('https://employees-api-oite.onrender.com/employees', {
         method: 'POST',
         // headers: {
         //     'Content-Type': 'application/json'
         // },
-        body: FormData
+        body: employeeData
     })
     .then(() => console.log('Deu certo'))
     .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
