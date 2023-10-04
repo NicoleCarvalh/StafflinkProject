@@ -46,38 +46,38 @@ birthdayInput.addEventListener('blur', () => {
 const form = document.querySelector('form#newEmployee')
 form.addEventListener('submit', (ev) => {
     ev.preventDefault()
-    let allData = {
-        benefits: []
-    }
+    // let allData = {
+    //     benefits: []
+    // }
 
     const allElements = form.querySelectorAll('input, select')
-    const photoFormData = new FormData()
+    const FormData = new FormData()
 
     allElements.forEach(element => {
         if(element.type == 'checkbox') {
             if(element.checked) {
-                photoFormData.append('benefits', element.id)
+                FormData.append('benefits', element.id)
             }
         } else if(element.type == 'file') {
             // allData.employeePhoto = element.files[0]
-            // photoFormData.append("image", element.files[0])
-            // allData.employeePhoto = photoFormData
+            // FormData.append("image", element.files[0])
+            // allData.employeePhoto = FormData
 
-            photoFormData.append('image', element.files[0])
+            FormData.append('image', element.files[0])
 
         } else {
-            photoFormData.append(element.name, element.id)
+            FormData.append(element.name, element.id)
         }
     })
 
-    console.log(allData)
+    console.log(FormData)
 
     fetch('https://employees-api-oite.onrender.com/employees', {
         method: 'POST',
         // headers: {
         //     'Content-Type': 'application/json'
         // },
-        body: photoFormData
+        body: FormData
     })
     .then(() => console.log('Deu certo'))
     .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
