@@ -66,7 +66,7 @@ form.addEventListener('submit', (ev) => {
             employeeData.append('image', element.files[0])
 
         } else {
-            employeeData.append(element.name, element.id)
+            employeeData.append(element.name, element.value)
         }
     })
 
