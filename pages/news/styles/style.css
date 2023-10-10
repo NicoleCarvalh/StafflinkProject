@@ -932,6 +932,11 @@ body .blurredOut {
   filter: blur(10px);
 }
 
+main header {
+  position: sticky;
+  top: 0.1px;
+  background-color: #EEEEEE;
+}
 main .bDay {
   text-align: center;
   cursor: pointer;

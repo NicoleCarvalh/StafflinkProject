@@ -1,6 +1,13 @@
 @import '../../../patternStyles/style.scss';
 
 main {
+
+  header {
+    position: sticky;
+    top: .1px;
+    background-color: #EEEEEE;
+  }
+
   .bDay {
     text-align: center;
     cursor: pointer;
