@@ -1035,7 +1035,7 @@ main .news .newsContent img {
     width: 30px;
   }
   main header h1 {
-    font-size: clamp(20px, 2vw, 36px);
+    font-size: clamp(18px, 2vw, 36px);
   }
   main header p {
     font-size: clamp(12px, 2vw, 36px);

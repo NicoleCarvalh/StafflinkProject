@@ -930,4 +930,63 @@ body {
 }
 body .blurredOut {
   filter: blur(10px);
+}
+
+main {
+  overflow-x: hidden;
+  padding: 0 1rem;
+}
+main header {
+  background-color: #F1F1F1;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+}
+main .directory h2 {
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+main .directory span {
+  color: #029AA4;
+}
+main .directory .dirTitle {
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+main .directory .dirFolders {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+main .directory .dirFolders .folder {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+main .directory .dirFolders .folder img {
+  width: 1.5rem;
+  filter: invert(36%) sepia(99%) saturate(634%) hue-rotate(142deg) brightness(105%) contrast(98%);
+}
+main .directory .dirFolders .folder h3 {
+  font-weight: 100;
+}
+main .directory .files {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+main .directory .files .file {
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+main .directory .files .file img {
+  width: 12rem;
+  border-radius: 15px;
 }/*# sourceMappingURL=style.css.map */
