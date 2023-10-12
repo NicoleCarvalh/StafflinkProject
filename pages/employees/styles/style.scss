@@ -3,23 +3,65 @@
 
 .popUp {
     position: fixed;
-    z-index: 1000;
+    z-index: 100000000;
     inset: 0;
     margin: auto;
     background-color: $bg-primary;
-    width: 70%;
-    height: 70%;
-    padding: 1rem;
+    width: 90%;
+    height: 90%;
+    padding: 1.5rem;
+    padding-bottom: 2rem;
     border-radius: 1rem;
     box-shadow: $innerShadow;
     overflow: hidden auto;
 
-    .closeButton {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        padding: .5rem 1rem;
-        font-size: 1rem;
-        font-weight: 800;
+    @include flexBox($fd: column, $g: 2rem);
+
+    .popUpHeader {
+        @include flexBox($g: 1rem, $a: center, $j: space-between);
+
+        .closeButton {
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+    }
+
+    .formContainer {
+        @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
+
+        .field {
+            @include flexBox($fd: column, $g: .5rem);
+            flex: 1 0 200px;
+
+            &.small {
+                flex: 0 1 auto;
+            }
+
+            &.big {
+                flex: 2 0 300px;
+            }
+
+            &:has(input:disabled) {
+                opacity: .6;
+            }
+        }
+    }
+
+    .popUpFooter {
+        @include flexBox($j: center, $g: 1rem, $fw: wrap);
+        width: 100%;
+
+        .submitButton {
+            flex: 1 0 auto;
+            background-color: $extra-primary;
+            color: $bg-secondary;
+
+            &:hover {
+                background-color: transparent;
+                color: $default-color;
+                border: 2px solid $extra-primary;
+            }
+        }
     }
 }
