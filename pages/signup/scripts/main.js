@@ -185,10 +185,10 @@ form.addEventListener('submit', (e) => {
 
     fetch('https://employees-api-oite.onrender.com/registers', {
         method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        body: allData
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(allData)
     })
     .then(() => console.log('Deu certo'))
     .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
