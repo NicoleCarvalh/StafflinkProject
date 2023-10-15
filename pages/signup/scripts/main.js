@@ -25,7 +25,6 @@ const steps = {
 
 firstStepFields.forEach(inp => steps['1'][inp.name] = inp)
 
-
 const form = document.querySelector('form')
 
 const nextStepButton = document.getElementById('continue')
@@ -182,5 +181,15 @@ form.addEventListener('submit', (e) => {
     })
 
     console.log(allData)
-    window.location.href = '/'
+    // window.location.href = '/'
+
+    fetch('https://employees-api-oite.onrender.com/registers', {
+        method: 'POST',
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        body: allData
+    })
+    .then(() => console.log('Deu certo'))
+    .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
 })
