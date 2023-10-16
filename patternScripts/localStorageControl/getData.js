@@ -9,3 +9,7 @@ export const setLocalData = (variableName, variableValue) => {
     const jsonData = JSON.stringify(variableValue)
     localStorage.setItem(variableName, jsonData)
 }
+
+export const deleteLocalData = (variableName) => {
+    localStorage.removeItem(variableName)
+}

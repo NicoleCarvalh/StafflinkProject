@@ -180,8 +180,7 @@ form.addEventListener('submit', (e) => {
         allData[inp.name] = inp.value
     })
 
-    console.log(allData)
-    // window.location.href = '/'
+    window.location.href = '/'
 
     fetch('https://employees-api-oite.onrender.com/registers', {
         method: 'POST',

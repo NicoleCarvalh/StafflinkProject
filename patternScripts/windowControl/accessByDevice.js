@@ -1,10 +1,10 @@
-// import { mobileDeviceVerify } from "./device.js";
-import { backToPreviousPage } from "./location.js";
+import { getLocalData } from "../localStorageControl/getData.js"
 
-export const accessControl = ({user = {access: false}}) => {
+const user = getLocalData('user') ?? {access: false}
+
+export const accessControl = () => {
     if(user.access == false) {
-        alert("You don't have access for this page")
-        backToPreviousPage()
+        window.location.href = '/'
         return
     }
 
