@@ -943,6 +943,9 @@ main header {
   top: 0;
   padding: 1rem;
 }
+main header.analysisMode {
+  padding: 1rem 0 1rem 0;
+}
 main .directory h2 {
   font-weight: 200;
   margin-bottom: 1rem;

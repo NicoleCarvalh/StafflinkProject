@@ -10,6 +10,10 @@ main {
     position: sticky;
     top: 0;
     padding: 1rem;
+
+    &.analysisMode {
+      padding: 1rem 0 1rem 0;
+    }
   }
 
   .directory {

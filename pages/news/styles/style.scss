@@ -3,12 +3,17 @@
 main {
   overflow-x: hidden;
   padding: 0 1rem;
+  gap: 0;
 
   header {
     background-color: #F1F1F1;
     position: sticky;
     top: 0;
     padding: 1rem;
+
+    &.analysisMode {
+      padding: 1rem 0 1rem 0;
+    }
   }
 
   .bDay {
@@ -33,7 +38,7 @@ main {
         padding: 20px;
         background-color: rgb(255, 255, 255);
         border: 3px solid #029AA4;
-        border-radius: 40%;
+        border-radius: .5rem;
         display: none;
       }
 
