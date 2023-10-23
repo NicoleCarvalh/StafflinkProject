@@ -28,15 +28,27 @@ form.addEventListener('submit', (ev) => {
     ev.preventDefault()
 
     const allInputs = form.querySelectorAll('input, textarea')
-    let allData = {}
+    let allData = new FormData()
 
     allInputs.forEach(element => {
         if(element.type == 'file') {
-            allData[element.name] = element.files[0].name
+            allData.append("image", element.files[0])
         }
 
-        allData[element.name] = element.value
+        allData.append([element.name], element.value)
     })
 
     console.log(allData)
+
+    fetch('https://employees-api-oite.onrender.com/news', {
+        method: "POST",
+        body: allData
+    })
+    .then((data) => {
+        console.log("Deu certo")
+        console.log(data)
+    })
+    .catch(error => {
+        console.log(error.message)
+    })
 })
