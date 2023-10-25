@@ -33,9 +33,9 @@ form.addEventListener('submit', (ev) => {
     allInputs.forEach(element => {
         if(element.type == 'file') {
             allData.append("image", element.files[0])
+        } else {
+            allData.append([element.name], element.value)
         }
-
-        allData.append([element.name], element.value)
     })
 
     console.log(allData)
