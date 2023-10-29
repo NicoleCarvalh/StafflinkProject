@@ -32,35 +32,30 @@
         overflow-x: auto;
 
         .table_content {
-            // @include flexBox($fd: column);
             width: 100%;
             display: table;
             border-spacing: unset;
+            padding-bottom: 3rem;
     
             th {
-                // position: sticky;
+                
                 padding: 0 .5rem;
             }
     
             th, tr {
                 text-align: center;
-                // @include flexBox($g: .5rem);
-                // min-width: 100%;
-                // max-width: 100%;
-                // padding: 0 1rem;
-    
-                // td {
-                //     flex: 1 1 0;
-                // }
+            }
+
+            thead {
+                background-color: #ffffff;
+                position: sticky;
+                top: 0;
+                z-index: 1;
             }
     
             .header {
                 width: 100%;
                 font-size: .75rem;
-    
-                // .actions {
-                //     min-width: 100px;
-                // }
             }
     
             .body {
@@ -70,23 +65,15 @@
                     height: 85px;
 
                     &:nth-child(odd) {
-                        // background-color: red;
                         box-shadow: $innerShadow;
                     }
     
                     td {
                         padding: .5rem;
                         white-space: nowrap;
-
-                        // &:not(.employeeCode){
-                        //     overflow: hidden;
-                        //     word-break: break-all;
-                        // }
     
                         .employeeCode {
                             @include flexBox($a: center, $j: center, $g: 1rem);
-                            // padding-left: 1rem;
-                            // min-height: 100%; 
                         }
 
                         .employeePhoto {
@@ -109,7 +96,6 @@
                         }
     
                         &.employee {
-                            // @include flexBox($fd: column, $g: .1rem);
     
                             .office {
                                 display: block;
@@ -118,10 +104,6 @@
                                 font-size: .65rem;
                             }
                         }
-    
-                        // &.employeeEmail {
-                        //     flex-grow: 2;
-                        // }
     
                         &.actions {
                             .viewMore {

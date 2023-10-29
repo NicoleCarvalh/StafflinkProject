@@ -1,17 +1,18 @@
-export const employeesTableControl = () => {
-    const allActionsButton = document.querySelectorAll('.viewMore')
-
-    allActionsButton.forEach(button => {
-        button.addEventListener('click', () => {
-            let employeeCode = button.parentNode.parentNode.children[0].textContent
-            employeeCode = employeeCode.trim()
-
-            employeePopup(employeeCode)
-        })
+export function popUpCaller (employeeCode) {
+    fetch(`https://employees-api-oite.onrender.com/employees/${employeeCode}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "Application/json"
+        },
+    }).then((data) => {
+        return data.json();
+    }).then((json) => {
+        employeePopup(json[0]);
     })
 }
 
-function employeePopup(employeeCode) {
+function employeePopup(allDatas) {
+    console.log(allDatas);
     const popUp = document.createElement('form')
     popUp.className = "popUp"
 
@@ -37,45 +38,6 @@ function employeePopup(employeeCode) {
 
     const popUpFormContainer = document.createElement('div')
     popUpFormContainer.className = 'formContainer'
-
-    const allDatas = {
-        id: employeeCode,
-        benefits: [
-            "transporte"
-        ],
-        name: "Arthur Mendes Martins",
-        birthday: "2004-03-05",
-        age: "19",
-        genderIdentity: "transgênero",
-        pronoun: "elu/delu",
-        motherName: "Arthur Mendes Martins",
-        fatherName: "Arthur Mendes Martins",
-        employeePhoto: "C:\\fakepath\\20221218_175551.jpg",
-        rg: "50.808.218-3",
-        cpf: "529.388.298-84",
-        pis: "03214253221",
-        employementCard: "2321312412",
-        tel: "+551141845350",
-        cel: "11947823535",
-        email: "arthurmendesmartins05@gmail.com",
-        password: "123123",
-        cep: "06310100",
-        address: "Avenida Presidente Vargas",
-        number: "182",
-        neighborhood: "Vila Caldas",
-        city: "Carapicuíba",
-        state: "SP",
-        office: "Assistente",
-        sector: "Administrativo",
-        contract: "2123",
-        journeyInit: "02:03",
-        journeyEnd: "05:03",
-        grossSalary: "21321",
-        hiring: "2023-09-26",
-        bankAccount: "231312",
-        bank: "Itaú",
-        agency: "213"
-    }
 
     let allElements = []
 

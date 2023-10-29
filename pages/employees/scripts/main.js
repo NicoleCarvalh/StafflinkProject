@@ -1,13 +1,11 @@
 import { allUtils } from "../../../patternScripts/main.js";
-import { employeesTableControl } from "./table/index.js";
+import { popUpCaller } from "./table/index.js";
 
 allUtils.access();
 
 allUtils.sideMenu();
 allUtils.notes();
 allUtils.handlePageByCustomLink(document.querySelector(".option.newEmployee"));
-
-employeesTableControl();
 
 fetch("https://employees-api-oite.onrender.com/employees", {
   method: "GET",
@@ -24,6 +22,7 @@ fetch("https://employees-api-oite.onrender.com/employees", {
 
 function list(json) {
   for (let i = 0; i < json.length; i++) {
+    let employeePhoto = json[i].employeephotoname;
     let employeeCode = json[i].id;
     let employeeName = json[i].name;
     let employeeRole = json[i].office;
@@ -42,7 +41,7 @@ function list(json) {
     let spanEmployeePhoto = document.createElement("span");
     spanEmployeePhoto.className = "employeePhoto";
     let imgEmployeePhoto = document.createElement("img");
-    imgEmployeePhoto.src = "https://source.unsplash.com/random/dog";
+    imgEmployeePhoto.src = `https://employees-api-oite.onrender.com/employees/photo/${employeePhoto}`;
     imgEmployeePhoto.alt = "funcionário";
     spanEmployeePhoto.appendChild(imgEmployeePhoto);
 
@@ -71,7 +70,7 @@ function list(json) {
     tdEmployeePis.innerText = employeePis;
 
     let tdEmployeeHired = document.createElement("td");
-    tdEmployeeHired.innerText = employeeHired;
+    tdEmployeeHired.innerText = employeeHired.split("-").reverse().join("/");
 
     let tdEmployeeJourney = document.createElement("td");
     tdEmployeeJourney.innerText = `${employeeJourneyStart} - ${employeeJourneyEnd}`;
@@ -81,6 +80,7 @@ function list(json) {
     let buttonViewMore = document.createElement("button");
     buttonViewMore.type = "button";
     buttonViewMore.className = "viewMore";
+    buttonViewMore.addEventListener("click", ()=> {popUpCaller(employeeCode);})
 
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width", "16");

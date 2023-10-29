@@ -988,12 +988,19 @@ body .blurredOut {
   width: 100%;
   display: table;
   border-spacing: unset;
+  padding-bottom: 3rem;
 }
 .tableContainer .table .table_content th {
   padding: 0 0.5rem;
 }
 .tableContainer .table .table_content th, .tableContainer .table .table_content tr {
   text-align: center;
+}
+.tableContainer .table .table_content thead {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .tableContainer .table .table_content .header {
   width: 100%;

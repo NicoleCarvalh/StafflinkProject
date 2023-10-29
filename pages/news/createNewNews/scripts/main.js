@@ -3,7 +3,7 @@ import { allUtils } from "../../../../patternScripts/main.js";
 allUtils.sideMenu()
 allUtils.notes()
 
-const bannerFileInput = document.getElementById('bannerFile')
+const bannerFileInput = document.getElementById('bannerFile') 
 const previewImage = document.getElementById('preview')
 const fileName = document.getElementById('fileName')
 const form = document.getElementById('registerNewNews')
