@@ -956,6 +956,8 @@ main .bDay .bDayEmployees img {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 main .bDay .bDayEmployees .bDayNames {
   z-index: 1;

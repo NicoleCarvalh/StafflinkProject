@@ -15,7 +15,6 @@ bannerFileInput.addEventListener('change', () => {
     previewImage.src = URL.createObjectURL(bannerFileInput.files[0])
 
     fileName.textContent = bannerFileInput.files[0].name
-    // console.log(bannerFileInput.files[0])
 })
 
 clearButton.addEventListener('click', () => {

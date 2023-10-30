@@ -80,7 +80,9 @@ function list(json) {
     let buttonViewMore = document.createElement("button");
     buttonViewMore.type = "button";
     buttonViewMore.className = "viewMore";
-    buttonViewMore.addEventListener("click", ()=> {popUpCaller(employeeCode);})
+    buttonViewMore.addEventListener("click", () => {
+      popUpCaller(employeeCode);
+    });
 
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width", "16");
@@ -116,7 +118,7 @@ function list(json) {
       tdEmployeePis,
       tdEmployeeHired,
       tdEmployeeJourney,
-      tdViewMore
+      tdViewMore,
     ];
 
     for (let i = 0; i < elementsToAdd.length; i++) {
