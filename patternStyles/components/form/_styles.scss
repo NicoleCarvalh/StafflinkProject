@@ -1,3 +1,7 @@
+#main_content {
+    padding-bottom: 4rem;
+}
+
 .formContainer {
     width: 100%;
     padding: 0 1.5rem;
@@ -73,5 +77,33 @@
                 color: $bg-secondary;
             }
         }
+    }
+}
+
+.field:has(input[type=file]) {
+    input {
+        display: none;
+    }
+
+    label {
+        @include flexBox($g: .3rem);
+        cursor: pointer;
+
+        img {
+            width: 25px;
+        }
+    }
+
+    #preview {
+        &[src="#"] {
+            display: none;
+        }
+    
+        width: 100%;
+        max-width: 300px;
+        height: 400px;
+        object-fit: cover;
+        border-radius: .5rem;
+        align-self: center;
     }
 }

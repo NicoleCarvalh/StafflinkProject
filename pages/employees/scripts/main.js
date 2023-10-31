@@ -6,21 +6,29 @@ allUtils.access();
 allUtils.sideMenu();
 allUtils.notes();
 allUtils.handlePageByCustomLink(document.querySelector(".option.newEmployee"));
+const { employeeTableActions } = allUtils
+employeeTableActions(getAllEmployees, getOrdenateEmployees)
 
-fetch("https://employees-api-oite.onrender.com/employees", {
-  method: "GET",
-  headers: {
-    "Content-Type": "Application/json",
-  },
-})
+async function getAllEmployees() {
+  return fetch("https://employees-api-oite.onrender.com/employees", {
+    method: "GET",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+  })
   .then((data) => {
     return data.json();
   })
   .then((json) => {
-    list(json);
+    list(json)
+    return json
   });
+}
+getAllEmployees()
 
 function list(json) {
+  document.getElementById("tbody").innerHTML = ""
+
   for (let i = 0; i < json.length; i++) {
     let employeePhoto = json[i].employeephotoname;
     let employeeCode = json[i].id;
@@ -127,4 +135,37 @@ function list(json) {
 
     document.getElementById("tbody").appendChild(trInfos);
   }
+}
+
+async function getOrdenateEmployees(button) {
+  const ordenationType = button.value
+  if(ordenationType == '' || !ordenationType) return
+
+  const allEmployees = await getAllEmployees()
+
+  let sortedEmployees = []
+
+  if(ordenationType == "a-to-z") {
+    sortedEmployees = allEmployees.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    })
+  } else {
+    sortedEmployees = allEmployees.sort((a, b) => {
+      if (a.name < b.name) {
+        return 1;
+      }
+      if (a.name > b.name) {
+        return -1;
+      }
+      return 0;
+    })
+  }
+
+  list(sortedEmployees)
 }

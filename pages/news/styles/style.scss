@@ -3,7 +3,6 @@
 main {
   overflow-x: hidden;
   padding: 0 1rem;
-  gap: 0;
 
   //loading
   .loading {
@@ -79,6 +78,7 @@ main {
 
   .news {
     gap: 2rem;
+    overflow-y: auto;
 
     .newsContent {
       padding: 1rem;

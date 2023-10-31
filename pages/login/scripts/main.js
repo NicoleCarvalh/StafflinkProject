@@ -23,7 +23,7 @@ form.addEventListener('submit', async (event) => {
         return
     }
 
-    allUtils.setLocalStorage('user', {access: true})
+    allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
     allUtils.setPage('employees')
 })
 

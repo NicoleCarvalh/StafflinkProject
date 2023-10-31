@@ -2,8 +2,9 @@ import { getLocalData, setLocalData } from "../../localStorageControl/getData.js
 import { mobileDeviceVerify } from "../../windowControl/device.js"
 import { handlePageByLink } from "../../windowControl/location.js"
 
+const sideMenu = document.getElementById("side_menu")
+
 const handleSideMenu = (button = document.getElementById("analysisMode")) => {
-    const sideMenu = document.getElementById("side_menu")
     const analysisClass = "analysisMode"
     const headerMainContent = document.querySelector("main header")
 
@@ -21,6 +22,8 @@ const preLoadSideMenuStatus = () => {
 }
 
 export const sideMenuControl = () => {
+    setUserInfos()
+
     const analysisModeButton = document.getElementById("analysisMode")
     const allCustomLinks = document.querySelectorAll("[data-link-to]")
     const analysisModeStatus = getLocalData("analysisModeStatus")
@@ -42,4 +45,16 @@ export const sideMenuControl = () => {
     })
     
     allCustomLinks?.forEach(element => handlePageByLink(element))
+}
+
+function setUserInfos() {
+    const userPhotoImage = document.querySelector('.user_figure img')
+    const userName = document.querySelector('.user_info h3')
+    const userRole = document.querySelector('.user_info p')
+
+    const currentUser = getLocalData('user').user
+
+    userPhotoImage.src = `https://employees-api-oite.onrender.com/employees/photo/${currentUser.employeephotoname}`
+    userName.textContent = [currentUser.name.split(" ")[0], currentUser.name.split(" ")[1][0]].join(" ") + "."
+    userRole.textContent = currentUser.office
 }
