@@ -123,7 +123,17 @@ function list(json) {
     divNewsContent.appendChild(divNewsImg);
 
     document.getElementById("news").appendChild(divNewsContent);
+
+
     //loading
-    document.querySelector(".news").classList.remove('loading');
+
+    // opcao 1  
+    document.getElementById('noticias-container').innerHTML = ''; 
+
+    // opcao 1 
+    // imgNews.onload = function(){
+    //   document.getElementById('noticias-container').classList.remove('loading'); 
+    //   document.getElementById('noticias-container').innerHTML = '';
+    // }
   }
 }
