@@ -32,11 +32,11 @@ fetch("https://employees-api-oite.onrender.com/employees", {
   });
 
 function showBirthdays(json) {
-  let month = document.getElementById("display");
+  let monthBirthdays = document.getElementById("display");
   if(json.length == 0){
-    month.innerText = "Nenhum aniversariante este mês"
+    monthBirthdays.innerText = "Nenhum aniversariante este mês"
   } else {
-    month.innerText = "Aniversariantes do mês"
+    monthBirthdays.innerText = "Aniversariantes do mês"
   }
 
   for(let i = 0; i < json.length; i++){
@@ -123,5 +123,7 @@ function list(json) {
     divNewsContent.appendChild(divNewsImg);
 
     document.getElementById("news").appendChild(divNewsContent);
+    //loading
+    document.querySelector(".news").classList.remove('loading');
   }
 }
