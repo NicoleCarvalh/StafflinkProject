@@ -97,6 +97,8 @@ fetch("https://employees-api-oite.onrender.com/news", {
 
 // news delete
 function list(json) {
+  document.getElementById("noticias-container").innerHTML = "";
+
   for (let i = 0; i < json.length; i++) {
     let newsTitle = json[i].title;
     let newsDescription = json[i].description;

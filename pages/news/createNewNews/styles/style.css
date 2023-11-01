@@ -1156,7 +1156,9 @@ body .blurredOut {
   width: 25px;
 }
 .field:has(input[type=file]) #preview {
-  width: 100%;
+  max-width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
