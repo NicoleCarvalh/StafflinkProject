@@ -19,7 +19,7 @@ fetch("https://employees-api-oite.onrender.com/employees", {
     let birthdaysList = [];
     
     for(let i = 0; i < json.length; i++){
-      let currentDate = new Date().getMonth()+1;
+      let currentDate = new Date().getMonth()+2;
 
       let birthdayDate = new Date(json[i].birthday).getMonth()+1;
 
@@ -41,7 +41,7 @@ function showBirthdays(json) {
 
   for(let i = 0; i < json.length; i++){
     let employeePhoto = json[i].employeephotoname;
-    let employeeName = json[i].name;
+    let employeeName = json[i].name.split(' ')[0] + ' ' + json[i].name.split(' ')[json[i].name.split(' ').length - 1];
     let employeeBirthday = json[i].birthday;
 
     let imgEmployee = document.createElement("img");
@@ -108,7 +108,7 @@ function list(json) {
     divNewsText.appendChild(description);
 
     let divNewsImg = document.createElement("div");
-    divNewsImg.className = "newsImg";
+    divNewsImg.className = "newsImg loading";
 
     let imgNews = document.createElement("img");
     imgNews.src = `https://employees-api-oite.onrender.com/news/bannerFile/${newsImg}`;
@@ -127,13 +127,10 @@ function list(json) {
 
     //loading
 
-    // opcao 1  
     document.getElementById('noticias-container').innerHTML = ''; 
 
-    // opcao 1 
-    // imgNews.onload = function(){
-    //   document.getElementById('noticias-container').classList.remove('loading'); 
-    //   document.getElementById('noticias-container').innerHTML = '';
-    // }
+    imgNews.onload = function(){
+      divNewsImg.classList.remove('loading'); 
+    }
   }
 }

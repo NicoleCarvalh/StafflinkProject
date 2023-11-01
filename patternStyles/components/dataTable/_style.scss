@@ -55,13 +55,14 @@
             .header {
                 width: 100%;
                 font-size: .75rem;
+                box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
             }
     
             .body {
                 font-size: .85rem;
     
                 tr {
-                    height: 150px;
+                    height: 85px;
 
                     &:nth-child(odd) {
                         box-shadow: $innerShadow;

@@ -15,6 +15,30 @@
   font-family: PoppinsItalic;
   src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
 }
+.loading {
+  background: #d2d0d0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  min-height: 18rem;
+  margin-bottom: 1rem;
+}
+.loading::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
+  transform: translateX(-100%);
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -137,6 +161,30 @@ select:hover {
 @font-face {
   font-family: PoppinsItalic;
   src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+.loading {
+  background: #d2d0d0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  min-height: 18rem;
+  margin-bottom: 1rem;
+}
+.loading::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
+  transform: translateX(-100%);
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
 }
 #side_menu {
   display: flex;
@@ -466,6 +514,30 @@ select:hover {
   font-family: PoppinsItalic;
   src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
 }
+.loading {
+  background: #d2d0d0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  min-height: 18rem;
+  margin-bottom: 1rem;
+}
+.loading::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
+  transform: translateX(-100%);
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
 main {
   display: flex;
   flex-direction: column;
@@ -628,6 +700,30 @@ main #main_content::before {
 @font-face {
   font-family: PoppinsItalic;
   src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
+}
+.loading {
+  background: #d2d0d0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  min-height: 18rem;
+  margin-bottom: 1rem;
+}
+.loading::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
+  transform: translateX(-100%);
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
 }
 #showNotes {
   display: flex;
@@ -948,6 +1044,30 @@ body .blurredOut {
   font-family: PoppinsItalic;
   src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
 }
+.loading {
+  background: #d2d0d0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  min-height: 18rem;
+  margin-bottom: 1rem;
+}
+.loading::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
+  transform: translateX(-100%);
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
 .tableContainer {
   display: flex;
   flex-direction: column;
@@ -1005,12 +1125,13 @@ body .blurredOut {
 .tableContainer .table .table_content .header {
   width: 100%;
   font-size: 0.75rem;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
 }
 .tableContainer .table .table_content .body {
   font-size: 0.85rem;
 }
 .tableContainer .table .table_content .body tr {
-  height: 150px;
+  height: 85px;
 }
 .tableContainer .table .table_content .body tr:nth-child(odd) {
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
