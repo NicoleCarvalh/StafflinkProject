@@ -57,20 +57,25 @@ form.addEventListener('submit', (ev) => {
         if(element.type == 'checkbox') {
             if(element.checked) {
                 employeeData.append('benefits', element.id)
+                element.checked = false
             }
         } else if(element.type == 'file') {
-            // allData.employeePhoto = element.files[0]
-            // employeeData.append("image", element.files[0])
-            // allData.employeePhoto = employeeData
-
             employeeData.append('image', element.files[0])
+
+            // Limpando
+            const previewImage = document.getElementById('preview')
+            previewImage.src = '#'
+            
+            const fileName = document.getElementById('fileName')
+            fileName.textContent = fileName.getAttribute('data-default-text')
 
         } else {
             employeeData.append(element.name, element.value)
+            element.value = ""
         }
     })
 
-    console.log(employeeData)
+    form.querySelector('input').focus()
 
     fetch('https://employees-api-oite.onrender.com/employees', {
         method: 'POST',

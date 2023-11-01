@@ -32,19 +32,17 @@ form.addEventListener('submit', (ev) => {
     allInputs.forEach(element => {
         if(element.type == 'file') {
             allData.append("image", element.files[0])
-        } else {
-            allData.append(element.name, element.value)
-        }
-    })
 
-    allInputs.forEach(element => {
-        if(element.type == 'file') {
+            // Limpando os valores
             previewImage.src = '#'
             fileName.textContent = fileName.getAttribute('data-default-text')
+        } else {
+            allData.append(element.name, element.value)
+
+            // Limpando os valores
+            element.value = ""
         }
-        
-        element.value = ""
-    });
+    })
     form.querySelector('input').focus();
 
     fetch('https://employees-api-oite.onrender.com/news', {
