@@ -21,7 +21,6 @@
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -168,7 +167,6 @@ select:hover {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -520,7 +518,6 @@ select:hover {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -707,7 +704,6 @@ main #main_content::before {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -1050,7 +1046,6 @@ body .blurredOut {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -1111,6 +1106,8 @@ body .blurredOut {
   padding-bottom: 3rem;
 }
 .tableContainer .table .table_content th {
+  min-width: 150px;
+  width: 16%;
   padding: 0 0.5rem;
 }
 .tableContainer .table .table_content th, .tableContainer .table .table_content tr {

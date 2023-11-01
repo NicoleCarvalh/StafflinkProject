@@ -21,7 +21,6 @@
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -168,7 +167,6 @@ select:hover {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -520,7 +518,6 @@ select:hover {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -707,7 +704,6 @@ main #main_content::before {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -1028,6 +1024,10 @@ body .blurredOut {
   filter: blur(10px);
 }
 
+.loading {
+  margin-bottom: 1rem;
+}
+
 main {
   overflow-x: hidden;
   padding: 0 1rem;
@@ -1073,6 +1073,7 @@ main .bDay .bDayEmployees .bDayImgs:hover + .bDayNames {
 main .news {
   gap: 2rem;
   overflow-y: auto;
+  padding-bottom: 2rem;
 }
 main .news .newsContent {
   padding: 1rem;
@@ -1084,12 +1085,24 @@ main .news .newsContent h2 {
   font-size: clamp(20px, 2vw, 36px);
   -webkit-text-decoration: 3px underline #029AA4;
           text-decoration: 3px underline #029AA4;
-  text-underline-offset: 10px;
+  text-underline-offset: 5px;
   padding-bottom: 1rem;
   font-style: italic;
 }
 main .news .newsContent p {
   text-align: justify;
+}
+main .news .newsContent .newsText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+main .news .newsContent .newsText button {
+  width: 5rem;
+  padding: 0.5rem;
+  align-self: end;
+  margin-top: 1rem;
 }
 main .news .newsContent .newsImg {
   display: flex;
@@ -1124,7 +1137,6 @@ main .news .newsContent img {
     gap: 2rem;
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
   }
   main .newsContent .newsText {
     width: 60%;
@@ -1154,5 +1166,8 @@ main .news .newsContent img {
   }
   main .news .newsContent img {
     margin-top: 1rem;
+  }
+  main .news .newsContent button {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -1,6 +1,10 @@
 @import '../../../patternStyles/style.scss';
 @import '../../../patternStyles/components/dataTable/style';
 
+.loading {
+    min-height: 1.5rem;
+}
+
 .popUp {
     position: fixed;
     z-index: 100000000;

@@ -44,8 +44,8 @@ form.addEventListener('submit', (ev) => {
         body: allData
     })
     .then((data) => {
-        console.log("Deu certo")
-        console.log(data)
+        allInputs.map(element => {element.value = ""});
+        form.querySelector('input').focus();
     })
     .catch(error => {
         console.log(error.message)

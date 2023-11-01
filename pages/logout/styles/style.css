@@ -21,7 +21,6 @@
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -168,7 +167,6 @@ select:hover {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -520,7 +518,6 @@ select:hover {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
@@ -707,7 +704,6 @@ main #main_content::before {
   overflow: hidden;
   border-radius: 15px;
   min-height: 18rem;
-  margin-bottom: 1rem;
 }
 .loading::before {
   content: "";
