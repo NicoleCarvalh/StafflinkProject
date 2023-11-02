@@ -82,7 +82,9 @@
 
 .field:has(input[type=file]) {
     input {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        z-index: -999999;
     }
 
     label {

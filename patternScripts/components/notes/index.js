@@ -139,10 +139,10 @@ function reRenderNotesActions() {
 }
 
 export const notesControl = () => {
-    showNotes.addEventListener("click", handleNotesContainer)
-    closeNotesContainer.addEventListener("click", handleNotesContainer)
+    showNotes?.addEventListener("click", handleNotesContainer)
+    closeNotesContainer?.addEventListener("click", handleNotesContainer)
 
-    showNewNoteForm.addEventListener("click", () => {
+    showNewNoteForm?.addEventListener("click", () => {
         const newNoteForm = createAbsoluteNoteForm()
         const parentElementForInsert = document.body
         const confirmCreateNote = newNoteForm.querySelector('#confirm')

@@ -23,6 +23,8 @@ form.addEventListener('submit', async (event) => {
         return
     }
 
+    delete foundEmployee.employeephoto
+
     allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
     allUtils.setPage('employees')
 })

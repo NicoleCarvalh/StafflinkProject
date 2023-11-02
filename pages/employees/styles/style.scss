@@ -1,5 +1,6 @@
 @import '../../../patternStyles/style.scss';
 @import '../../../patternStyles/components/dataTable/style';
+@import '../../../patternStyles/components/form/styles';
 
 .loading {
     min-height: 1.5rem;
@@ -33,7 +34,8 @@
 
     .formContainer {
         @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
-
+        padding: 0;
+        
         .field {
             @include flexBox($fd: column, $g: .5rem);
             flex: 1 0 200px;
