@@ -1024,291 +1024,179 @@ body .blurredOut {
   filter: blur(10px);
 }
 
-@font-face {
-  font-family: PoppinsLight;
-  src: url(/assets/fonts/Poppins/Poppins-Light.ttf);
-}
-@font-face {
-  font-family: Poppins;
-  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
-}
-@font-face {
-  font-family: PoppinsBold;
-  src: url(/assets/fonts/Poppins/Poppins-Bold.ttf);
-}
-@font-face {
-  font-family: PoppinsItalic;
-  src: url(/assets/fonts/Poppins/Poppins-Italic.ttf);
-}
-.loading {
-  background: #d2d0d0;
-  position: relative;
-  overflow: hidden;
-  border-radius: 15px;
-  min-height: 18rem;
-}
-.loading::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, #ffffff, transparent);
-  transform: translateX(-100%);
-  animation: loading 1s infinite;
-}
-
-@keyframes loading {
-  100% {
-    transform: translateX(100%);
-  }
-}
-.tableContainer {
-  display: flex;
+body {
   flex-direction: column;
-  align-items: unset;
-  justify-content: unset;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  flex: 1 1 auto;
+  justify-content: center;
+  align-items: initial;
+  text-align: center;
+  position: relative;
 }
-.tableContainer .tableContainer_header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 1rem 1.5rem;
-}
-.tableContainer .tableContainer_header .tableName {
+body .wave {
+  position: fixed;
+  z-index: -100;
+  width: 100%;
+  width: 70vw;
+  max-width: 400px;
   height: -moz-fit-content;
   height: fit-content;
 }
-.tableContainer .tableContainer_header .tableName h2 {
-  font-family: "PoppinsLight";
-}
-.tableContainer .tableContainer_header .tableFilters .filter {
-  transition: all 0.25s linear;
-  padding: 0.5rem;
-}
-.tableContainer .tableContainer_header .tableFilters select.filter {
-  padding: 0.5rem 1rem;
-}
-.tableContainer .table {
-  max-width: 100%;
-  overflow-x: auto;
-}
-.tableContainer .table .table_content {
-  width: 100%;
-  display: table;
-  border-spacing: unset;
-  padding-bottom: 3rem;
-}
-.tableContainer .table .table_content th {
-  min-width: 150px;
-  width: 16%;
-  padding: 0 0.5rem;
-}
-.tableContainer .table .table_content th, .tableContainer .table .table_content tr {
-  text-align: center;
-}
-.tableContainer .table .table_content thead {
-  background-color: #ffffff;
-  position: sticky;
+body .wave#top {
+  transform: rotate(180deg);
   top: 0;
-  z-index: 1;
+  right: 0;
 }
-.tableContainer .table .table_content .header {
-  width: 100%;
-  font-size: 0.75rem;
-  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+body .wave#bottom {
+  bottom: 0;
+  left: 0;
 }
-.tableContainer .table .table_content .body {
-  font-size: 0.85rem;
+
+a {
+  color: #1B9C85;
+  text-decoration: underline;
 }
-.tableContainer .table .table_content .body tr {
-  height: 85px;
+
+#sideContent {
+  display: none;
 }
-.tableContainer .table .table_content .body tr:nth-child(odd) {
-  box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
-}
-.tableContainer .table .table_content .body tr td {
-  padding: 0.5rem;
-  white-space: nowrap;
-}
-.tableContainer .table .table_content .body tr td .employeeCode {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+
+main {
   justify-content: center;
+}
+main header {
+  flex-direction: column;
+  border: none;
+  padding: 0;
+}
+main header .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: unset;
   gap: 1rem;
   flex-wrap: nowrap;
 }
-.tableContainer .table .table_content .body tr td .employeePhoto {
+main header .title h2 {
+  font-size: 1rem;
+  color: #015E64;
+  font-family: "PoppinsBold";
+}
+main header .title p {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: "PoppinsLight";
+}
+main #loginContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: nowrap;
-  transform: rotate(45deg);
-  overflow: hidden;
-  border-radius: 0.1rem;
-  width: 35px;
-  height: 35px;
-  border: 1px solid #029AA4;
-}
-.tableContainer .table .table_content .body tr td .employeePhoto img {
-  transform: rotate(-45deg);
-  min-width: 50px;
-  width: 50px;
-  min-height: 50px;
-  height: 50px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.tableContainer .table .table_content .body tr td.employee .office {
-  display: block;
-  font-style: italic;
-  color: #1B9C85;
-  font-size: 0.65rem;
-}
-.tableContainer .table .table_content .body tr td.actions .viewMore {
-  display: flex;
-  flex-direction: row;
-  align-items: unset;
   justify-content: unset;
   gap: 0;
   flex-wrap: nowrap;
-  padding: 1rem;
-  border: none;
-  transition: all 0.25s linear;
 }
-.tableContainer .table .table_content .body tr td.actions .viewMore:hover {
-  background: none;
-  transform: scale(1.1);
-}
-.tableContainer .table .table_content .body tr td.actions .viewMore svg {
-  width: 30px;
-}
-.tableContainer .table .table_content .body tr td.additional.negative {
-  color: #980D0D;
-}
-.tableContainer .table .table_content .body tr td.additional.positive {
-  color: #1B9C85;
-}
-
-.formContainer {
+main #loginContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: initial;
+  justify-content: unset;
+  gap: 0.8rem;
+  flex-wrap: nowrap;
   width: 100%;
-  padding: 0 1.5rem;
+  max-width: 300px;
 }
-.formContainer form {
+main #loginContainer .field {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: unset;
-  gap: 2.5rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
 }
-.formContainer form hr {
-  border: 2px solid #1B9C85;
+main #loginContainer .field input {
   width: 100%;
-  border-radius: 0.5rem;
+  max-width: 300px;
 }
-.formContainer form .fieldsSection {
+main #loginContainer .extraOptions {
   display: flex;
   flex-direction: row;
   align-items: unset;
   justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  width: 100%;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  font-size: 0.7rem;
 }
-.formContainer form .fieldsSection:has(.field.inline):has(input[type=checkbox]) .field {
-  flex: unset;
-}
-.formContainer form .fieldsSection h3 {
-  width: 100%;
-}
-.formContainer form .fieldsSection .field {
+main #loginContainer .extraOptions .rememberContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: unset;
   justify-content: unset;
   gap: 0.5rem;
   flex-wrap: nowrap;
-  flex: 1 0 200px;
 }
-.formContainer form .fieldsSection .field.inline {
-  flex-direction: row;
-  flex-wrap: wrap;
+main #loginContainer .extraOptions .rememberContainer input {
+  min-width: initial;
 }
-.formContainer form .fieldsSection .field.inline:has(input[type=checkbox]) {
-  flex-basis: unset;
-  flex-wrap: nowrap;
-}
-.formContainer form .fieldsSection .field.inline:has(input[type=checkbox]) input {
-  min-width: unset;
-  width: 20px;
-}
-.formContainer form .fieldsSection .field.small {
-  flex: 0 1 auto;
-}
-.formContainer form .fieldsSection .field.big {
-  flex: 2 0 300px;
-}
-.formContainer form .fieldsSection .field:has(input:disabled) {
-  opacity: 0.6;
-}
-.formContainer form .actions {
+main #loginContainer .actions {
   display: flex;
-  flex-direction: row;
-  align-items: unset;
+  flex-direction: column;
+  align-items: center;
   justify-content: unset;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-self: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  font-size: 0.8rem;
 }
-.formContainer form .actions button {
-  flex: 1 0 auto;
-  max-width: 100%;
-}
-.formContainer form .actions #register {
-  background-color: #029AA4;
-  color: #FFFFFF;
+main #loginContainer .actions button {
+  max-width: 200px;
+  background-color: #1B9C85;
+  color: #F1F1F1;
 }
 
-.field:has(input[type=file]) input {
-  position: absolute;
-  opacity: 0;
-  z-index: -999999;
-}
-.field:has(input[type=file]) label {
-  display: flex;
-  flex-direction: row;
-  align-items: unset;
-  justify-content: unset;
-  gap: 0.3rem;
-  flex-wrap: nowrap;
-  cursor: pointer;
-}
-.field:has(input[type=file]) label img {
-  width: 25px;
-}
-.field:has(input[type=file]) #preview {
+.logo {
   width: 100%;
-  max-width: 300px;
-  height: 400px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 0.5rem;
-  align-self: center;
-}
-.field:has(input[type=file]) #preview[src="#"] {
-  display: none;
+  max-width: 200px;
 }
 
-select {
-  border-radius: 5rem;
+@media (min-width: 769px) {
+  body {
+    flex-direction: row;
+    justify-content: inherit;
+    text-align: unset;
+  }
+  body .wave {
+    display: none;
+  }
+  main header .title {
+    gap: 0.5rem;
+  }
+  main header .title h2 {
+    font-size: 1.8rem;
+  }
+  main #loginContainer form {
+    gap: 1.3rem;
+  }
+  .logo {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+  }
+  #sideContent {
+    display: flex;
+    flex-direction: column;
+    align-items: unset;
+    justify-content: flex-end;
+    gap: 5rem;
+    flex-wrap: nowrap;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    background-color: #029AA4;
+    width: 50%;
+  }
+  #sideContent h1 {
+    max-width: 500px;
+    font-size: 2rem;
+    color: #F1F1F1;
+  }
+  #sideContent img {
+    height: -moz-fit-content;
+    height: fit-content;
+    max-width: 500px;
+  }
 }/*# sourceMappingURL=style.css.map */

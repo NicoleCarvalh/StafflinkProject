@@ -1024,10 +1024,6 @@ body .blurredOut {
   filter: blur(10px);
 }
 
-#main_content {
-  padding-bottom: 4rem;
-}
-
 .formContainer {
   width: 100%;
   padding: 0 1.5rem;

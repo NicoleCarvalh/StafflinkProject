@@ -1024,10 +1024,6 @@ body .blurredOut {
   filter: blur(10px);
 }
 
-#main_content {
-  padding-bottom: 4rem;
-}
-
 .formContainer {
   width: 100%;
   padding: 0 1.5rem;
@@ -1311,4 +1307,8 @@ body .blurredOut {
 }
 .tableContainer .table .table_content .body tr td.additional.positive {
   color: #1B9C85;
+}
+
+#main_content {
+  padding-bottom: 4rem;
 }/*# sourceMappingURL=style.css.map */

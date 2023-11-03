@@ -1197,4 +1197,118 @@ body .blurredOut {
 }
 .tableContainer .table .table_content .body tr td.additional.positive {
   color: #1B9C85;
+}
+
+.formContainer {
+  width: 100%;
+  padding: 0 1.5rem;
+}
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: unset;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.formContainer form hr {
+  border: 2px solid #1B9C85;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.formContainer form .fieldsSection {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.formContainer form .fieldsSection:has(.field.inline):has(input[type=checkbox]) .field {
+  flex: unset;
+}
+.formContainer form .fieldsSection h3 {
+  width: 100%;
+}
+.formContainer form .fieldsSection .field {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  flex: 1 0 200px;
+}
+.formContainer form .fieldsSection .field.inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.formContainer form .fieldsSection .field.inline:has(input[type=checkbox]) {
+  flex-basis: unset;
+  flex-wrap: nowrap;
+}
+.formContainer form .fieldsSection .field.inline:has(input[type=checkbox]) input {
+  min-width: unset;
+  width: 20px;
+}
+.formContainer form .fieldsSection .field.small {
+  flex: 0 1 auto;
+}
+.formContainer form .fieldsSection .field.big {
+  flex: 2 0 300px;
+}
+.formContainer form .fieldsSection .field:has(input:disabled) {
+  opacity: 0.6;
+}
+.formContainer form .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-self: center;
+}
+.formContainer form .actions button {
+  flex: 1 0 auto;
+  max-width: 100%;
+}
+.formContainer form .actions #register {
+  background-color: #029AA4;
+  color: #FFFFFF;
+}
+
+.field:has(input[type=file]) input {
+  position: absolute;
+  opacity: 0;
+  z-index: -999999;
+}
+.field:has(input[type=file]) label {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0.3rem;
+  flex-wrap: nowrap;
+  cursor: pointer;
+}
+.field:has(input[type=file]) label img {
+  width: 25px;
+}
+.field:has(input[type=file]) #preview {
+  width: 100%;
+  max-width: 300px;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+  align-self: center;
+}
+.field:has(input[type=file]) #preview[src="#"] {
+  display: none;
+}
+
+.tableContainer .table .table_content .body tr td .employeeCode {
+  padding-left: 2rem;
 }/*# sourceMappingURL=style.css.map */
