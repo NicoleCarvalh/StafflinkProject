@@ -1,4 +1,7 @@
 import { buildFilledEmployeeForm, throwFormEvents } from "../../../../patternScripts/components/employeeForm/index.js";
+import { getAllEmployees } from "../main.js";
+
+let dataHasChanged = false
 
 export function popUpCaller (employeeCode) {
     fetch(`https://employees-api-oite.onrender.com/employees/${employeeCode}`, {
@@ -18,6 +21,17 @@ function employeePopup(allDatas) {
     popUp.className = "popUp"
 
     const employeeForm = buildFilledEmployeeForm(allDatas, "updateEmployee")
+
+    const allElements = employeeForm.querySelectorAll('input, select')
+
+    allElements.forEach(element => {
+        element.addEventListener('change', () => {
+            if(dataHasChanged !== true) {
+                dataHasChanged = true
+            }
+        })
+    })
+
 
     const popUpHeader = document.createElement('div')
     popUpHeader.className = 'popUpHeader'
@@ -59,9 +73,47 @@ function employeePopup(allDatas) {
 
     document.body.append(popUp)
 
-    throwFormEvents('updateEmployee', updateEmployee)
+    throwFormEvents('updateEmployee', (ev) => updateEmployee(ev, allDatas))
 }
 
-function updateEmployee() {
-    console.log('Alterando dados de um funcionário')
+function updateEmployee(ev, employee) {
+    console.log('Entrou na função que altera')
+    const form = ev.target
+    const employeeData = new FormData()
+
+    const allElements = form.querySelectorAll('input, select')
+
+    allElements.forEach(element => {
+        if(element.type == 'checkbox') {
+            if(element.checked) {
+                employeeData.append('benefits', element.id)
+            }
+        } else if(element.type == 'file') {
+            employeeData.append('image', element.files[0])
+        } else {
+            employeeData.append(element.name, element.value)
+        }
+    })
+
+    console.log(`dataHasChanged : ${dataHasChanged}`)
+
+    if(dataHasChanged !== true) {
+        return
+    }
+    
+    // fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
+
+    fetch(`http://localhost:5432/employees/${employee.id}`, {
+        method: 'PUT',
+        body: employeeData
+    })
+    .then(() => {
+        getAllEmployees()
+        alert('Os dados do(a) funcionário(a) foram alterados')
+    })
+    .catch((error) => {
+        alert(`Infelizmente algo deu errado :/ \n  Erro: ${error.message}`)
+
+        console.log(`Algo deu errado. Erro: ${error.message}`)
+    })
 }

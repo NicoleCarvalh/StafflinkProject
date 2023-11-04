@@ -7,9 +7,9 @@ allUtils.sideMenu();
 allUtils.notes();
 allUtils.handlePageByCustomLink(document.querySelector(".option.newEmployee"));
 const { employeeTableActions } = allUtils
-employeeTableActions(getAllEmployees, getOrdenateEmployees)
+employeeTableActions(getHiringOrderEmployees, getOrdenateEmployees)
 
-async function getAllEmployees() {
+export async function getAllEmployees() {
   return fetch("https://employees-api-oite.onrender.com/employees", {
     method: "GET",
     headers: {
@@ -20,11 +20,18 @@ async function getAllEmployees() {
     return data.json();
   })
   .then((json) => {
-    list(json)
-    return json
+    const employees = json.sort((a, b) => a.id - b.id)
+    list(employees)
+    return employees
   });
 }
 getAllEmployees()
+
+async function getHiringOrderEmployees() {
+  const data = await getAllEmployees()
+
+  list(data.sort((a, b) => new Date(b.hiring) - new Date(a.hiring)))
+}
 
 function list(json) {
   document.getElementById("tbody").innerHTML = ""
