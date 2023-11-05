@@ -1,7 +1,6 @@
 @import '../../../patternStyles/style.scss';
 @import '../../login/styles/style.scss';
 
-
 #sideContent {
     background-color: #F1F1F1;
     justify-content: center;
@@ -9,30 +8,19 @@
 }
 
 main {
-
     color: white;
     background-color: #029AA4;
-    
 
-    h1 {
+    .title {
         font-size: 3rem;
         text-align: center;
     }
-
-    .tolkenNumber {
-        padding: 1rem 2rem;
-        color: #045257;
-        font-size: 9rem;
-        border-radius: 1rem;
-        background-color: #F1F1F1;
-    }
-  
     #progressBar {
         border-radius: 2px;
         width: 100%;
         height: 40px;
         background-color: lightgray;
-      }
+    }
 
     #progress {
         border-radius: 2px;
@@ -46,3 +34,4 @@ main {
         background-color: #F1F1F1;
     }
 }
+

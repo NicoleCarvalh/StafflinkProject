@@ -2235,16 +2235,9 @@ main {
   color: white;
   background-color: #029AA4;
 }
-main h1 {
+main .title {
   font-size: 3rem;
   text-align: center;
-}
-main .tolkenNumber {
-  padding: 1rem 2rem;
-  color: #045257;
-  font-size: 9rem;
-  border-radius: 1rem;
-  background-color: #F1F1F1;
 }
 main #progressBar {
   border-radius: 2px;

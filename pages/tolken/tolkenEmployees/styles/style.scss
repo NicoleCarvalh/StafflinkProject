@@ -1,0 +1,38 @@
+@import "../../styles/style.scss";
+
+html {
+  overflow: hidden;
+}
+
+main {
+  background-color: #f1f1f1;
+  color: black;
+  padding-bottom: 4rem;
+
+  .imgTolken {
+    width: 30vh;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: #015E64;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    width: 350px;
+    text-align: center;
+  }
+
+  .optionsTolken {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    #confirm {
+      color: #f1f1f1;
+      background-color: #029AA4;
+    }
+  }
+}
