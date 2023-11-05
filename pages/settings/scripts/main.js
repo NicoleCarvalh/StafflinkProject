@@ -47,9 +47,8 @@ function updateUserData(event) {
         return
     }
 
-    // fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
-    
-    fetch(`http://localhost:5432/employees/${currentUser.id}`, {
+    // fetch(`http://localhost:5432/employees/${currentUser.id}`, {
+    fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
         method: 'PUT',
         body: employeeData
     })

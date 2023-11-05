@@ -48,6 +48,35 @@ function employeePopup(allDatas) {
         document.body.removeChild(popUp)
     })
 
+    const popUpFooter = document.createElement('div')
+    popUpFooter.className = 'popUpFooter'
+
+    const footerTitle = document.createElement('h2')
+    footerTitle.textContent = '🚨 Área perigosa 🚨'
+
+    const deleteEmployeeBtn = document.createElement('button')
+    deleteEmployeeBtn.type = 'button'
+    deleteEmployeeBtn.textContent = 'Excluir funcionário'
+    deleteEmployeeBtn.id = 'deleteEmployee'
+
+    deleteEmployeeBtn.addEventListener('click', () => {
+        const deleteConfirm = confirm('Você deseja mesmo exluir este funcionário de todos os dados da empresa?')
+        if(!deleteConfirm) return
+
+        // fetch(`http://localhost:5432/employees/${allDatas.id}`, {
+        fetch(`https://employees-api-oite.onrender.com/employees/${allDatas.id}`, {
+            method: 'DELETE'
+        }).then(() => {
+            alert('O funcionário foi deletado.')
+            window.location.reload()
+        })
+    })
+
+    popUpFooter.append(
+        footerTitle,
+        deleteEmployeeBtn
+    )
+
     popUpHeader.append(
         popUpTitle,
         closeButton
@@ -68,7 +97,8 @@ function employeePopup(allDatas) {
 
     popUp.append(
         popUpHeader,
-        popUpFormContainer
+        popUpFormContainer,
+        popUpFooter
     )
 
     document.body.append(popUp)
@@ -101,9 +131,8 @@ function updateEmployee(ev, employee) {
         return
     }
     
-    // fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
-
-    fetch(`http://localhost:5432/employees/${employee.id}`, {
+    // fetch(`http://localhost:5432/employees/${employee.id}`, {
+    fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
         method: 'PUT',
         body: employeeData
     })

@@ -55,18 +55,18 @@
     }
 
     .popUpFooter {
-        @include flexBox($j: center, $g: 1rem, $fw: wrap);
+        @include flexBox($fd: column, $j: center, $g: 1rem, $fw: wrap);
         width: 100%;
+        margin-top: 1.5rem;
 
-        .submitButton {
+        #deleteEmployee {
             flex: 1 0 auto;
-            background-color: $extra-primary;
+            background-color: rgba($color: $extra-terciary, $alpha: 0.85);
             color: $bg-secondary;
+            border: none;
 
             &:hover {
-                background-color: transparent;
-                color: $default-color;
-                border: 2px solid $extra-primary;
+                background-color: $extra-terciary;
             }
         }
     }
