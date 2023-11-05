@@ -28,13 +28,15 @@ export async function getAllEmployees() {
 getAllEmployees()
 
 async function getHiringOrderEmployees() {
+  document.getElementById("sortLoader").style.display = 'inline-block';
   const data = await getAllEmployees()
 
   list(data.sort((a, b) => new Date(b.hiring) - new Date(a.hiring)))
+  document.getElementById("sortLoader").style.display = 'none';
 }
 
 function list(json) {
-  document.getElementById("tbody").innerHTML = ""
+  document.getElementById("tbody").innerHTML = "";
 
   for (let i = 0; i < json.length; i++) {
     let employeePhoto = json[i].employeephotoname;
@@ -145,6 +147,7 @@ function list(json) {
 }
 
 async function getOrdenateEmployees(button) {
+  document.getElementById("sortLoader").style.display = 'inline-block';
   const ordenationType = button.value
   if(ordenationType == '' || !ordenationType) return
 
@@ -175,4 +178,5 @@ async function getOrdenateEmployees(button) {
   }
 
   list(sortedEmployees)
+  document.getElementById("sortLoader").style.display = 'none';
 }

@@ -6,6 +6,14 @@
     min-height: 1.5rem;
 }
 
+.sortLoader {
+    width: 2.5rem;
+    
+    @media (max-width: 780px) {
+        display: none;
+    }
+}
+
 .popUp {
     position: fixed;
     z-index: 100000000;
