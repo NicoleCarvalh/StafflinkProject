@@ -2,6 +2,7 @@
 @import '../../../patternStyles/components/dataTable/style';
 
 #main_content {
+    
     .tableContainer_header {
         padding-bottom: 0;
     }
@@ -17,6 +18,7 @@
 
         .content {
             @include flexBox($j: space-between, $g: 1rem);
+            margin-bottom: 2rem;
 
             .cards {
                 @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
@@ -62,10 +64,5 @@
 
 canvas {
     max-height: 500px;
-    // object-fit: cover;
 }
 
-// #profit {
-//     min-height: 400px;
-//     min-width: fit-content;
-// }

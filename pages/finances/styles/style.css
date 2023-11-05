@@ -1227,6 +1227,7 @@ body .blurredOut {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: nowrap;
+  margin-bottom: 2rem;
 }
 #main_content .container .content .cards {
   display: flex;
