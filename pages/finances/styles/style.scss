@@ -18,27 +18,9 @@
         .content {
             @include flexBox($j: space-between, $g: 1rem);
 
-            // Remover quando exister a versão mobile adaptada para o usuário diferente de RH
-            overflow: auto;
-
             .cards {
-                @include flexBox($g: 1rem, $fw: wrap);
+                @include flexBox($j: space-between, $g: 1rem, $fw: wrap);
                 flex: 0 1 auto;
-            }
-
-            .extraDatas {
-                flex: 1 0 auto;
-
-                .dataCard {
-                    height: 100%;
-                    // width: fit-content;
-                    max-width: 250px;
-
-                    hr {
-                        width: 100%;
-                        border: 1px solid $extra-secondary;
-                    }
-                }
             }
 
             .dataCard {
@@ -46,9 +28,10 @@
                 padding: .5rem 1.5rem;
                 border: 2px solid $extra-secondary;
                 border-radius: 1rem;
-                // background-color: $bg-primary;
                 box-shadow: $innerShadow;
-                width: 300px;
+                flex: 1 0 250px;
+                max-width: 100%;
+                width: 100%;
 
                 .cardHeader {
                     text-align: center;
@@ -70,16 +53,19 @@
 
         &.graphics {
             .content {
+                @include flexBox($fd: column, $g: 5rem);
                 flex-wrap: wrap;
-            }
-
-            img {
-                // max-width: 250px;
-                flex: 1 1 auto;
-                max-width: 100%;
-                height: 300px;
-                object-fit: cover;    
             }
         }
     }
 }
+
+canvas {
+    max-height: 500px;
+    // object-fit: cover;
+}
+
+// #profit {
+//     min-height: 400px;
+//     min-width: fit-content;
+// }

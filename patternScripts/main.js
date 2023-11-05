@@ -19,5 +19,6 @@ export const allUtils = {
     setPage: setCurrentPagePath,
     handlePageByCustomLink: handlePageByLink,
     notes: notesControl,
-    getCepInfos: getCepInfos
+    getCepInfos: getCepInfos,
+    numberBRLFormater: Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL'})
 }

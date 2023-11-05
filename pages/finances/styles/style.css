@@ -1227,27 +1227,15 @@ body .blurredOut {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: nowrap;
-  overflow: auto;
 }
 #main_content .container .content .cards {
   display: flex;
   flex-direction: row;
   align-items: unset;
-  justify-content: unset;
+  justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
   flex: 0 1 auto;
-}
-#main_content .container .content .extraDatas {
-  flex: 1 0 auto;
-}
-#main_content .container .content .extraDatas .dataCard {
-  height: 100%;
-  max-width: 250px;
-}
-#main_content .container .content .extraDatas .dataCard hr {
-  width: 100%;
-  border: 1px solid #1B9C85;
 }
 #main_content .container .content .dataCard {
   display: flex;
@@ -1260,7 +1248,9 @@ body .blurredOut {
   border: 2px solid #1B9C85;
   border-radius: 1rem;
   box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  flex: 1 0 250px;
+  max-width: 100%;
+  width: 100%;
 }
 #main_content .container .content .dataCard .cardHeader {
   text-align: center;
@@ -1276,12 +1266,15 @@ body .blurredOut {
   font-size: 0.8rem;
 }
 #main_content .container.graphics .content {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 5rem;
+  flex-wrap: nowrap;
   flex-wrap: wrap;
 }
-#main_content .container.graphics img {
-  flex: 1 1 auto;
-  max-width: 100%;
-  height: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
+
+canvas {
+  max-height: 500px;
 }/*# sourceMappingURL=style.css.map */

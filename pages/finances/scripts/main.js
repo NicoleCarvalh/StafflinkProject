@@ -6,3 +6,76 @@ allUtils.notes()
 allUtils.handlePageByCustomLink(document.querySelector('.option.newEmployee'))
 
 // alert('Página em desenvolvimento')
+
+const allCardsData = document.querySelectorAll('.dataCard .cardbody span')
+
+allCardsData.forEach(element => {
+    if(element.className == "money") {
+        const number = allUtils.numberBRLFormater.format(Math.random() * 100000)
+        element.textContent = number
+    } else {
+        const number = Math.floor(Math.random() * 100000)
+        element.textContent = number.toLocaleString('pt-br')
+    }
+});
+
+const profitChart = document.getElementById('profit');
+const dataMonths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+
+const diversityChart = document.getElementById('diversity');
+const diversityData = ['Homens', 'Mulheres', 'Pessoas Pretas', 'LGBTQIA+', "PCD's"]
+
+new Chart(profitChart, {
+    type: 'bar',
+    data: {
+        labels: dataMonths,
+        datasets: [{
+            label: 'Lucro líquido mensal',
+            data: Array.from({length: dataMonths.length}, () => Math.random() * 100000),
+            borderWidth: 1,
+            borderColor: [
+                'rgb(57, 202, 103)'
+            ],
+            backgroundColor: [
+                'rgba(57, 202, 103, 0.4)'
+            ]
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+});
+
+new Chart(diversityChart, {
+    type: 'pie',
+    data: {
+        labels: diversityData,
+        datasets: [{
+            label: 'Diversidade inclusiva',
+            data: Array.from(diversityData, () => Math.floor(Math.random() * 100)),
+            backgroundColor: [
+                'rgb(17, 92, 198)',
+                'rgb(106, 24, 194)',
+                'rgb(24, 194, 86)',
+                'rgb(194, 101, 24)',
+                'rgb(194, 24, 183)'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Diversidade inclusiva'
+            }
+        }
+    },
+});

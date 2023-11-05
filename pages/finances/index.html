@@ -264,7 +264,7 @@
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>R$ 20.000,00</p>
+                                    <p><span class="money">20.000,00</span></p>
                                 </div>
         
                                 <div class="cardFooter">
@@ -278,7 +278,7 @@
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>452</p>
+                                    <p><span class="number">452</span></p>
                                 </div>
         
                                 <div class="cardFooter">
@@ -292,7 +292,7 @@
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>R$ 2.457,20</p>
+                                    <p><span class="money">2.457,20</span></p>
                                 </div>
         
                                 <div class="cardFooter">
@@ -306,7 +306,7 @@
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>R$ 202.040,50</p>
+                                    <p><span class="money">202.040,50</span></p>
                                 </div>
         
                                 <div class="cardFooter">
@@ -320,37 +320,35 @@
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>R$ 152.082,89</p>
+                                    <p><span class="money">152.082,89</span></p>
                                 </div>
         
                                 <div class="cardFooter">
                                     <cite>Mês anterior</cite>
                                 </div>
                             </div>
-                        </div>
-    
-                        <div class="extraDatas">
+
                             <div class="dataCard">
                                 <div class="cardHeader">
                                     <h4>Lucro liquído</h4>
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>R$ 182.102,89</p>
+                                    <p><span class="money">182.102,89</span></p>
                                 </div>
         
                                 <div class="cardFooter">
                                     <cite>Mês anterior</cite>
                                 </div>
-        
-                                <hr>
-        
+                            </div>
+
+                            <div class="dataCard">
                                 <div class="cardHeader">
                                     <h4>Lucro bruto</h4>
                                 </div>
         
                                 <div class="cardbody">
-                                    <p>R$ 179.130,90</p>
+                                    <p><span class="money">179.130,90</span></p>
                                 </div>
         
                                 <div class="cardFooter">
@@ -363,13 +361,12 @@
     
                 <div class="container graphics">
                     <div class="title">
-                        <h3>Representações gráficas</h3>
+                        <h3>Dados gráficos da empresa</h3>
                     </div>
     
                     <div class="content">
-                        <img src="https://source.unsplash.com/random/alert" alt="Grafico">
-                        <img src="https://source.unsplash.com/random/graphics" alt="Grafico">
-                        <img src="https://source.unsplash.com/random/data" alt="Grafico">
+                        <canvas id="profit"></canvas>
+                        <canvas id="diversity"></canvas>
                     </div>
                 </div>
             </div>
@@ -409,5 +406,7 @@
         </div>
     </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
