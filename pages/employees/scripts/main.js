@@ -21,6 +21,7 @@ export async function getAllEmployees() {
   })
   .then((json) => {
     const employees = json.sort((a, b) => a.id - b.id)
+
     list(employees)
     return employees
   });

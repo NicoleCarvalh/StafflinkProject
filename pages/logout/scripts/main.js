@@ -1,15 +1,10 @@
 import { allUtils } from "../../../patternScripts/main.js";
 import { backToPreviousPage } from "../../../patternScripts/windowControl/location.js";
-allUtils.access()
 
-const logOutConfirm = document.getElementById('logOutConfirm')
-const backButton = document.getElementById('back')
+allUtils.deleteLocalData("user");
 
-backButton.addEventListener('click', () => {
-    backToPreviousPage()
-})
+const loginAccess = document.getElementById("loginAccess");
 
-logOutConfirm.addEventListener('click', () => {
-    allUtils.deleteLocalData('user')
-    window.location.href = '/'
-})
+loginAccess.addEventListener("click", () => {
+  window.location.href = "/";
+});
