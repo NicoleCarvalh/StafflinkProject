@@ -2169,8 +2169,11 @@ main #loginContainer .actions {
   flex-wrap: nowrap;
   font-size: 0.8rem;
 }
-main #loginContainer .actions .teste {
-  border: 1px solid red;
+main #loginContainer .actions .btnLogin {
+  height: 3rem;
+}
+main #loginContainer .actions #loader {
+  height: 3rem;
 }
 main #loginContainer .actions button {
   max-width: 200px;

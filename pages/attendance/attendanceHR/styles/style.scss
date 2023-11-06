@@ -1,0 +1,7 @@
+@import '../../../../patternStyles/style.scss';
+@import '../../../../patternStyles/components/dataTable/style';
+@import '../../../../patternStyles/components/form/styles';
+
+.tableContainer .table .table_content .body tr td .employeeCode {
+  padding-left: 2rem;
+}

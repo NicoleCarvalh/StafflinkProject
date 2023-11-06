@@ -1,4 +1,4 @@
-import { allUtils } from "../../../patternScripts/main.js";
+import { allUtils } from "../../../../patternScripts/main.js";
 
 allUtils.access()
 

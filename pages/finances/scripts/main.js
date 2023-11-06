@@ -23,7 +23,7 @@ const profitChart = document.getElementById('profit');
 const dataMonths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
 const diversityChart = document.getElementById('diversity');
-const diversityData = ['Homens', 'Mulheres', 'Pessoas Pretas', 'LGBTQIA+', "PCD's"]
+const diversityData = ['Produção', 'Vendas', 'Administração', 'Estoque']
 
 new Chart(profitChart, {
     type: 'bar',
@@ -55,7 +55,7 @@ new Chart(diversityChart, {
     data: {
         labels: diversityData,
         datasets: [{
-            label: 'Diversidade inclusiva',
+            label: 'Quantidade de funcionários por setor',
             data: Array.from(diversityData, () => Math.floor(Math.random() * 100)),
             backgroundColor: [
                 'rgb(17, 92, 198)',
@@ -74,7 +74,7 @@ new Chart(diversityChart, {
             },
             title: {
                 display: true,
-                text: 'Diversidade inclusiva'
+                text: 'Quantidade de funcionários por setor'
             }
         }
     },
