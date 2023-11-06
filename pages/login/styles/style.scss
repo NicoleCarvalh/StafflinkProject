@@ -99,6 +99,14 @@ main {
             @include flexBox($fd: column, $a: center, $g: .5rem);
             font-size: .8rem;
 
+            .btnLogin {
+                height: 3rem;
+            }
+
+            #loader {
+                height: 3rem;
+            }
+
             button {
                 max-width: 200px;
                 background-color: $extra-secondary;

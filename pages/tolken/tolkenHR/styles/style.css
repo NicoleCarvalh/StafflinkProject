@@ -1144,6 +1144,9 @@ main #loginContainer .actions {
   flex-wrap: nowrap;
   font-size: 0.8rem;
 }
+main #loginContainer .actions .teste {
+  border: 1px solid red;
+}
 main #loginContainer .actions button {
   max-width: 200px;
   background-color: #1B9C85;

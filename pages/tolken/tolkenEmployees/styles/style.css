@@ -1144,6 +1144,9 @@ main #loginContainer .actions {
   flex-wrap: nowrap;
   font-size: 0.8rem;
 }
+main #loginContainer .actions .teste {
+  border: 1px solid red;
+}
 main #loginContainer .actions button {
   max-width: 200px;
   background-color: #1B9C85;
@@ -1211,8 +1214,17 @@ main {
   background-color: #029AA4;
 }
 main .title {
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
+}
+main .tolkenNumber {
+  background-color: #f1f1f1;
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  color: #015E64;
+}
+main .tolkenNumber span {
+  font-size: 9rem;
 }
 main #progressBar {
   border-radius: 2px;

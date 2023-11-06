@@ -5,6 +5,9 @@ import { allUtils } from "../../../patternScripts/main.js";
 const form = document.getElementById('loginContainer').querySelector('form')
 
 form.addEventListener('submit', async (event) => {
+    document.getElementById("loader").style.display = 'inline-block';
+    document.getElementById("btnLogin").style.display = "none";
+
     event.preventDefault()
 
     const email = event.target.querySelector('input[type=email]')
@@ -27,6 +30,9 @@ form.addEventListener('submit', async (event) => {
 
     allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
     allUtils.setPage('employees')
+
+    document.getElementById("loader").style.display = 'none';
+    document.getElementById("btnLogin").style.display = "block";
 })
 
 function validateLogin({email, password}, datas) {
