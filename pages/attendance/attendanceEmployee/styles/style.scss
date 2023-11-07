@@ -1,1 +1,12 @@
 @import "../../attendanceHR/styles/style.scss";
+
+.tableContainer .table .table_content {
+
+  th {
+    min-width: 1px; 
+  }
+
+  .body tr {
+    height: 50px;
+  }
+} 

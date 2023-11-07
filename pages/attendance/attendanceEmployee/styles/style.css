@@ -1311,4 +1311,11 @@ body .blurredOut {
 
 .tableContainer .table .table_content .body tr td .employeeCode {
   padding-left: 2rem;
+}
+
+.tableContainer .table .table_content th {
+  min-width: 1px;
+}
+.tableContainer .table .table_content .body tr {
+  height: 50px;
 }/*# sourceMappingURL=style.css.map */
