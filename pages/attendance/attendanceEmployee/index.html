@@ -457,96 +457,17 @@
             </svg>
           </button>
         </form>
-
-        <div class="options">
-          <button
-            type="button"
-            class="option newEmployee"
-            data-link-to="employees/registerNewEmployee"
-          >
-            <svg
-              width="22"
-              height="17"
-              viewBox="0 0 22 17"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 16.4546V15.5455C1 12.0309 3.84911 9.18182 7.36366 9.18182C10.8782 9.18182 13.7273 12.0309 13.7273 15.5455V16.4546"
-                stroke="black"
-                stroke-linecap="round"
-              />
-              <path
-                d="M11.9091 11C11.9091 8.48963 13.9442 6.45453 16.4545 6.45453C18.9649 6.45453 21 8.48963 21 11V11.4545"
-                stroke="black"
-                stroke-linecap="round"
-              />
-              <path
-                d="M7.36294 9.18194C9.37122 9.18194 10.9993 7.55384 10.9993 5.54556C10.9993 3.53724 9.37122 1.90918 7.36294 1.90918C5.35462 1.90918 3.72656 3.53724 3.72656 5.54556C3.72656 7.55384 5.35462 9.18194 7.36294 9.18194Z"
-                stroke="black"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M16.4538 6.45457C17.9601 6.45457 19.1811 5.23352 19.1811 3.72728C19.1811 2.22105 17.9601 1 16.4538 1C14.9476 1 13.7266 2.22105 13.7266 3.72728C13.7266 5.23352 14.9476 6.45457 16.4538 6.45457Z"
-                stroke="black"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-
-            Criar novo funcionário
-          </button>
-
-          <a href="../tolken/tolkenHR/index.html">
-            <button type="button" class="option">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <mask
-                  id="mask0_777_1656"
-                  style="mask-type: alpha"
-                  maskUnits="userSpaceOnUse"
-                  x="0"
-                  y="0"
-                  width="24"
-                  height="24"
-                >
-                  <rect width="24" height="24" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_777_1656)">
-                  <path
-                    d="M6.99995 13.6153C6.55252 13.6153 6.17143 13.458 5.8567 13.1432C5.54197 12.8285 5.3846 12.4474 5.3846 12C5.3846 11.5525 5.54197 11.1715 5.8567 10.8567C6.17143 10.542 6.55252 10.3846 6.99995 10.3846C7.44738 10.3846 7.82847 10.542 8.1432 10.8567C8.45793 11.1715 8.6153 11.5525 8.6153 12C8.6153 12.4474 8.45793 12.8285 8.1432 13.1432C7.82847 13.458 7.44738 13.6153 6.99995 13.6153ZM6.99995 17.5C5.47432 17.5 4.17625 16.9647 3.10575 15.8942C2.03525 14.8237 1.5 13.5256 1.5 12C1.5 10.4743 2.03525 9.17628 3.10575 8.10578C4.17625 7.03526 5.47432 6.5 6.99995 6.5C8.07173 6.5 9.04096 6.77661 9.90763 7.32982C10.7743 7.88302 11.4358 8.60642 11.8922 9.5H20.8942L23.3941 12L19.548 15.8269L17.6923 14.4326L15.7884 15.8461L13.8365 14.5H11.8922C11.4358 15.3871 10.7743 16.1089 9.90763 16.6653C9.04096 17.2217 8.07173 17.5 6.99995 17.5ZM6.99995 16C7.95893 16 8.78938 15.7102 9.4913 15.1308C10.1932 14.5513 10.6512 13.841 10.8653 13H14.3077L15.748 13.9961L17.7019 12.5673L19.4 13.8654L21.2654 12L20.2654 11H10.8653C10.6512 10.159 10.1932 9.4487 9.4913 8.8692C8.78938 8.28972 7.95893 7.99998 6.99995 7.99998C5.89995 7.99998 4.95828 8.39164 4.17495 9.17498C3.39162 9.95831 2.99995 10.9 2.99995 12C2.99995 13.1 3.39162 14.0416 4.17495 14.825C4.95828 15.6083 5.89995 16 6.99995 16Z"
-                    fill="#1C1B1F"
-                  />
-                </g>
-              </svg>
-
-              Exibir Tolken
-            </button>
-          </a>
-        </div>
       </header>
 
       <section id="main_content" class="tableContainer">
         <header class="tableContainer_header">
           <div class="tableName">
-            <h2>Controle de ponto</h2>
+            <h2>Histórico</h2>
           </div>
-
-          <div class="tableFilters">
-            <button type="button" class="filter">Todos</button>
-
-            <select class="filter" title="filtro de ordenação">
-              <option value="">Filtrar por</option>
-
-              <option value="a-to-z">A - Z</option>
-              <option value="z-to-a">Z - A</option>
-            </select>
+          <div class="options">
+            <a href="../../tolken/tolkenEmployees/index.html">
+              <button>Registrar-se</button>
+            </a>
           </div>
         </header>
 
@@ -554,10 +475,6 @@
           <table class="table_content">
             <thead class="table header">
               <tr>
-                <th>Usuário</th>
-                <th>Setor</th>
-                <th>Jornada</th>
-
                 <th>Data</th>
                 <th>Entrada</th>
                 <th>Saída</th>
@@ -568,80 +485,28 @@
             <!-- Rerificar a necessidade/preferência de adicionar paginação na tabela-->
             <tbody class="table body">
               <tr>
-                <td>
-                  <div class="employeeCode">
-                    <span class="employeePhoto">
-                      <img
-                        src=""
-                        alt="funcionário"
-                      />
-                    </span>
-                    Arthur Mendes Martins
-                  </div>
-                </td>
-                <td>Financeiro</td>
-                <td>08:00 - 17:00</td>
                 <td>08/05/2023</td>
                 <td>08:15</td>
                 <td>17:15</td>
                 <td class="additional positive">00:00</td>
               </tr>
               <tr>
-                <td>
-                  <div class="employeeCode">
-                    <span class="employeePhoto">
-                      <img
-                        src="../../assets/images/Stafflink_favicon_dark.svg"
-                        alt="funcionário"
-                      />
-                    </span>
-                    Arthur Mendes Martins
-                  </div>
-                </td>
-                <td>Estoque</td>
-                <td>08:00 - 17:00</td>
-                <td>08/05/2023</td>
-                <td>08:15</td>
-                <td>16:50</td>
-                <td class="additional negative">-00:10</td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="employeeCode">
-                    <span class="employeePhoto">
-                      <img
-                        src="../../assets/images/Stafflink_favicon_dark.svg"
-                        alt="funcionário"
-                      />
-                    </span>
-                    Arthur Mendes Martins
-                  </div>
-                </td>
-                <td>Financeiro</td>
-                <td>08:00 - 17:00</td>
                 <td>08/05/2023</td>
                 <td>08:15</td>
                 <td>17:15</td>
                 <td class="additional positive">00:00</td>
               </tr>
               <tr>
-                <td>
-                  <div class="employeeCode">
-                    <span class="employeePhoto">
-                      <img
-                        src="../../assets/images/Stafflink_favicon_dark.svg"
-                        alt="funcionário"
-                      />
-                    </span>
-                    Arthur Mendes Martins
-                  </div>
-                </td>
-                <td>Estoque</td>
-                <td>08:00 - 17:00</td>
                 <td>08/05/2023</td>
                 <td>08:15</td>
-                <td>16:50</td>
-                <td class="additional negative">-00:10</td>
+                <td>17:15</td>
+                <td class="additional positive">00:00</td>
+              </tr>
+              <tr>
+                <td>08/05/2023</td>
+                <td>08:15</td>
+                <td>17:15</td>
+                <td class="additional positive">00:00</td>
               </tr>
             </tbody>
           </table>
