@@ -135,7 +135,7 @@ function updateEmployee(ev, employee) {
     }
     
     // fetch(`http://localhost:5432/employees/${employee.id}`, {
-    fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
+    fetch(`https://employees-api-oite.onrender.com/employees/${employee.id}`, {
         method: 'PUT',
         body: employeeData
     })
