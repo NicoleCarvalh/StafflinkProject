@@ -1,15 +1,15 @@
 export const getCurrentPagePath = () => {
   const currentPath = window.location.href;
-  const regexPagePathVirify = RegExp(/\w{0,}\/index.html/g);
-  const regexPagePathVirifyWithoutIndex = RegExp(/\w{0,}\//g);
+  const regexPagePathVerify = RegExp(/\w{0,}\/index.html/g);
+  const regexPagePathVerifyWithoutIndex = RegExp(/\w{0,}\//g);
   let currentPage;
 
-  if (currentPath.match(regexPagePathVirify)) {
-    currentPage = currentPath.match(regexPagePathVirify)[0].split("/")[0];
+  if (currentPath.match(regexPagePathVerify)) {
+    currentPage = currentPath.match(regexPagePathVerify)[0].split("/")[0];
   } else {
-    const length = currentPath.match(regexPagePathVirifyWithoutIndex).length;
+    const length = currentPath.match(regexPagePathVerifyWithoutIndex).length;
     currentPage = currentPath
-      .match(regexPagePathVirifyWithoutIndex)
+      .match(regexPagePathVerifyWithoutIndex)
       [length - 1].split("/")[0];
   }
 

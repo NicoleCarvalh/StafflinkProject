@@ -267,6 +267,7 @@ const stringForm = `
         </div>
 
         <div class="actions">
+
             <button type="reset" id="clear">Limpar todo formulário</button>
             <button type="submit" id="register">Finalizar cadastro</button>
         </div>

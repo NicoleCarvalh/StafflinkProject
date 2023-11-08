@@ -1,0 +1,19 @@
+@import '../../../../patternStyles/style';
+@import '../../../../patternStyles/components/dataTable/style';
+@import '../../../../patternStyles/components/form/styles';
+
+
+// .tableContainer .table .table_content .body tr td .employeeCode {
+//   padding-left: 2rem;
+// }
+
+.tableContainer .table .table_content {
+
+  th {
+    min-width: 1px; 
+  }
+
+  .body tr {
+    height: 50px;
+  }
+} 

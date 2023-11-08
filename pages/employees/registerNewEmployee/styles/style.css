@@ -1311,4 +1311,12 @@ body .blurredOut {
 
 select {
   border-radius: 5rem;
+}
+
+#register {
+  height: 3rem;
+}
+
+#loader {
+  height: 3rem;
 }/*# sourceMappingURL=style.css.map */
