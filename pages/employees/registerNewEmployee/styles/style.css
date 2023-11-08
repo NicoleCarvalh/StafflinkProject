@@ -1313,6 +1313,10 @@ select {
   border-radius: 5rem;
 }
 
+#loader {
+  margin-left: 2rem;
+}
+
 #main_content {
   padding-bottom: 4rem;
 }/*# sourceMappingURL=style.css.map */

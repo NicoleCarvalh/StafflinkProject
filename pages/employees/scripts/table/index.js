@@ -107,6 +107,9 @@ function employeePopup(allDatas) {
 }
 
 function updateEmployee(ev, employee) {
+    document.getElementById("loader").style.display = 'inline-block';
+    document.getElementById("register").style.display = "none";
+
     console.log('Entrou na função que altera')
     const form = ev.target
     const employeeData = new FormData()
@@ -145,4 +148,7 @@ function updateEmployee(ev, employee) {
 
         console.log(`Algo deu errado. Erro: ${error.message}`)
     })
+
+    document.getElementById("loader").style.display = 'none';
+    document.getElementById("register").style.display = "block";
 }
