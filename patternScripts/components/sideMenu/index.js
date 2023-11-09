@@ -1,3 +1,4 @@
+import { stafflinkURL_employeePhoto } from "../../api/stafflink.js";
 import {
   getLocalData,
   setLocalData,
@@ -55,14 +56,14 @@ export const sideMenuControl = () => {
   allCustomLinks?.forEach((element) => handlePageByLink(element));
 };
 
-function setUserInfos() {
+export function setUserInfos() {
   const userPhotoImage = document.querySelector(".user_figure img");
   const userName = document.querySelector(".user_info h3");
   const userRole = document.querySelector(".user_info p");
 
   const currentUser = getLocalData("user").user;
 
-  userPhotoImage.src = `https://employees-api-oite.onrender.com/employees/photo/${currentUser.employeephotoname}`;
+  userPhotoImage.src = stafflinkURL_employeePhoto + currentUser.employeephotoname;
   userName.textContent =
     [currentUser.name.split(" ")[0], currentUser.name.split(" ")[1][0]].join(
       " "

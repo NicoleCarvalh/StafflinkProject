@@ -1,18 +1,14 @@
 import { buildFilledEmployeeForm, throwFormEvents } from "../../../../patternScripts/components/employeeForm/index.js";
-import { getAllEmployees } from "../main.js";
+import { deleteEmployee, getEmployee, getEmployees, updateEmployee } from "../../../../patternScripts/api/stafflink.js";
+import { list } from "../main.js";
+import { deleteLocalData, getLocalData } from "../../../../patternScripts/localStorageControl/getData.js";
 
 let dataHasChanged = false
 
 export function popUpCaller (employeeCode) {
-    fetch(`https://employees-api-oite.onrender.com/employees/${employeeCode}`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "Application/json"
-        },
-    }).then((data) => {
-        return data.json();
-    }).then((json) => {
-        employeePopup(json[0]);
+    getEmployee(employeeCode)
+    .then((json) => {
+        employeePopup(json);
     })
 }
 
@@ -31,7 +27,6 @@ function employeePopup(allDatas) {
             }
         })
     })
-
 
     const popUpHeader = document.createElement('div')
     popUpHeader.className = 'popUpHeader'
@@ -63,12 +58,17 @@ function employeePopup(allDatas) {
         const deleteConfirm = confirm('Você deseja mesmo exluir este funcionário de todos os dados da empresa?')
         if(!deleteConfirm) return
 
-        // fetch(`http://localhost:5432/employees/${allDatas.id}`, {
-        fetch(`https://employees-api-oite.onrender.com/employees/${allDatas.id}`, {
-            method: 'DELETE'
-        }).then(() => {
+        deleteEmployee(allDatas.id)
+        .then(() => {
             alert('O funcionário foi deletado.')
-            window.location.reload()
+
+            if(allDatas.id === getLocalData('user').user.id) {
+                deleteLocalData('user')
+                window.location.href = '/'
+            } else {
+                getEmployees().then(data => list(data))
+                closeButton.click()
+            }
         })
     })
 
@@ -103,14 +103,13 @@ function employeePopup(allDatas) {
 
     document.body.append(popUp)
 
-    throwFormEvents('updateEmployee', (ev) => updateEmployee(ev, allDatas))
+    throwFormEvents('updateEmployee', (ev) => updateEmployeeForm(ev, allDatas))
 }
 
-function updateEmployee(ev, employee) {
+function updateEmployeeForm(ev, employee) {
     document.getElementById("loader").style.display = 'inline-block';
     document.getElementById("register").style.display = "none";
 
-    console.log('Entrou na função que altera')
     const form = ev.target
     const employeeData = new FormData()
 
@@ -128,20 +127,14 @@ function updateEmployee(ev, employee) {
         }
     })
 
-    console.log(`dataHasChanged : ${dataHasChanged}`)
-
     if(dataHasChanged !== true) {
         return
     }
     
-    // fetch(`http://localhost:5432/employees/${employee.id}`, {
-    fetch(`https://employees-api-oite.onrender.com/employees/${employee.id}`, {
-        method: 'PUT',
-        body: employeeData
-    })
+    updateEmployee(employee.id, employeeData)
     .then(() => {
-        getAllEmployees()
         alert('Os dados do(a) funcionário(a) foram alterados')
+        getEmployees().then(data => list(data))
     })
     .catch((error) => {
         alert(`Infelizmente algo deu errado :/ \n  Erro: ${error.message}`)

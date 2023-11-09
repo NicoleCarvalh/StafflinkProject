@@ -5,6 +5,7 @@ allUtils.notes()
 allUtils.access({user: {access: true}})
 
 import { generateEmptyEmployeeForm, throwFormEvents } from '../../../../patternScripts/components/employeeForm/index.js'
+import { saveEmployee } from "../../../../patternScripts/api/stafflink.js";
 
 const form = generateEmptyEmployeeForm()
 
@@ -39,13 +40,7 @@ function saveNewEmployee() {
 
     form.querySelector('input').focus()
 
-    fetch('https://employees-api-oite.onrender.com/employees', {
-        method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        body: employeeData
-    })
+    saveEmployee(employeeData)
     .then(() => console.log('Deu certo'))
     .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
 }

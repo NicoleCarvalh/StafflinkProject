@@ -1,3 +1,5 @@
+import { getEmployees, stafflinkURL_employeePhoto } from "../../../patternScripts/api/stafflink.js";
+import { getLocalData, setLocalData } from "../../../patternScripts/localStorageControl/getData.js";
 import { allUtils } from "../../../patternScripts/main.js";
 import { popUpCaller } from "./table/index.js";
 
@@ -9,34 +11,64 @@ allUtils.handlePageByCustomLink(document.querySelector(".option.newEmployee"));
 const { employeeTableActions } = allUtils
 employeeTableActions(getHiringOrderEmployees, getOrdenateEmployees)
 
-export async function getAllEmployees() {
-  return fetch("https://employees-api-oite.onrender.com/employees", {
-    method: "GET",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-  })
-  .then((data) => {
-    return data.json();
-  })
-  .then((json) => {
-    const employees = json.sort((a, b) => a.id - b.id)
+Array.prototype.employeesOrdenate = function (typeOrdanation = 'id') {  
+  const arr = this
 
+  const ordenations = {
+    'a-to-z': () => arr.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+    }), 
+    // 'z-to-a': arr.sort((a, b) => (a.name < b.name) ? 1 : (a.name > b.name) ? -1 : 0),
+    'z-to-a': () => arr.sort((a, b) => {
+        if (a.name < b.name) {
+          return 1;
+        }
+        if (a.name > b.name) {
+          return -1;
+        }
+        return 0;
+    }),
+    'hiring': () => arr.sort((a, b) => new Date(b.hiring) - new Date(a.hiring)),
+    'id': () => arr.sort((a, b) => a.id - b.id)
+  }
+
+  if(!ordenations[typeOrdanation]) return
+
+  return ordenations[typeOrdanation]()
+}
+
+getEmployees()
+  .then((employees) => {
     list(employees)
     return employees
   });
-}
-getAllEmployees()
 
 async function getHiringOrderEmployees() {
-  document.getElementById("sortLoader").style.display = 'inline-block';
-  const data = await getAllEmployees()
+  setLocalData('filter_employees', 'hiring')
 
-  list(data.sort((a, b) => new Date(b.hiring) - new Date(a.hiring)))
+  document.getElementById("sortLoader").style.display = 'inline-block';
+  
+  const data = await getEmployees()
+  list(data.employeesOrdenate('hiring'))
+
   document.getElementById("sortLoader").style.display = 'none';
 }
 
-function list(json) {
+export function list(json) {
+  const savedFilter = getLocalData('filter_employees')
+
+  if(savedFilter) {
+    json = json.employeesOrdenate(savedFilter)
+  } else {
+    json.employeesOrdenate('id')
+  }
+
   document.getElementById("tbody").innerHTML = "";
 
   for (let i = 0; i < json.length; i++) {
@@ -59,7 +91,7 @@ function list(json) {
     let spanEmployeePhoto = document.createElement("span");
     spanEmployeePhoto.className = "employeePhoto";
     let imgEmployeePhoto = document.createElement("img");
-    imgEmployeePhoto.src = `https://employees-api-oite.onrender.com/employees/photo/${employeePhoto}`;
+    imgEmployeePhoto.src = stafflinkURL_employeePhoto + employeePhoto;
     imgEmployeePhoto.alt = "funcionário";
     spanEmployeePhoto.appendChild(imgEmployeePhoto);
 
@@ -149,34 +181,16 @@ function list(json) {
 
 async function getOrdenateEmployees(button) {
   document.getElementById("sortLoader").style.display = 'inline-block';
+
   const ordenationType = button.value
   if(ordenationType == '' || !ordenationType) return
 
-  const allEmployees = await getAllEmployees()
+  const allEmployees = await getEmployees()
 
   let sortedEmployees = []
 
-  if(ordenationType == "a-to-z") {
-    sortedEmployees = allEmployees.sort((a, b) => {
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-      return 0;
-    })
-  } else {
-    sortedEmployees = allEmployees.sort((a, b) => {
-      if (a.name < b.name) {
-        return 1;
-      }
-      if (a.name > b.name) {
-        return -1;
-      }
-      return 0;
-    })
-  }
+  setLocalData('filter_employees', ordenationType)
+  sortedEmployees = allEmployees.employeesOrdenate(ordenationType)
 
   list(sortedEmployees)
   document.getElementById("sortLoader").style.display = 'none';

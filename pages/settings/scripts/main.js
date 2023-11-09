@@ -5,7 +5,8 @@ allUtils.access()
 allUtils.sideMenu()
 
 import { buildFilledEmployeeForm, throwFormEvents } from "../../../patternScripts/components/employeeForm/index.js";
-import { findUser } from "../../../patternScripts/api/stafflink.js";
+import { getEmployee, updateEmployee } from "../../../patternScripts/api/stafflink.js";
+import { setUserInfos } from "../../../patternScripts/components/sideMenu/index.js";
 
 const currentUser = getLocalData('user').user
 
@@ -47,13 +48,9 @@ function updateUserData(event) {
         return
     }
 
-    // fetch(`http://localhost:5432/employees/${currentUser.id}`, {
-    fetch(`https://employees-api-oite.onrender.com/employees/${currentUser.id}`, {
-        method: 'PUT',
-        body: employeeData
-    })
+    updateEmployee(currentUser.id, employeeData)
     .then(() => {
-        findUser(currentUser.id).then(data => {
+        getEmployee(currentUser.id).then(data => {
             const newData = {...data}
             delete newData.employeephoto
 
@@ -64,6 +61,7 @@ function updateUserData(event) {
                 }
             })
 
+            setUserInfos()
         })
 
         alert('Seus dados foram alterados')

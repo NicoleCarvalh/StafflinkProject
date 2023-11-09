@@ -1,3 +1,4 @@
+import { stafflinkURL_employeePhoto } from "../../api/stafflink.js"
 import { allUtils } from "../../main.js"
 
 const stringForm = `
@@ -398,7 +399,7 @@ export function buildFilledEmployeeForm(employeeData, formId) {
 
         if(element.type == 'file') {
             employeeForm.querySelector('#fileName').innerText = employeeData['employeephotoname']
-            employeeForm.querySelector('#preview').src = `https://employees-api-oite.onrender.com/employees/photo/${employeeData['employeephotoname']}`
+            employeeForm.querySelector('#preview').src = stafflinkURL_employeePhoto + employeeData['employeephotoname']
             element.removeAttribute('required')
         } else if(element.type == 'checkbox') {
             const allBenefits = employeeData[key].split(',').map(benefit => benefit.trim())

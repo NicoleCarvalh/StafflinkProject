@@ -1088,6 +1088,14 @@ body .blurredOut {
 .tableContainer .tableContainer_header .tableName h2 {
   font-family: "PoppinsLight";
 }
+.tableContainer .tableContainer_header .tableFilters {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
 .tableContainer .tableContainer_header .tableFilters .filter {
   transition: all 0.25s linear;
   padding: 0.5rem;
@@ -1199,6 +1207,11 @@ body .blurredOut {
   color: #1B9C85;
 }
 
+@media (min-width: 780px) {
+  .tableContainer .table .table_content th {
+    min-width: unset;
+  }
+}
 #main_content .tableContainer_header {
   padding-bottom: 0;
 }

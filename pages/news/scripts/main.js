@@ -1,3 +1,4 @@
+import { getEmployees } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 allUtils.access();
 
@@ -6,15 +7,7 @@ allUtils.notes();
 allUtils.handlePageByCustomLink(document.querySelector(".newNews"));
 
 //employees' birthdays
-fetch("https://employees-api-oite.onrender.com/employees", {
-  method: "GET",
-  headers: {
-    "Content-Type": "Application/json",
-  },
-})
-  .then((data) => {
-    return data.json();
-  })
+getEmployees()
   .then((json) => {
     let birthdaysList = [];
 

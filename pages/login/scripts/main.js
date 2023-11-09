@@ -1,3 +1,4 @@
+import { getEmployee } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 // allUtils.access({user: {access}})
@@ -13,18 +14,35 @@ form.addEventListener('submit', async (event) => {
     const email = event.target.querySelector('input[type=email]')
     const password = event.target.querySelector('input[type=password]')
 
-    const foundEmployee = await fetch('https://employees-api-oite.onrender.com/employees')
-    .then(response => response.json())
+    setTimeout(() => {
+        alert('Parece que houve algum problema de conexão :/ \nRecarregue a página e tente novamente')
+
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("btnLogin").style.display = "block";
+    }, 25 * 1000)
+
+    const foundEmployee = await getEmployee(null, {email: email.value, password: password.value})
     .then(data => {
-        console.log(data)
-        return validateLogin({email: email.value, password: password.value}, data)
+        return data ?? false
+    })
+    .catch((error) => {
+        alert(`Parece que algo deu errado :/ \nFavor, tente novamente \n\nErro: ${error.message}`)
+        
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("btnLogin").style.display = "block";
     })
 
     if(!foundEmployee) {
         email.style.borderColor = "red"
         password.style.borderColor = "red"
+
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("btnLogin").style.display = "block";
         return
     }
+
+    email.style.borderColor = "green"
+    password.style.borderColor = "green"
 
     delete foundEmployee.employeephoto
 
@@ -34,9 +52,3 @@ form.addEventListener('submit', async (event) => {
     document.getElementById("loader").style.display = 'none';
     document.getElementById("btnLogin").style.display = "block";
 })
-
-function validateLogin({email, password}, datas) {
-    const foundEmployee = datas.find(employeeData => employeeData.email === email && employeeData.password === password) ?? false
-
-    return foundEmployee
-}

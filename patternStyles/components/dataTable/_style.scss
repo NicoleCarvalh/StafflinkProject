@@ -16,6 +16,7 @@
         }
 
         .tableFilters {
+            @include flexBox($g: .7rem, $fw: wrap);
             .filter {
                 transition: $linear;
                 padding: .5rem;
@@ -136,6 +137,18 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 780px) {
+    .tableContainer {
+        .table {
+            .table_content {
+                th {
+                    min-width: unset;
                 }
             }
         }
