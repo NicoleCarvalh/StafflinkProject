@@ -1,3 +1,4 @@
+import { setSystemAccess } from "../../../patternScripts/accessSystemControl/accessByDevice.js";
 import { getEmployee } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
@@ -47,6 +48,8 @@ form.addEventListener('submit', async (event) => {
     delete foundEmployee.employeephoto
 
     allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
+    setSystemAccess()
+    
     allUtils.setPage('employees')
 
     document.getElementById("loader").style.display = 'none';

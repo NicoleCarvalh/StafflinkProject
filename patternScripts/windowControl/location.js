@@ -1,3 +1,6 @@
+import { setSystemAccess } from "../accessSystemControl/accessByRole.js";
+import { getLocalData } from "../localStorageControl/getData.js";
+
 export const getCurrentPagePath = () => {
   const currentPath = window.location.href;
   const regexPagePathVerify = RegExp(/\w{0,}\/index.html/g);
@@ -29,7 +32,7 @@ export const backToPreviousPage = () => {
 
 export const handlePageByLink = (element) => {
   const { currentPath, currentPage } = getCurrentPagePath();
-  const pageLinkElement = element.getAttribute("data-link-to");
+  let pageLinkElement = element.getAttribute("data-link-to");
 
   if (currentPage === pageLinkElement) {
     element.classList.toggle("current");
@@ -38,14 +41,59 @@ export const handlePageByLink = (element) => {
   }
 
   element.addEventListener("click", (event) => {
-    if (pageLinkElement == "logout") {
-      let logoutConfirmation = confirm("Deseja realmente sair?");
+    switch (pageLinkElement){
+      case "logout":
+          let logoutConfirmation = confirm("Deseja realmente sair?");
 
-      if (logoutConfirmation) {
-        setCurrentPagePath(pageLinkElement);
-      }
-    } else {
-      setCurrentPagePath(pageLinkElement);
+          if (logoutConfirmation) {
+            setCurrentPagePath(pageLinkElement);
+          }
+        break
+      case "attendanceHR":
+          setSystemAccess()
+
+          console.log('Acesso do usuário logado:')
+          console.log(getLocalData('user').access.sector)
+          console.log('-----------------------')
+
+          if(getLocalData('user').access.sector !== "Recursos Humanos") {
+            console.log('Setor NÃO é o de RH')
+            console.log('-----------------------')
+            console.log('-----------------------')
+
+            console.log('Setor:')
+            console.log(getLocalData('user').access.sector)
+            console.log('-----------------------')
+
+            pageLinkElement = 'attendanceEmployee'
+
+            console.log('Página destino:')
+            console.log(pageLinkElement)
+            console.log('-----------------------')
+          } else {
+            console.log('Setor É o de RH')
+            console.log('-----------------------')
+            console.log('-----------------------')
+
+            console.log('Setor:')
+            console.log(getLocalData('user').access.sector)
+            console.log('-----------------------')
+
+            console.log('Página destino:')
+            console.log(pageLinkElement)
+            console.log('-----------------------')
+
+            console.log('Página destino:')
+            console.log(pageLinkElement)
+            console.log('-----------------------')
+          }
+
+        break
+      case "attendanceEmployee":
+
+        break
     }
+
+    // setCurrentPagePath(pageLinkElement);
   });
 };

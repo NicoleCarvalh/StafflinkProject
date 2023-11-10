@@ -1,9 +1,9 @@
 // Descomentar para rodar api localmente
-// const stafflinkURL_employee = 'http://localhost:5432/employees/'
-// export const stafflinkURL_employeePhoto = 'http://localhost:5432/employees/photo/'
+const stafflinkURL_employee = 'http://localhost:5432/employees/'
+export const stafflinkURL_employeePhoto = 'http://localhost:5432/employees/photo/'
 
-const stafflinkURL_employee = 'https://employees-api-oite.onrender.com/employees/'
-export const stafflinkURL_employeePhoto = 'https://employees-api-oite.onrender.com/employees/photo/'
+// const stafflinkURL_employee = 'https://employees-api-oite.onrender.com/employees/'
+// export const stafflinkURL_employeePhoto = 'https://employees-api-oite.onrender.com/employees/photo/'
 
 export async function getEmployee(userId, queryData = null) {
     if(!queryData) {

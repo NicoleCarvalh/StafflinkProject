@@ -65,8 +65,9 @@ export function setUserInfos() {
 
   userPhotoImage.src = stafflinkURL_employeePhoto + currentUser.employeephotoname;
   userName.textContent =
-    [currentUser.name.split(" ")[0], currentUser.name.split(" ")[1][0]].join(
-      " "
-    ) + ".";
+    [
+      currentUser.name.split(" ")[0], 
+      currentUser.name.split(" ")[currentUser.name.split(" ").length - 1][0]
+    ].join(" ") + ".";
   userRole.textContent = currentUser.office;
 }

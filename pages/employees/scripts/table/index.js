@@ -1,7 +1,8 @@
 import { buildFilledEmployeeForm, throwFormEvents } from "../../../../patternScripts/components/employeeForm/index.js";
 import { deleteEmployee, getEmployee, getEmployees, updateEmployee } from "../../../../patternScripts/api/stafflink.js";
 import { list } from "../main.js";
-import { deleteLocalData, getLocalData } from "../../../../patternScripts/localStorageControl/getData.js";
+import { deleteLocalData, getLocalData, setLocalData } from "../../../../patternScripts/localStorageControl/getData.js";
+import { setUserInfos } from "../../../../patternScripts/components/sideMenu/index.js";
 
 let dataHasChanged = false
 
@@ -130,10 +131,24 @@ function updateEmployeeForm(ev, employee) {
     if(dataHasChanged !== true) {
         return
     }
-    
+
     updateEmployee(employee.id, employeeData)
     .then(() => {
         alert('Os dados do(a) funcionário(a) foram alterados')
+
+        const currentUser = getLocalData('user')
+        if(employee.id == currentUser.user.id) {
+            getEmployee(employee.id)
+            .then(newEmployeeData => {
+                setLocalData('user', {
+                    ...currentUser,
+                    user: newEmployeeData
+                })
+
+                setUserInfos()
+            })
+        }
+
         getEmployees().then(data => list(data))
     })
     .catch((error) => {
