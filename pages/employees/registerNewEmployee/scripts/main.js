@@ -41,6 +41,9 @@ function saveNewEmployee() {
     form.querySelector('input').focus()
 
     saveEmployee(employeeData)
-    .then(() => console.log('Deu certo'))
+    .then(() => {
+        alert('Novo funcionário cadastrado!')
+        console.log('Novo funcionário cadastrado')
+    })
     .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
 }

@@ -60,7 +60,7 @@
         }
 
         .actions {
-            @include flexBox($g: 1rem, $fw: wrap);
+            @include flexBox($j: center, $g: 1rem, $fw: wrap);
             align-self: center;
             
             button {

@@ -3,9 +3,6 @@ allUtils.access()
 
 allUtils.sideMenu()
 allUtils.notes()
-allUtils.handlePageByCustomLink(document.querySelector('.option.newEmployee'))
-
-// alert('Página em desenvolvimento')
 
 const allCardsData = document.querySelectorAll('.dataCard .cardbody span')
 

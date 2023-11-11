@@ -41,6 +41,8 @@ export const handlePageByLink = (element) => {
   }
 
   element.addEventListener("click", (event) => {
+    const isHumanResources = verifySector('Recursos Humanos')
+
     switch (pageLinkElement){
       case "logout":
           let logoutConfirmation = confirm("Deseja realmente sair?");
@@ -51,49 +53,17 @@ export const handlePageByLink = (element) => {
         break
       case "attendanceHR":
           setSystemAccess()
-
-          console.log('Acesso do usuário logado:')
-          console.log(getLocalData('user').access.sector)
-          console.log('-----------------------')
-
-          if(getLocalData('user').access.sector !== "Recursos Humanos") {
-            console.log('Setor NÃO é o de RH')
-            console.log('-----------------------')
-            console.log('-----------------------')
-
-            console.log('Setor:')
-            console.log(getLocalData('user').access.sector)
-            console.log('-----------------------')
-
-            pageLinkElement = 'attendanceEmployee'
-
-            console.log('Página destino:')
-            console.log(pageLinkElement)
-            console.log('-----------------------')
-          } else {
-            console.log('Setor É o de RH')
-            console.log('-----------------------')
-            console.log('-----------------------')
-
-            console.log('Setor:')
-            console.log(getLocalData('user').access.sector)
-            console.log('-----------------------')
-
-            console.log('Página destino:')
-            console.log(pageLinkElement)
-            console.log('-----------------------')
-
-            console.log('Página destino:')
-            console.log(pageLinkElement)
-            console.log('-----------------------')
-          }
-
+          !isHumanResources && (pageLinkElement = 'attendanceEmployee')
         break
       case "attendanceEmployee":
-
+        isHumanResources && (pageLinkElement = 'attendanceHR')
         break
     }
 
-    // setCurrentPagePath(pageLinkElement);
+    setCurrentPagePath(pageLinkElement);
   });
 };
+
+function verifySector(sector = 'Recursos Humanos') {
+  return getLocalData('user').access.sector === sector
+}

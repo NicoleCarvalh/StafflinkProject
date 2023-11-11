@@ -7,7 +7,7 @@ allUtils.access();
 
 allUtils.sideMenu();
 allUtils.notes();
-allUtils.handlePageByCustomLink(document.querySelector(".option.newEmployee"));
+
 const { employeeTableActions } = allUtils
 employeeTableActions(getHiringOrderEmployees, getOrdenateEmployees)
 

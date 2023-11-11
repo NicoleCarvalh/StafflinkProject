@@ -3,6 +3,7 @@ import { deleteEmployee, getEmployee, getEmployees, updateEmployee } from "../..
 import { list } from "../main.js";
 import { deleteLocalData, getLocalData, setLocalData } from "../../../../patternScripts/localStorageControl/getData.js";
 import { setUserInfos } from "../../../../patternScripts/components/sideMenu/index.js";
+import { setSystemAccess } from "../../../../patternScripts/accessSystemControl/accessByRole.js";
 
 let dataHasChanged = false
 
@@ -145,9 +146,14 @@ function updateEmployeeForm(ev, employee) {
                     user: newEmployeeData
                 })
 
+                setSystemAccess()
+
                 setUserInfos()
             })
         }
+
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("register").style.display = "block";
 
         getEmployees().then(data => list(data))
     })
@@ -156,7 +162,4 @@ function updateEmployeeForm(ev, employee) {
 
         console.log(`Algo deu errado. Erro: ${error.message}`)
     })
-
-    document.getElementById("loader").style.display = 'none';
-    document.getElementById("register").style.display = "block";
 }

@@ -29,7 +29,6 @@ export const sideMenuControl = () => {
   setUserInfos();
 
   const analysisModeButton = document.getElementById("analysisMode");
-  const allCustomLinks = document.querySelectorAll("[data-link-to]");
   const analysisModeStatus = getLocalData("analysisModeStatus");
   const analysisModeButtonElements = [...analysisModeButton.children];
 
@@ -53,7 +52,6 @@ export const sideMenuControl = () => {
       : setLocalData("analysisModeStatus", true);
   });
 
-  allCustomLinks?.forEach((element) => handlePageByLink(element));
 };
 
 export function setUserInfos() {

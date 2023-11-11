@@ -1,4 +1,4 @@
-import { setSystemAccess } from "../../../patternScripts/accessSystemControl/accessByDevice.js";
+import { setSystemAccess } from "../../../patternScripts/accessSystemControl/accessByRole.js";
 import { getEmployee } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
@@ -44,8 +44,6 @@ form.addEventListener('submit', async (event) => {
 
     email.style.borderColor = "green"
     password.style.borderColor = "green"
-
-    delete foundEmployee.employeephoto
 
     allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
     setSystemAccess()

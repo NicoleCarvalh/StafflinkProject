@@ -7,6 +7,9 @@ import { accessControl } from "./windowControl/accessByDevice.js";
 import { mobileDeviceVerify } from "./windowControl/device.js";
 import { getCurrentPagePath, setCurrentPagePath, handlePageByLink } from "./windowControl/location.js";
 
+const allCustomLinks = document.querySelectorAll("[data-link-to]");
+allCustomLinks?.forEach((element) => handlePageByLink(element));
+
 export const allUtils = {
     sideMenu: sideMenuControl,
     employeeTableActions: employeeTableActions,
@@ -17,7 +20,7 @@ export const allUtils = {
     isMobile: mobileDeviceVerify,
     getPage: getCurrentPagePath,
     setPage: setCurrentPagePath,
-    handlePageByCustomLink: handlePageByLink,
+    // handlePageByCustomLink: handlePageByLink,
     notes: notesControl,
     getCepInfos: getCepInfos,
     numberBRLFormater: Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL'})

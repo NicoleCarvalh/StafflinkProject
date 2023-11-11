@@ -30,6 +30,9 @@ allElements.forEach(element => {
 throwFormEvents(currentUserForm.id, updateUserData)
 
 function updateUserData(event) {
+    document.getElementById("loader").style.display = 'inline-block';
+    document.getElementById("register").style.display = "none";
+
     const employeeData = new FormData()
 
     allElements.forEach(element => {
@@ -52,7 +55,6 @@ function updateUserData(event) {
     .then(() => {
         getEmployee(currentUser.id).then(data => {
             const newData = {...data}
-            delete newData.employeephoto
 
             setLocalData('user', {
                 ...getLocalData('user'),
@@ -63,6 +65,9 @@ function updateUserData(event) {
 
             setUserInfos()
         })
+
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("register").style.display = "block";
 
         alert('Seus dados foram alterados')
     })

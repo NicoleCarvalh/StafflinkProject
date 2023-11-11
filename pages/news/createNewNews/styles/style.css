@@ -1090,7 +1090,7 @@ body .blurredOut {
   display: flex;
   flex-direction: row;
   align-items: unset;
-  justify-content: unset;
+  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   align-self: center;
