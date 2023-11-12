@@ -272,14 +272,17 @@ const stringForm = `
                 <button type="reset" id="clear">Limpar todo formulário</button>
                 <button type="submit" id="register">Finalizar cadastro</button>
             </div>
-            <div id="loader" style="display: none; width: 285px;">
-                <div style="display: flex; align-items: center; justify-content: center;">
-                    <div>
-                        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
-                        <dotlottie-player src="https://lottie.host/29e5ec97-c579-4bd4-bba1-a1801849014d/I7wKA6dKTe.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
-                    </div>
-                </div>
+            <div id="loader" style="display: none;">
+              <div>
+                <dotlottie-player
+                  src="https://lottie.host/29e5ec97-c579-4bd4-bba1-a1801849014d/I7wKA6dKTe.json"
+                  background="transparent"
+                  speed="1"
+                  loop
+                  autoplay
+                ></dotlottie-player>
+              </div>
             </div>
         </div>
 </form>
