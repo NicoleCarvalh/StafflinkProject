@@ -46,10 +46,10 @@ form.addEventListener('submit', async (event) => {
     password.style.borderColor = "green"
 
     allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
-    setSystemAccess()
     
+    await setSystemAccess()
     allUtils.setPage('employees')
-
+    
     document.getElementById("loader").style.display = 'none';
     document.getElementById("btnLogin").style.display = "block";
 })

@@ -7,6 +7,7 @@ allUtils.sideMenu()
 import { buildFilledEmployeeForm, throwFormEvents } from "../../../patternScripts/components/employeeForm/index.js";
 import { getEmployee, updateEmployee } from "../../../patternScripts/api/stafflink.js";
 import { setUserInfos } from "../../../patternScripts/components/sideMenu/index.js";
+import { setSystemAccess } from "../../../patternScripts/accessSystemControl/accessByRole.js";
 
 const currentUser = getLocalData('user').user
 
@@ -63,6 +64,7 @@ function updateUserData(event) {
                 }
             })
 
+            setSystemAccess()
             setUserInfos()
         })
 

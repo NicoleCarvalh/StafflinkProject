@@ -1,10 +1,10 @@
 import { getEmployee } from "../api/stafflink.js";
 import { getLocalData, setLocalData } from "../localStorageControl/getData.js";
 
-export const setSystemAccess = () => {
+export const setSystemAccess = async () => {
     const currentUser = getLocalData('user')
 
-    getEmployee(currentUser.user.id).then(employee => {
+    await getEmployee(currentUser.user.id).then(employee => {
         const sectorAccess = employee.sector
         const roleAccess = employee.office
 

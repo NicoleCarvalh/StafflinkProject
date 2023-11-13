@@ -147,7 +147,6 @@ function updateEmployeeForm(ev, employee) {
                 })
 
                 setSystemAccess()
-
                 setUserInfos()
             })
         }

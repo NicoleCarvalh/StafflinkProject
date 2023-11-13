@@ -4,7 +4,6 @@ import {
   setLocalData,
 } from "../../localStorageControl/getData.js";
 import { mobileDeviceVerify } from "../../windowControl/device.js";
-import { handlePageByLink } from "../../windowControl/location.js";
 
 const sideMenu = document.getElementById("side_menu");
 
@@ -44,14 +43,13 @@ export const sideMenuControl = () => {
   analysisModeButton?.addEventListener("click", () => {
     handleSideMenu();
 
-    // If mobile, not continue
+    // Se for mobile, não continua
     if (mobileDeviceVerify()) return;
 
     analysisModeStatus
       ? setLocalData("analysisModeStatus", false)
       : setLocalData("analysisModeStatus", true);
   });
-
 };
 
 export function setUserInfos() {
