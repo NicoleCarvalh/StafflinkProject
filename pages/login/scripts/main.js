@@ -1,6 +1,7 @@
 import { setSystemAccess } from "../../../patternScripts/accessSystemControl/accessByRole.js";
 import { getEmployee } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
+import { setLinksByAccess } from "../../../patternScripts/windowControl/accessByDevice.js";
 
 // allUtils.access({user: {access}})
 
@@ -48,6 +49,7 @@ form.addEventListener('submit', async (event) => {
     allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
     
     await setSystemAccess()
+    setLinksByAccess()
     allUtils.setPage('employees')
     
     document.getElementById("loader").style.display = 'none';

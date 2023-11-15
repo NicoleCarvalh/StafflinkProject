@@ -13,7 +13,7 @@ export const accessControl = () => {
 
 // Sistema de controle de acesso - Fase experimental
 
-function setLinksByAccess() {
+export function setLinksByAccess() {
     const access = getLocalData('user').access
     const sector = access.sector
   
@@ -53,5 +53,3 @@ function setLinksByAccess() {
         })
     }
 }
-  
-setLinksByAccess()
