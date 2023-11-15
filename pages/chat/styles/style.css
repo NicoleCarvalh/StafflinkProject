@@ -1048,6 +1048,7 @@ main {
   border-radius: 1rem;
   flex: 1 0 auto;
   overflow: hidden;
+  max-width: 100%;
   max-height: 85vh;
 }
 #chatScreen .content.contacts {
@@ -1112,6 +1113,7 @@ main {
   flex-wrap: nowrap;
   flex: 2 0 auto;
   padding: 1.5rem;
+  max-width: 100%;
 }
 #chatScreen .content.conversations #currentContact {
   display: flex;
@@ -1185,4 +1187,20 @@ main {
   height: 50px;
   -webkit-clip-path: polygon(100% 100%, 0 50%, 0 100%);
           clip-path: polygon(100% 100%, 0 50%, 0 100%);
+}
+
+@media (max-width: 780px) {
+  #chatScreen .content.conversations {
+    min-height: 100vh;
+  }
+  #chatScreen .content.conversations > .container #currentConversation .message {
+    max-width: 90%;
+  }
+  #chatScreen .content.conversations #currentContact img {
+    width: 40px;
+    height: 40px;
+  }
+  #chatScreen .content.conversations #currentContact h1 {
+    font-size: 0.8rem;
+  }
 }/*# sourceMappingURL=style.css.map */

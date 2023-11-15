@@ -24,7 +24,7 @@ main {
         border-radius: 1rem;
         flex: 1 0 auto;
         overflow: hidden;
-        // max-width: 100%;
+        max-width: 100%;
         // max-width: 50%;
 
         // border: 1px solid purple;
@@ -101,6 +101,7 @@ main {
             @include flexBox($fd: column, $j: space-between, $g: 1.5rem);
             flex: 2 0 auto;
             padding: 1.5rem;
+            max-width: 100%;
 
             #currentContact {
                 @include flexBox($a: center, $g: 1rem, $fw: wrap);
@@ -167,6 +168,35 @@ main {
                                 clip-path: polygon(100% 100%, 0 50%, 0 100%);
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    #chatScreen {
+        .content {
+            &.conversations {
+                min-height: 100vh;
+    
+                & > .container {
+                    #currentConversation {
+                        .message {
+                           max-width: 90%; 
+                        }
+                    }
+                }
+    
+                #currentContact {
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    h1 {
+                        font-size: 0.8rem;
                     }
                 }
             }
