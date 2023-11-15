@@ -3,6 +3,7 @@ import {
   getLocalData,
   setLocalData,
 } from "../../localStorageControl/getData.js";
+import { setLinksByAccess } from "../../windowControl/accessByDevice.js";
 import { mobileDeviceVerify } from "../../windowControl/device.js";
 
 const sideMenu = document.getElementById("side_menu");
@@ -26,6 +27,7 @@ const preLoadSideMenuStatus = () => {
 
 export const sideMenuControl = () => {
   setUserInfos();
+  setLinksByAccess()
 
   const analysisModeButton = document.getElementById("analysisMode");
   const analysisModeStatus = getLocalData("analysisModeStatus");

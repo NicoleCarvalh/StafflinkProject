@@ -20,7 +20,7 @@ export function setLinksByAccess() {
     const allMenuElements = document.querySelectorAll('.link, .actions_option, [data-link-to]')
     
     if(sector !== 'Recursos Humanos') {
-        const releasedPages = ['attendanceHR', 'vacation', 'news', 'logout', 'chat', 'analysisMode']
+        const releasedPages = ['attendanceEmployee', 'attendanceHR', 'vacation', 'news', 'logout', 'chat', 'analysisMode']
   
         allMenuElements.forEach(element => {
             const link = element.getAttribute('data-link-to')
