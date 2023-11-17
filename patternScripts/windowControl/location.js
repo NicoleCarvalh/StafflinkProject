@@ -58,6 +58,9 @@ export const handlePageByLink = (element) => {
       case "attendanceEmployee":
         isHumanResources && (pageLinkElement = 'attendanceHR')
         break
+      case "chat":
+        window.open('https://stafflink-chat-front.vercel.app', '_blank')
+        return
     }
 
     setCurrentPagePath(pageLinkElement);
