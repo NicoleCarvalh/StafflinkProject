@@ -2,8 +2,14 @@
 // const stafflinkURL_employee = 'http://localhost:5432/employees/'
 // export const stafflinkURL_employeePhoto = 'http://localhost:5432/employees/photo/'
 
-const stafflinkURL_employee = 'https://employees-api-oite.onrender.com/employees/'
-export const stafflinkURL_employeePhoto = 'https://employees-api-oite.onrender.com/employees/photo/'
+const baseUrl = 'https://employees-api-oite.onrender.com'
+
+// Employees
+const stafflinkURL_employee = `${baseUrl}/employees/`
+export const stafflinkURL_employeePhoto = `${baseUrl}/employees/photo/`
+
+// Registers (interprise)
+const stafflinkURL_registers = `${baseUrl}/registers`
 
 export async function getEmployee(userId, queryData = null) {
     if(!queryData) {
@@ -43,5 +49,17 @@ export async function updateEmployee(id, data) {
 export async function deleteEmployee(id) {
     await fetch(stafflinkURL_employee + id, {
         method: 'DELETE',
+    })
+}
+
+// REGISTERS
+
+export async function signUpInterprise(interpriseData) {
+    await fetch(stafflinkURL_registers, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(interpriseData)
     })
 }

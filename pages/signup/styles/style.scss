@@ -154,7 +154,7 @@ main {
         }
 
         .actions {
-            @include flexBox($a: center, $j: space-between, $g: .5rem, $fw: wrap);
+            @include flexBox($a: center, $j: center, $g: .5rem, $fw: wrap);
             font-size: .8rem;
             margin-top: 1.5rem;
             

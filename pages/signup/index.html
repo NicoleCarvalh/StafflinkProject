@@ -13,6 +13,11 @@
     
     <link rel="stylesheet" href="styles/style.css">
     <script src="scripts/main.js" type="module" defer></script>
+
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
 </head>
 <body>
     <aside id="sideContent">
@@ -181,6 +186,17 @@
                     <button type="button" id="back">Voltar</button>
                     <button type="reset" id="clear">Limpar formulário</button>
                     <button type="submit" id="continue">Continuar</button>
+                    <div id="loader" style="display: none;">
+                        <div>
+                          <dotlottie-player
+                            src="https://lottie.host/29e5ec97-c579-4bd4-bba1-a1801849014d/I7wKA6dKTe.json"
+                            background="transparent"
+                            speed="1"
+                            loop
+                            autoplay
+                          ></dotlottie-player>
+                        </div>
+                    </div>
                 </div>
             </form>
         </section>

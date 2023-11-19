@@ -1,3 +1,4 @@
+import { saveEmployee, signUpInterprise } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 // url para a API de cep:
@@ -173,22 +174,34 @@ form.addEventListener('submit', (e) => {
         return
     }
 
-    alert('Cadastro finalizado')
+    document.getElementById("loader").style.display = 'inline-block';
+    document.getElementById("continue").style.display = "none";
+
     const allInputs = document.querySelectorAll('.fieldsContainer input')
     
     allInputs.forEach((inp) => {
         allData[inp.name] = inp.value
     })
 
-    window.location.href = '/'
+    Promise.all([
+        signUpInterprise(allData),
+        saveEmployee({
+            email: allData.email,
+            password: allData.password
+        })
+    ])
+    .then(() => {
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("continue").style.display = "block";
 
-    fetch('https://employees-api-oite.onrender.com/registers', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(allData)
+        alert('Cadastro finalizado')
+        window.location.href = '/'
     })
-    .then(() => console.log('Deu certo'))
-    .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
+    .catch((error) => {
+        document.getElementById("loader").style.display = 'none';
+        document.getElementById("continue").style.display = "block";
+        
+        alert('Algo deu errado. Favor, tente novamente.')
+        console.log(`Algo deu errado. Erro: ${error.message}`)
+    })
 })
