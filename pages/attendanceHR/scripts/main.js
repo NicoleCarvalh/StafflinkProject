@@ -1,10 +1,9 @@
+import { stafflinkURL_employeePhoto } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 allUtils.access();
 allUtils.sideMenu();
 allUtils.notes();
-
-console.log("Iniciando requisição do fetch");
 
 fetch("https://employees-api-oite.onrender.com/attendance", {
   method: "GET",
@@ -15,31 +14,24 @@ fetch("https://employees-api-oite.onrender.com/attendance", {
   .then((data) => {
     return data.json();
   })
-  .then((json) => {
-    console.log("Iniciando o 1 then (antes do for)");
-    console.log(
-      "Console log do data.json (antes do for):" + JSON.stringify(json)
-    );
-
-    teste().then(() => {
-      console.log("Final do for (antes da listagem)");
+  .then((attendances) => {
+    createCompleteAttendanceObject(attendances).then((attendanceList) => {
+      listAttendance(attendanceList)
     });
   });
 
-function list(list) {
-  console.log("Entrou na função list()");
-  console.log("Verificacao do parametro recebido na função list(): ");
-  console.log(list);
+function listAttendance(attendanceList) {
+  document.getElementById("tbody").innerHTML = ""
 
-  for (let i = 0; i < list.length; i++) {
-    let employeePhoto = list[i].employeePhotoName;
-    let empName = list[i].employeeName;
-    let empSector = list[i].employeeSector;
-    let empJourney =
-      list[i].employeeJourneyInit + " - " + list[i].employeeJourneyEnd;
-    let registerDate = list[i].attendancedate;
-    let empEntrance = list[i].entrance;
-    let empExit = list[i].departure;
+  for (let i = 0; i < attendanceList.length; i++) {
+    let employeePhoto = attendanceList[i].employeePhotoName;
+    let empName = attendanceList[i].employeeName;
+    let empSector = attendanceList[i].employeeSector;
+    let empJourney = attendanceList[i].employeeJourneyInit + " - " + attendanceList[i].employeeJourneyEnd;
+    let registerDate = attendanceList[i].attendancedate;
+    registerDate = registerDate.split("-").reverse().join("/")
+    let empEntrance = attendanceList[i].entrance;
+    let empExit = attendanceList[i].departure;
 
     let trInfos = document.createElement("tr");
 
@@ -55,8 +47,7 @@ function list(list) {
     imgEmployeePhoto.alt = "funcionário";
     spanEmployeePhoto.appendChild(imgEmployeePhoto);
 
-    divUserInfos.appendChild(spanEmployeePhoto);
-    divUserInfos.innerText = empName;
+    divUserInfos.append(spanEmployeePhoto, empName);
 
     tdUser.appendChild(divUserInfos);
 
@@ -92,20 +83,14 @@ function list(list) {
   }
 }
 
-async function teste(json) {
-  let attendanceListing = [];
+async function createCompleteAttendanceObject(attendances) {
+  let attendanceList = [];
 
-  for (let i = 0; i < json.length; i++) {
-    console.log(
-      "Entrando no for (começo do for, antes do fetch dos employees)"
-    );
+  for (let i = 0; i < attendances.length; i++) {
     await fetch(
-      `https://employees-api-oite.onrender.com/employees/${json[i].employeeidattendance}`
+      `https://employees-api-oite.onrender.com/employees/${attendances[i].employeeidattendance}`
     )
       .then((data) => {
-        console.log(
-          "Iniciando o 2 then (retornando data.json do fetch de employees)"
-        );
         return data.json();
       })
       .then((employee) => {
@@ -115,8 +100,8 @@ async function teste(json) {
         let employeeJourneyInit = employee[0].journeyinit;
         let employeeJourneyEnd = employee[0].journeyend;
 
-        attendanceListing.push({
-          ...json[i],
+        attendanceList.push({
+          ...attendances[i],
           employeePhotoName,
           employeeName,
           employeeSector,
@@ -127,8 +112,9 @@ async function teste(json) {
       })
       .catch((error) => {
         console.log("Erro no then dos employees");
+        console.log(error.message);
       });
   }
 
-  return attendanceListing;
+  return attendanceList;
 }
