@@ -50,7 +50,7 @@ export const handlePageByLink = (element) => {
           if (logoutConfirmation) {
             setCurrentPagePath(pageLinkElement);
           }
-        break
+        return
       case "attendanceHR":
           setSystemAccess()
           !isHumanResources && (pageLinkElement = 'attendanceEmployee')
