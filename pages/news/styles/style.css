@@ -1026,6 +1026,8 @@ body .blurredOut {
 
 .loading {
   margin-bottom: 1rem;
+  height: 18rem;
+  min-height: 18rem;
 }
 
 main {

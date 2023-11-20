@@ -2,6 +2,9 @@
 @import '../../../patternStyles/components/dataTable/style';
 @import '../../../patternStyles/components/form/styles';
 
+.loading {
+  min-height: 1.5rem;
+}
 
 .tableContainer .table .table_content .body tr td .employeeCode {
   padding-left: 2rem;

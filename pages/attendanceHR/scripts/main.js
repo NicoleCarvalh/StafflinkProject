@@ -16,20 +16,23 @@ fetch("https://employees-api-oite.onrender.com/attendance", {
   })
   .then((attendances) => {
     createCompleteAttendanceObject(attendances).then((attendanceList) => {
-      listAttendance(attendanceList)
+      listAttendance(attendanceList);
     });
   });
 
 function listAttendance(attendanceList) {
-  document.getElementById("tbody").innerHTML = ""
+  document.getElementById("tbody").innerHTML = "";
 
   for (let i = 0; i < attendanceList.length; i++) {
     let employeePhoto = attendanceList[i].employeePhotoName;
     let empName = attendanceList[i].employeeName;
     let empSector = attendanceList[i].employeeSector;
-    let empJourney = attendanceList[i].employeeJourneyInit + " - " + attendanceList[i].employeeJourneyEnd;
+    let empJourney =
+      attendanceList[i].employeeJourneyInit +
+      " - " +
+      attendanceList[i].employeeJourneyEnd;
     let registerDate = attendanceList[i].attendancedate;
-    registerDate = registerDate.split("-").reverse().join("/")
+    registerDate = registerDate.split("-").reverse().join("/");
     let empEntrance = attendanceList[i].entrance;
     let empExit = attendanceList[i].departure;
 
@@ -66,6 +69,11 @@ function listAttendance(attendanceList) {
     let tdExit = document.createElement("td");
     tdExit.innerText = empExit;
 
+    let tdOverrun = document.createElement("td");
+    tdOverrun.className = "additional positive";
+    let overrun = calcularOverrun(empJourney, empEntrance, empExit);
+    tdOverrun.innerText = overrun;
+
     let elementsToAdd = [
       tdUser,
       tdSector,
@@ -73,6 +81,7 @@ function listAttendance(attendanceList) {
       tdDate,
       tdEntrance,
       tdExit,
+      tdOverrun,
     ];
 
     for (let i = 0; i < elementsToAdd.length; i++) {
@@ -117,4 +126,26 @@ async function createCompleteAttendanceObject(attendances) {
   }
 
   return attendanceList;
+}
+
+function calcularOverrun(journey, entrance, exit) {
+  const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);
+  const journeyEnd = new Date(`01/01/2023 ${journey.split(" - ")[1]}`);
+  const entranceTime = new Date(`01/01/2023 ${entrance}`);
+  const exitTime = new Date(`01/01/2023 ${exit}`);
+
+  const expectedJourneyTime = journeyEnd - journeyInit;
+
+  const actualJourneyTime = exitTime - entranceTime;
+
+  const diferencaHoras =
+    (actualJourneyTime - expectedJourneyTime) / 1000 / 60 / 60;
+
+  const diferencaMinutos = Math.round((diferencaHoras % 1) * 60);
+
+  const sinal = diferencaHoras >= 0 ? "+" : "-";
+  const horasFormatadas = Math.floor(Math.abs(diferencaHoras));
+  const minutosFormatados = diferencaMinutos.toString().padStart(2, "0");
+
+  return `${sinal}${horasFormatadas}:${minutosFormatados}`;
 }

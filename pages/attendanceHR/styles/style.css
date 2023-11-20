@@ -20,7 +20,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 18rem;
+  min-height: 1.5rem;
 }
 .loading::before {
   content: "";
@@ -166,7 +166,7 @@ select:hover {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 18rem;
+  min-height: 1.5rem;
 }
 .loading::before {
   content: "";
@@ -517,7 +517,7 @@ select:hover {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 18rem;
+  min-height: 1.5rem;
 }
 .loading::before {
   content: "";
@@ -703,7 +703,7 @@ main #main_content::before {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 18rem;
+  min-height: 1.5rem;
 }
 .loading::before {
   content: "";
@@ -1045,7 +1045,7 @@ body .blurredOut {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 18rem;
+  min-height: 1.5rem;
 }
 .loading::before {
   content: "";
