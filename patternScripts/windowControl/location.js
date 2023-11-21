@@ -68,5 +68,5 @@ export const handlePageByLink = (element) => {
 };
 
 function verifySector(sector = 'Recursos Humanos') {
-  return getLocalData('user').access.sector === sector
+  return getLocalData('user')?.access?.sector === sector
 }

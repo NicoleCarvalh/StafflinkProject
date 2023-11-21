@@ -1,5 +1,5 @@
 import { buildFilledEmployeeForm, throwFormEvents } from "../../../../patternScripts/components/employeeForm/index.js";
-import { deleteEmployee, getEmployee, getEmployees, updateEmployee } from "../../../../patternScripts/api/stafflink.js";
+import { deleteAttendance, deleteEmployee, getEmployee, getEmployees, updateEmployee } from "../../../../patternScripts/api/stafflink.js";
 import { list } from "../main.js";
 import { deleteLocalData, getLocalData, setLocalData } from "../../../../patternScripts/localStorageControl/getData.js";
 import { setUserInfos } from "../../../../patternScripts/components/sideMenu/index.js";
@@ -60,7 +60,10 @@ function employeePopup(allDatas) {
         const deleteConfirm = confirm('Você deseja mesmo exluir este funcionário de todos os dados da empresa?')
         if(!deleteConfirm) return
 
-        deleteEmployee(allDatas.id)
+        Promise.all([
+            deleteEmployee(allDatas.id),
+            deleteAttendance(allDatas.id)
+        ])
         .then(() => {
             alert('O funcionário foi deletado.')
 

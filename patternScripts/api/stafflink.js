@@ -12,6 +12,9 @@ export const stafflinkURL_employeePhoto = `${baseUrl}/employees/photo/`
 // Registers (interprise)
 const stafflinkURL_registers = `${baseUrl}/registers`
 
+// Attendance
+const stafflinkURL_attendance = `${baseUrl}/attendance`
+
 export async function getEmployee(userId, queryData = null) {
   if (!queryData) {
     const url = stafflinkURL_employee + userId;
@@ -29,10 +32,20 @@ export async function getEmployee(userId, queryData = null) {
 }
 
 export async function saveEmployee(employeeObject) {
-  await fetch(stafflinkURL_employee, {
-    method: "POST",
-    body: employeeObject,
-  });
+  if(employeeObject instanceof FormData) {
+    await fetch(stafflinkURL_employee, {
+      method: "POST",
+      body: employeeObject,
+    });
+  } else {
+    fetch(stafflinkURL_employee, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(employeeObject),
+    })
+  }
 }
 
 export async function getEmployees() {
@@ -65,4 +78,12 @@ export async function signUpInterprise(interpriseData) {
         },
         body: JSON.stringify(interpriseData)
     })
+}
+
+// ATTENDANCE
+
+export async function deleteAttendance(employeeId) {
+  await fetch(`${stafflinkURL_attendance}/${employeeId}` , {
+    method: "DELETE",
+  })
 }

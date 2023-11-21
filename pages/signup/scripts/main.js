@@ -32,7 +32,12 @@ const nextStepButton = document.getElementById('continue')
 
 const previousStepButton = document.getElementById('back')
 previousStepButton.addEventListener('click', () => {
-    if(currentStep <= 1) return
+    if(currentStep <= 1) {
+        const backToLogin = confirm('Deseja voltar para a página de login?')
+
+        backToLogin && (window.location.href = '/')
+        return 
+    }
 
     nextStepButton.textContent != 'Continuar' && (nextStepButton.textContent = 'Continuar')
 

@@ -4,8 +4,6 @@ const watchVideo = document.getElementById('watchVideo')
 const goToSignup = document.getElementById('goToSignup')
 const goToLogin = document.getElementById('goToLogin')
 
-(goToSignup)
-
 watchVideo.addEventListener('click', () => {
     document.querySelector('.welcome').classList.remove('visible')
     document.querySelector('.video').classList.add('visible')

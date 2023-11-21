@@ -59,9 +59,14 @@ export function setUserInfos() {
   const userName = document.querySelector(".user_info h3");
   const userRole = document.querySelector(".user_info p");
 
-  const currentUser = getLocalData("user").user;
+  const currentUser = getLocalData("user")?.user;
 
-  userPhotoImage.src = stafflinkURL_employeePhoto + currentUser.employeephotoname;
+  if(currentUser?.employeephotoname === null || currentUser?.employeephotoname === undefined) {
+    userPhotoImage.src = '/assets/images/Stafflink_favicon_dark.svg'
+  } else {
+    userPhotoImage.src = stafflinkURL_employeePhoto + currentUser.employeephotoname;
+  }
+
   userName.textContent =
     [
       currentUser.name.split(" ")[0], 

@@ -3,6 +3,7 @@ import { getLocalData, setLocalData } from "../localStorageControl/getData.js";
 
 export const setSystemAccess = async () => {
     const currentUser = getLocalData('user')
+    console.log(currentUser)
 
     await getEmployee(currentUser.user.id).then(employee => {
         const sectorAccess = employee.sector

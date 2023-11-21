@@ -16,7 +16,7 @@ form.addEventListener('submit', async (event) => {
     const email = event.target.querySelector('input[type=email]')
     const password = event.target.querySelector('input[type=password]')
 
-    setTimeout(() => {
+    const networkAlert = setTimeout(() => {
         alert('Parece que houve algum problema de conexão :/ \nRecarregue a página e tente novamente')
 
         document.getElementById("loader").style.display = 'none';
@@ -24,11 +24,22 @@ form.addEventListener('submit', async (event) => {
     }, 25 * 1000)
 
     const foundEmployee = await getEmployee(null, {email: email.value, password: password.value})
-    .then(data => {
-        return data ?? false
+    .then(employee => {
+        allUtils.setLocalStorage('user', {
+            user: {
+                ...employee,
+                name: employee?.name ?? 'Administrador',
+                office: employee?.name ?? 'Administrador'
+            }, 
+            access: true
+        })
+
+        return employee ?? false
     })
     .catch((error) => {
-        alert(`Parece que algo deu errado :/ \nFavor, tente novamente \n\nErro: ${error.message}`)
+        alert(`Parece que algo deu errado :/ \nFavor, tente novamente`)
+
+        clearTimeout(networkAlert)
         
         document.getElementById("loader").style.display = 'none';
         document.getElementById("btnLogin").style.display = "block";
@@ -38,6 +49,8 @@ form.addEventListener('submit', async (event) => {
         email.style.borderColor = "red"
         password.style.borderColor = "red"
 
+        alert('Dados inválidos')
+
         document.getElementById("loader").style.display = 'none';
         document.getElementById("btnLogin").style.display = "block";
         return
@@ -46,17 +59,18 @@ form.addEventListener('submit', async (event) => {
     email.style.borderColor = "green"
     password.style.borderColor = "green"
 
-    allUtils.setLocalStorage('user', {user: {...foundEmployee}, access: true})
-    
-    await setSystemAccess()
+    const user = await setSystemAccess()
+    const access = user?.access
+    const sector = access?.sector
 
-    const access = getLocalData('user').access
-    const sector = access.sector
 
-    if(sector !== 'Recursos Humanos') {
-        allUtils.setPage('attendanceEmployee')
-    } else {
+    if(sector === 'Recursos Humanos') {
         allUtils.setPage('employees')
+    } else if(sector === null || sector === undefined) {
+        // Primeiro acesso
+        allUtils.setPage('employees/registerNewEmployee')
+    } else {
+        allUtils.setPage('attendanceEmployee')
     }
     
     document.getElementById("loader").style.display = 'none';
