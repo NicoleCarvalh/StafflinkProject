@@ -3,7 +3,9 @@
 // export const stafflinkURL_employeePhoto =
 //   "http://localhost:4040/employees/photo/";
 
-const baseUrl = 'https://employees-api-oite.onrender.com'
+// const baseUrl = 'https://employees-api-oite.onrender.com'
+
+const baseUrl = 'http://localhost:4040'
 
 // Employees
 const stafflinkURL_employee = `${baseUrl}/employees/`

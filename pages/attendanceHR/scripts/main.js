@@ -71,7 +71,7 @@ function listAttendance(attendanceList) {
 
     let tdOverrun = document.createElement("td");
     tdOverrun.className = "additional positive";
-    let overrun = calcularOverrun(empJourney, empEntrance, empExit);
+    let overrun = calculateOverrun(empJourney, empEntrance, empExit);
     tdOverrun.innerText = overrun;
 
     let elementsToAdd = [
@@ -128,7 +128,7 @@ async function createCompleteAttendanceObject(attendances) {
   return attendanceList;
 }
 
-function calcularOverrun(journey, entrance, exit) {
+function calculateOverrun(journey, entrance, exit) {
   const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);
   const journeyEnd = new Date(`01/01/2023 ${journey.split(" - ")[1]}`);
   const entranceTime = new Date(`01/01/2023 ${entrance}`);
@@ -138,14 +138,14 @@ function calcularOverrun(journey, entrance, exit) {
 
   const actualJourneyTime = exitTime - entranceTime;
 
-  const diferencaHoras =
+  const differenceInHours =
     (actualJourneyTime - expectedJourneyTime) / 1000 / 60 / 60;
 
-  const diferencaMinutos = Math.round((diferencaHoras % 1) * 60);
+  const differenceInMinutes = Math.round((differenceInHours % 1) * 60);
 
-  const sinal = diferencaHoras >= 0 ? "+" : "-";
-  const horasFormatadas = Math.floor(Math.abs(diferencaHoras));
-  const minutosFormatados = diferencaMinutos.toString().padStart(2, "0");
+  const sign = differenceInHours >= 0 ? "+" : "-";
+  const formattedHours = Math.floor(Math.abs(differenceInHours));
+  const formattedMinutes = differenceInMinutes.toString().padStart(2, "0");
 
-  return `${sinal}${horasFormatadas}:${minutosFormatados}`;
+  return `${sign}${formattedHours}:${formattedMinutes}`;
 }
