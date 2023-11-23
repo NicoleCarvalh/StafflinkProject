@@ -5,9 +5,13 @@ allUtils.access();
 allUtils.sideMenu();
 allUtils.notes();
 
+// const baseUrl = 'https://employees-api-oite.onrender.com'
+
+const baseUrl = "http://localhost:4040";
+
 let currentUser = allUtils.getLocalData("user").user;
 
-fetch(`https://employees-api-oite.onrender.com/attendance/${currentUser.id}`, {
+fetch(`${baseUrl}/attendance/${currentUser.id}`, {
   method: "GET",
   headers: {
     "Content-Type": "Application/json",
@@ -19,14 +23,17 @@ fetch(`https://employees-api-oite.onrender.com/attendance/${currentUser.id}`, {
   .then((attendance) => {
     document.getElementById("tbody").innerHTML = "";
 
+    if(attendance.length == 0){
+      document.getElementById("loading-div").remove();
+      return;
+    }
+
     for (let i = 0; i < attendance.length; i++) {
       let registerDate = attendance[i].attendancedate;
       registerDate = registerDate.split("-").reverse().join("/");
       let empEntrance = attendance[i].entrance;
       let empExit = attendance[i].departure;
       let empJourney = currentUser.journeyinit + " - " + currentUser.journeyend;
-
-      // console.log(empJourney);
 
       let trInfos = document.createElement("tr");
 
@@ -37,27 +44,31 @@ fetch(`https://employees-api-oite.onrender.com/attendance/${currentUser.id}`, {
       tdEntrance.innerText = empEntrance;
 
       let tdExit = document.createElement("td");
-      tdExit.innerText = empExit;
 
       let tdOverrun = document.createElement("td");
       tdOverrun.className = "additional positive";
-      let overrun = calculateOverrun(empJourney, empEntrance, empExit);
-      tdOverrun.innerText = overrun;
 
-      let elementsToAdd = [
-        tdDate,
-        tdEntrance,
-        tdExit,
-        tdOverrun,
-      ];
-  
+      if (empExit == null) {
+        tdExit.innerText = "-";
+        tdOverrun.innerText = "-";
+      } else {
+        tdExit.innerText = empExit;
+        let overrun = calculateOverrun(empJourney, empEntrance, empExit);
+        tdOverrun.innerText = overrun;
+      }
+
+      let elementsToAdd = [tdDate, tdEntrance, tdExit, tdOverrun];
+
       for (let i = 0; i < elementsToAdd.length; i++) {
         trInfos.appendChild(elementsToAdd[i]);
       }
-  
+
       document.getElementById("tbody").appendChild(trInfos);
+      
     }
-  });
+    document.getElementById("loading-div").remove();
+  })
+  .catch((err) => console.log(`Algo deu errado. Erro: ${err.message}`));
 
 function calculateOverrun(journey, entrance, exit) {
   const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);

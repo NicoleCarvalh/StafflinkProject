@@ -2246,13 +2246,13 @@ main .title {
   font-size: 1.5rem;
   text-align: center;
 }
-main .tolkenNumber {
+main #tolkenArea {
   background-color: #f1f1f1;
   padding: 2rem 2rem;
   border-radius: 1rem;
   color: #015E64;
 }
-main .tolkenNumber span {
+main #tolkenArea span {
   font-size: 9rem;
 }
 main #progressBar {

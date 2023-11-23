@@ -58,7 +58,8 @@ function showBirthdays(json) {
 }
 
 // news list
-fetch("https://employees-api-oite.onrender.com/news", {
+// fetch("https://employees-api-oite.onrender.com/news", {
+  fetch("http://localhost:4040/news", {
   method: "GET",
   headers: {
     "Content-Type": "Application/json",
@@ -76,7 +77,8 @@ fetch("https://employees-api-oite.onrender.com/news", {
       let newsExpirationDate = new Date(json[i].expirationdate);
 
       if (currentDate > newsExpirationDate) {
-        fetch(`https://employees-api-oite.onrender.com/news/${json[i].id}`, {
+        // fetch(`https://employees-api-oite.onrender.com/news/${json[i].id}`, {
+          fetch("http://localhost:4040/news", {
           method: "DELETE",
         });
       } else {
@@ -89,6 +91,7 @@ fetch("https://employees-api-oite.onrender.com/news", {
 
 // news delete
 function list(json) {
+  console.log(json)
   document.getElementById("noticias-container").innerHTML = "";
 
   for (let i = 0; i < json.length; i++) {

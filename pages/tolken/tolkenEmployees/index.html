@@ -26,14 +26,18 @@
 
     <link rel="stylesheet" href="../tolkenEmployees/styles/style.css" />
     <script src="./scripts/main.js" type="module" defer></script>
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
   </head>
-
 
   <body>
     <main>
       <header>
-
-        <div class="imgTolken"> <img src="../../../assets/images/tolken.svg" alt="Colaboradores" /></div>
+        <div class="imgTolken">
+          <img src="../../../assets/images/tolken.svg" alt="Colaboradores" />
+        </div>
 
         <div>
           <h1>Tolken de registro</h1>
@@ -42,14 +46,20 @@
 
         <form action="">
           <div class="field">
-            <input type="tolkenEmployee" id="tolkenEmployee" name="tolkenEmployee" required>
-        </div>
+            <input
+              type="text"
+              id="tolkenEmployee"
+              name="tolkenEmployee"
+              required
+            />
+          </div>
         </form>
 
-        <div class="optionsTolken">
+        <div class="optionsTolken" id="optionsTolken">
           <button id="confirm" onclick="">Confirmar</button>
           <button id="tolkenbtn" onclick="history.back()">Voltar</button>
         </div>
+        <div id="loading-div"></div>
       </header>
     </main>
   </body>

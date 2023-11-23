@@ -67,12 +67,18 @@ function listAttendance(attendanceList) {
     tdEntrance.innerText = empEntrance;
 
     let tdExit = document.createElement("td");
-    tdExit.innerText = empExit;
 
     let tdOverrun = document.createElement("td");
     tdOverrun.className = "additional positive";
-    let overrun = calculateOverrun(empJourney, empEntrance, empExit);
-    tdOverrun.innerText = overrun;
+
+    if (empExit == null) {
+      tdExit.innerText = "-";
+      tdOverrun.innerText = "-";
+    } else {
+      tdExit.innerText = empExit;
+      let overrun = calculateOverrun(empJourney, empEntrance, empExit);
+      tdOverrun.innerText = overrun;
+    }
 
     let elementsToAdd = [
       tdUser,
