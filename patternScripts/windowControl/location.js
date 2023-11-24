@@ -27,7 +27,7 @@ export const setCurrentPagePath = (page) => {
 };
 
 export const backToPreviousPage = () => {
-  history.back();
+  window.location.href = document.referrer
 };
 
 export const handlePageByLink = (element) => {

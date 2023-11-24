@@ -1,8 +1,5 @@
+import { getAttendance, getTolken, saveAttendance, uploadAttendanceDeparture } from "../../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../../patternScripts/main.js";
-
-// const baseUrl = 'https://employees-api-oite.onrender.com'
-
-const baseUrl = "http://localhost:4040";
 
 document.getElementById("confirm").addEventListener("click", () => {
   let input = document.getElementById("tolkenEmployee").value;
@@ -20,15 +17,7 @@ document.getElementById("confirm").addEventListener("click", () => {
   ></dotlottie-player>
 </div>`;
 
-  fetch(`${baseUrl}/tolken`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-  })
-    .then((data) => {
-      return data.json();
-    })
+  getTolken()
     .then((json) => {
       if (input == json[0].tolkennumber) {
         let currentUser = allUtils.getLocalData("user").user;
@@ -40,45 +29,25 @@ document.getElementById("confirm").addEventListener("click", () => {
           .toLocaleString("pt-BR", { minimumIntegerDigits: 2 });
         let currentTime = `${currentHours}:${currentMinutes}`;
 
-        fetch(`${baseUrl}/attendance/${currentUser.id}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "Application/json",
-          },
-        })
-          .then((data) => {
-            return data.json();
-          })
+        getAttendance(currentUser.id)
           .then((json) => {
             if (
               (json.length != 0 && json[json.length - 1].departure != null) ||
               json.length == 0
             ) {
-              fetch(`${baseUrl}/attendance`, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "Application/json",
-                },
-                body: JSON.stringify({
-                  date: currentDate,
-                  entrance: currentTime,
-                  departure: null,
-                  employeeId: currentUser.id,
-                }),
-              });
+              saveAttendance({
+                date: currentDate,
+                entrance: currentTime,
+                departure: null,
+                employeeId: currentUser.id,
+              })
             } else if (
               json.length != 0 &&
               json[json.length - 1].departure == null
             ) {
-              fetch(`${baseUrl}/attendance/${currentUser.id}`, {
-                method: "PUT",
-                headers: {
-                  "Content-Type": "Application/json",
-                },
-                body: JSON.stringify({
-                  newAttendanceDeparture: currentTime,
-                }),
-              });
+              uploadAttendanceDeparture(currentUser.id, {
+                newAttendanceDeparture: currentTime,
+              })
             } else {
               console.log("Fugiu da verificação");
             }

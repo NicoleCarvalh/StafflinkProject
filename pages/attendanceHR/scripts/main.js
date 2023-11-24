@@ -1,36 +1,32 @@
-import { stafflinkURL_employeePhoto } from "../../../patternScripts/api/stafflink.js";
+import { getAllAttendances, getEmployee, stafflinkURL_employeePhoto } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 allUtils.access();
 allUtils.sideMenu();
 allUtils.notes();
 
-fetch("https://employees-api-oite.onrender.com/attendance", {
-  method: "GET",
-  headers: {
-    "Content-Type": "Application/json",
-  },
-})
-  .then((data) => {
-    return data.json();
-  })
-  .then((attendances) => {
-    createCompleteAttendanceObject(attendances).then((attendanceList) => {
-      listAttendance(attendanceList);
-    });
-  });
+getAllAttendances()
+.then((attendances) => {
+  if(attendances.length > 0) {
+    // createCompleteAttendanceObject(attendances).then((attendanceList) => {
+    //   listAttendance(attendanceList);
+    // });
+
+    listAttendance(attendances);
+  }
+});
 
 function listAttendance(attendanceList) {
   document.getElementById("tbody").innerHTML = "";
 
   for (let i = 0; i < attendanceList.length; i++) {
-    let employeePhoto = attendanceList[i].employeePhotoName;
-    let empName = attendanceList[i].employeeName;
-    let empSector = attendanceList[i].employeeSector;
+    let employeePhoto = attendanceList[i].employeephotoname;
+    let empName = attendanceList[i].name;
+    let empSector = attendanceList[i].sector;
     let empJourney =
-      attendanceList[i].employeeJourneyInit +
+      attendanceList[i].journeyinit +
       " - " +
-      attendanceList[i].employeeJourneyEnd;
+      attendanceList[i].journeyend;
     let registerDate = attendanceList[i].attendancedate;
     registerDate = registerDate.split("-").reverse().join("/");
     let empEntrance = attendanceList[i].entrance;
@@ -98,41 +94,36 @@ function listAttendance(attendanceList) {
   }
 }
 
-async function createCompleteAttendanceObject(attendances) {
-  let attendanceList = [];
+// async function createCompleteAttendanceObject(attendances) {
+//   let attendanceList = [];
 
-  for (let i = 0; i < attendances.length; i++) {
-    await fetch(
-      `https://employees-api-oite.onrender.com/employees/${attendances[i].employeeidattendance}`
-    )
-      .then((data) => {
-        return data.json();
-      })
-      .then((employee) => {
-        let employeePhotoName = employee[0].employeephotoname;
-        let employeeName = employee[0].name;
-        let employeeSector = employee[0].sector;
-        let employeeJourneyInit = employee[0].journeyinit;
-        let employeeJourneyEnd = employee[0].journeyend;
+//   for (let i = 0; i < attendances.length; i++) {
+//     await getEmployee(attendances[i].employeeidattendance)
+//       .then((employee) => {
+//         let employeePhotoName = employee.employeephotoname;
+//         let employeeName = employee.name;
+//         let employeeSector = employee.sector;
+//         let employeeJourneyInit = employee.journeyinit;
+//         let employeeJourneyEnd = employee.journeyend;
 
-        attendanceList.push({
-          ...attendances[i],
-          employeePhotoName,
-          employeeName,
-          employeeSector,
-          employeeJourneyInit,
-          employeeJourneyEnd,
-          overrun: "00:00",
-        });
-      })
-      .catch((error) => {
-        console.log("Erro no then dos employees");
-        console.log(error.message);
-      });
-  }
+//         attendanceList.push({
+//           ...attendances[i],
+//           employeePhotoName,
+//           employeeName,
+//           employeeSector,
+//           employeeJourneyInit,
+//           employeeJourneyEnd,
+//           overrun: "00:00",
+//         });
+//       })
+//       .catch((error) => {
+//         console.log("Erro no then dos employees");
+//         console.log(error.message);
+//       });
+//   }
 
-  return attendanceList;
-}
+//   return attendanceList;
+// }
 
 function calculateOverrun(journey, entrance, exit) {
   const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);

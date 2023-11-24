@@ -1,4 +1,4 @@
-import { getEmployees } from "../../../patternScripts/api/stafflink.js";
+import { deleteNews, getEmployees, listNews } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 allUtils.access();
 
@@ -40,7 +40,7 @@ function showBirthdays(json) {
     let employeeBirthday = json[i].birthday;
 
     let imgEmployee = document.createElement("img");
-    imgEmployee.src = `https:/employees-api-oite.onrender.com/employees/photo/${employeePhoto}`;
+    imgEmployee.src = `${stafflinkURL_employeePhoto}/${employeePhoto}`;
 
     document.getElementsByClassName("bDayImgs")[0].appendChild(imgEmployee);
 
@@ -58,40 +58,27 @@ function showBirthdays(json) {
 }
 
 // news list
-// fetch("https://employees-api-oite.onrender.com/news", {
-  fetch("http://localhost:4040/news", {
-  method: "GET",
-  headers: {
-    "Content-Type": "Application/json",
-  },
-})
-  .then((data) => {
-    return data.json();
-  })
-  .then((json) => {
-    let newsList = [];
+listNews()
+.then((news) => {
+  let newsList = [];
 
-    for (let i = 0; i < json.length; i++) {
-      let currentDate = new Date();
+  for (let i = 0; i < news.length; i++) {
+    let currentDate = new Date();
 
-      let newsExpirationDate = new Date(json[i].expirationdate);
+    let newsExpirationDate = new Date(news[i].expirationdate);
 
-      if (currentDate > newsExpirationDate) {
-        // fetch(`https://employees-api-oite.onrender.com/news/${json[i].id}`, {
-          fetch("http://localhost:4040/news", {
-          method: "DELETE",
-        });
-      } else {
-        newsList.push(json[i]);
-      }
+    if (currentDate > newsExpirationDate) {
+      deleteNews(news[i].id)
+    } else {
+      newsList.push(news[i]);
     }
+  }
 
-    list(newsList);
-  });
+  list(newsList);
+});
 
 // news delete
 function list(json) {
-  console.log(json)
   document.getElementById("noticias-container").innerHTML = "";
 
   for (let i = 0; i < json.length; i++) {
@@ -116,7 +103,7 @@ function list(json) {
     divNewsImg.className = "newsImg loading";
 
     let imgNews = document.createElement("img");
-    imgNews.src = `https://employees-api-oite.onrender.com/news/bannerFile/${newsImg}`;
+    imgNews.src = `${stafflinkURL_newsPhoto}/${newsImg}`;
     imgNews.alt = "Imagem da notícia";
 
     divNewsImg.appendChild(imgNews);
@@ -133,12 +120,8 @@ function list(json) {
 
       if (!warning) return;
 
-      fetch(`https://employees-api-oite.onrender.com/news/${btnID}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "Application/json",
-        },
-      }).then(() => {
+      deleteNews(btnID)
+      .then(() => {
         window.location.reload();
       });
     });

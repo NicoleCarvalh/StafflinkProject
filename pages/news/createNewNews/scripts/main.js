@@ -1,3 +1,4 @@
+import { saveNews } from "../../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../../patternScripts/main.js";
 
 allUtils.sideMenu()
@@ -45,9 +46,9 @@ form.addEventListener('submit', (ev) => {
     })
     form.querySelector('input').focus();
 
-    fetch('https://employees-api-oite.onrender.com/news', {
-        method: "POST",
-        body: allData
+    saveNews(allData)
+    .then(() => {
+        alert('Notícia cadastrada com sucesso')
     })
     .catch(error => {
         console.log(error.message)

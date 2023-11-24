@@ -1,56 +1,26 @@
 // import { allUtils } from "../../../patternScripts/main.js"
 
-//tolken number
-// function generateTolken() {
-//   tolkenNumber = Math.floor(100000 + Math.random() * 900000);
-//   const numberSpan = document.getElementById("tolken");
-//   numberSpan.innerText = tolkenNumber;
-// }
+import { getTolken, uploadTolken } from "../../../../patternScripts/api/stafflink.js";
 
-// generateTolken();
-
-// const localUrl = "http://localhost:4040/tolken"
-
-const localUrl = "https://employees-api-oite.onrender.com/tolken"
-
-insertTolken();
+insertTolkenOnHTML();
 
 function generateTolken() {
-  insertTolken().then((data) => {
-    fetch(`${localUrl}/${data}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({newTolkenNumber: Math.floor(100000 + Math.random() * 900000)}),
-    }).then(() => {
-      insertTolken();
+  getTolken()
+  .then((currentTolken) => {
+    uploadTolken(currentTolken, {newTolkenNumber: Math.floor(100000 + Math.random() * 900000)})
+    .then(() => {
+      insertTolkenOnHTML();
     });
   });
 }
 
-async function insertTolken() {
-  let currentTolken = await fetch(
-    `${localUrl}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-    }
-  )
-    .then((data) => {
-      return data.json();
-    })
-    .then((json) => {
-      document.getElementById("tolkenId").innerText = json[0].tolkennumber;
-      return json[0].tolkennumber;
-    });
-
-  return currentTolken;
+async function insertTolkenOnHTML() {
+  await getTolken()
+  .then((json) => {
+    document.getElementById("tolkenId").innerText = json[0].tolkennumber;
+    return json[0].tolkennumber;
+  });
 }
-
-//voce é incrivel SZ
 
 //progress bar
 const duration = 64;

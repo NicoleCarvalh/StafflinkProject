@@ -20,7 +20,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 1.5rem;
+  min-height: 18rem;
 }
 .loading::before {
   content: "";
@@ -166,7 +166,7 @@ select:hover {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 1.5rem;
+  min-height: 18rem;
 }
 .loading::before {
   content: "";
@@ -517,7 +517,7 @@ select:hover {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 1.5rem;
+  min-height: 18rem;
 }
 .loading::before {
   content: "";
@@ -703,7 +703,7 @@ main #main_content::before {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 1.5rem;
+  min-height: 18rem;
 }
 .loading::before {
   content: "";
@@ -1045,7 +1045,7 @@ body .blurredOut {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
-  min-height: 1.5rem;
+  min-height: 18rem;
 }
 .loading::before {
   content: "";
@@ -1320,6 +1320,10 @@ body .blurredOut {
 }
 .field:has(input[type=file]) #preview[src="#"] {
   display: none;
+}
+
+.loading {
+  min-height: 1.5rem;
 }
 
 .tableContainer .table .table_content .body tr td .employeeCode {

@@ -1284,9 +1284,22 @@ body .blurredOut {
   flex-direction: column;
   align-items: unset;
   justify-content: unset;
-  gap: 5rem;
+  gap: 2rem;
   flex-wrap: nowrap;
   flex-wrap: wrap;
+  max-width: 100%;
+}
+#main_content .container.graphics .content .chart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: unset;
+  justify-content: space-around;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+#main_content .container.graphics .content .chart-container .chart {
+  max-width: 500px;
 }
 
 canvas {

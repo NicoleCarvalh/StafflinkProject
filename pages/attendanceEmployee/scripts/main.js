@@ -1,3 +1,4 @@
+import { getAttendance } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 allUtils.access();
@@ -5,21 +6,9 @@ allUtils.access();
 allUtils.sideMenu();
 allUtils.notes();
 
-// const baseUrl = 'https://employees-api-oite.onrender.com'
-
-const baseUrl = "http://localhost:4040";
-
 let currentUser = allUtils.getLocalData("user").user;
 
-fetch(`${baseUrl}/attendance/${currentUser.id}`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "Application/json",
-  },
-})
-  .then((data) => {
-    return data.json();
-  })
+getAttendance(currentUser.id)
   .then((attendance) => {
     document.getElementById("tbody").innerHTML = "";
 

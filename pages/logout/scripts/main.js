@@ -1,5 +1,4 @@
 import { allUtils } from "../../../patternScripts/main.js";
-import { backToPreviousPage } from "../../../patternScripts/windowControl/location.js";
 
 allUtils.deleteLocalData("user");
 

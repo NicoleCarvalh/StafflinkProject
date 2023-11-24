@@ -22,6 +22,9 @@ const dataMonths = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
 const diversityChart = document.getElementById('diversity');
 const diversityData = ['Produção', 'Vendas', 'Administração', 'Estoque']
 
+
+
+
 new Chart(profitChart, {
     type: 'bar',
     data: {
@@ -72,6 +75,40 @@ new Chart(diversityChart, {
             title: {
                 display: true,
                 text: 'Quantidade de funcionários por setor'
+            }
+        }
+    },
+});
+
+const salaryChart = document.getElementById('salary');
+const salaryData = ['Produção', 'Vendas', 'Administração', 'Estoque'];
+const salaryArray = Array.from(salaryData, () => Math.floor(Math.random() * 2500));
+
+new Chart(salaryChart, {
+    type: 'pie',
+    data: {
+        labels: salaryData,
+        datasets: [{
+            label: 'Média salarial R$',
+            data: salaryArray,
+            backgroundColor: [
+                'rgb(17, 92, 198)',
+                'rgb(106, 24, 194)',
+                'rgb(24, 194, 86)',
+                'rgb(194, 101, 24)',
+                'rgb(194, 24, 183)'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Diferença salarial entre setores - em reais'
             }
         }
     },
