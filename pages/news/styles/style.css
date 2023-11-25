@@ -1093,6 +1093,7 @@ main .news .newsContent h2 {
 }
 main .news .newsContent p {
   text-align: justify;
+  flex-grow: 1;
 }
 main .news .newsContent .newsText {
   display: flex;

@@ -1,4 +1,5 @@
-import { deleteNews, getEmployees, listNews } from "../../../patternScripts/api/stafflink.js";
+import { deleteNews, getEmployees, listNews, stafflinkURL_newsPhoto } from "../../../patternScripts/api/stafflink.js";
+import { getLocalData } from "../../../patternScripts/localStorageControl/getData.js";
 import { allUtils } from "../../../patternScripts/main.js";
 allUtils.access();
 
@@ -110,6 +111,7 @@ function list(json) {
 
     let newsBtn = document.createElement("button");
     newsBtn.type = "button";
+    newsBtn.className = "deleteButton"
 
     newsBtn.setAttribute("data-id", newsID);
     newsBtn.innerText = "Deletar";
@@ -129,7 +131,7 @@ function list(json) {
     let divNewsContent = document.createElement("div");
     divNewsContent.className = "newsContent";
 
-    divNewsText.appendChild(newsBtn);
+    getLocalData('user').access.sector === 'Recursos Humanos' && divNewsText.appendChild(newsBtn)
     divNewsContent.appendChild(divNewsText);
     divNewsContent.appendChild(divNewsImg);
 

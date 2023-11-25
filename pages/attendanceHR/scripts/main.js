@@ -65,7 +65,7 @@ function listAttendance(attendanceList) {
     let tdExit = document.createElement("td");
 
     let tdOverrun = document.createElement("td");
-    tdOverrun.className = "additional positive";
+    tdOverrun.className = "additional";
 
     if (empExit == null) {
       tdExit.innerText = "-";
@@ -73,7 +73,9 @@ function listAttendance(attendanceList) {
     } else {
       tdExit.innerText = empExit;
       let overrun = calculateOverrun(empJourney, empEntrance, empExit);
-      tdOverrun.innerText = overrun;
+      tdOverrun.innerText = overrun.toFixed(2).toString().replace('.', ':');
+
+      overrun > 0.00 ? tdOverrun.classList.add('positive') : tdOverrun.classList.add('negative')
     }
 
     let elementsToAdd = [
@@ -126,23 +128,56 @@ function listAttendance(attendanceList) {
 // }
 
 function calculateOverrun(journey, entrance, exit) {
-  const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);
-  const journeyEnd = new Date(`01/01/2023 ${journey.split(" - ")[1]}`);
-  const entranceTime = new Date(`01/01/2023 ${entrance}`);
-  const exitTime = new Date(`01/01/2023 ${exit}`);
+  // const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);
+  // const journeyEnd = new Date(`01/01/2023 ${journey.split(" - ")[1]}`);
+  // const entranceTime = new Date(`01/01/2023 ${entrance}`);
+  // const exitTime = new Date(`01/01/2023 ${exit}`);
 
-  const expectedJourneyTime = journeyEnd - journeyInit;
+  // const expectedJourneyTime = journeyEnd - journeyInit;
 
-  const actualJourneyTime = exitTime - entranceTime;
+  // const actualJourneyTime = exitTime - entranceTime;
 
-  const differenceInHours =
-    (actualJourneyTime - expectedJourneyTime) / 1000 / 60 / 60;
+  // const differenceInHours =
+  //   (actualJourneyTime - expectedJourneyTime) / 1000 / 60 / 60;
 
-  const differenceInMinutes = Math.round((differenceInHours % 1) * 60);
+  // const differenceInMinutes = Math.round((differenceInHours % 1) * 60);
 
-  const sign = differenceInHours >= 0 ? "+" : "-";
-  const formattedHours = Math.floor(Math.abs(differenceInHours));
-  const formattedMinutes = differenceInMinutes.toString().padStart(2, "0");
+  // const sign = differenceInHours >= 0 ? "+" : "-";
+  // const formattedHours = Math.floor(Math.abs(differenceInHours)).toString().padStart(2, "0");;
+  // const formattedMinutes = differenceInMinutes.toString().padStart(2, "0");
 
-  return `${sign}${formattedHours}:${formattedMinutes}`;
+  // return `${sign}${formattedHours}:${formattedMinutes}`;
+
+  const completejourney = journey.split(' - ')
+  const journeyInit = journey.split(' - ')[0]
+  const journeyExit = journey.split(' - ')[1]
+
+  const journeyInitOnDate = new Date(`01/01/2023 ${journeyInit}`)
+  const journeyExitOnDate = new Date(`01/01/2023 ${journeyExit}`)
+
+  const journeyDifference = journeyExitOnDate.getTime() - journeyInitOnDate.getTime()
+  const journeyInHours = journeyDifference / 1000 / 60 / 60
+
+  // console.log(journeyInHours)
+  
+
+  const entranceAttendanceOnDate = new Date(`01/01/2023 ${entrance}`)
+  const exitAttendanceOnDate = new Date(`01/01/2023 ${exit}`)
+
+  const attendanceDifference = exitAttendanceOnDate.getTime() - entranceAttendanceOnDate.getTime()
+  const attendanceDifferenceInHours = attendanceDifference / 1000 / 60 / 60
+  const attendanceInHours = Math.abs(attendanceDifferenceInHours)
+
+  const difference = attendanceInHours - journeyInHours
+  // console.log(difference)
+  // const difference = journeyInHours - (journeyInHours - attendanceInHours)
+
+  // console.log(`Jornada (H) prevista: ${journeyInHours}`)
+  // console.log(`Jornada (H) feita: ${attendanceInHours}`)
+  // console.log(`Diferença: ${difference}`)
+  // console.log('---------------------')
+
+
+  // journeyInHours - differenceInHours
+  return difference
 }
