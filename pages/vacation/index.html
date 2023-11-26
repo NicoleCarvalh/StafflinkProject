@@ -23,6 +23,21 @@
       name="description"
       content="O Stafflink é um sistema pensado para gerenciar a área de Recursos Humanos de uma empresa, podendo ser de pequeno a médio porte. O objetivo desse projeto é trazer mais agilidade e produtividade nos procedimentos por um baixo custo."
     />    
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"
+  />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/pt-br.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap"
+  />
 
     <!-- Toastfy -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -543,7 +558,10 @@
         </div>
       </header>
 
-      <section id="main_content" class="tableContainer">
+      <section id="main_content"><div id="calendar"></div></section>
+      
+
+      <!-- <section id="main_content" class="tableContainer">
         <header class="tableContainer_header">
           <div class="tableName">
             <button type="button" id="previousMonth" class="monthControl">
@@ -671,7 +689,7 @@
             </tbody>
           </table>
         </div>
-      </section>
+      </section> -->
 
       <button type="button" id="showNotes">
         <svg
@@ -738,8 +756,5 @@
         </button>
       </div>
     </div>
-
-    <!-- Toastfy -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>
