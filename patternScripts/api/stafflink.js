@@ -7,24 +7,27 @@
 
 // const baseUrl = 'http://localhost:5432'
 
-const baseUrl = 'http://localhost:4040'
+const baseUrl = "http://localhost:4040";
 
 // Employees
-const stafflinkURL_employee = `${baseUrl}/employees/`
-export const stafflinkURL_employeePhoto = `${baseUrl}/employees/photo/`
+const stafflinkURL_employee = `${baseUrl}/employees/`;
+export const stafflinkURL_employeePhoto = `${baseUrl}/employees/photo/`;
 
 // Registers (interprise)
-const stafflinkURL_registers = `${baseUrl}/registers`
+const stafflinkURL_registers = `${baseUrl}/registers`;
 
 // Attendance
-const stafflinkURL_attendance = `${baseUrl}/attendance`
+const stafflinkURL_attendance = `${baseUrl}/attendance`;
 
 // News
-const stafflinkURL_news = `${baseUrl}/news`
-export const stafflinkURL_newsPhoto = `${baseUrl}/news/bannerFile`
+const stafflinkURL_news = `${baseUrl}/news`;
+export const stafflinkURL_newsPhoto = `${baseUrl}/news/bannerFile`;
 
 // Tolken
-const stafflinkURL_tolken = `${baseUrl}/tolken`
+const stafflinkURL_tolken = `${baseUrl}/tolken`;
+
+// Vacation
+const stafflinkURL_vacation = `${baseUrl}/vacation`;
 
 export async function getEmployee(userId, queryData = null) {
   if (!queryData) {
@@ -43,7 +46,7 @@ export async function getEmployee(userId, queryData = null) {
 }
 
 export async function saveEmployee(employeeObject) {
-  if(employeeObject instanceof FormData) {
+  if (employeeObject instanceof FormData) {
     await fetch(stafflinkURL_employee, {
       method: "POST",
       body: employeeObject,
@@ -52,10 +55,10 @@ export async function saveEmployee(employeeObject) {
     fetch(stafflinkURL_employee, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(employeeObject),
-    })
+    });
   }
 }
 
@@ -82,13 +85,13 @@ export async function deleteEmployee(id) {
 // REGISTERS
 
 export async function signUpInterprise(interpriseData) {
-    await fetch(stafflinkURL_registers, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(interpriseData)
-    })
+  await fetch(stafflinkURL_registers, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(interpriseData),
+  });
 }
 
 // ATTENDANCE
@@ -99,9 +102,9 @@ export async function getAllAttendances() {
     headers: {
       "Content-Type": "Application/json",
     },
-  }).then(json => json.json())
+  }).then((json) => json.json());
 
-  return attendances
+  return attendances;
 }
 
 export async function saveAttendance(attendance) {
@@ -114,7 +117,10 @@ export async function saveAttendance(attendance) {
   });
 }
 
-export async function uploadAttendanceDeparture(targetAttendanceId, {newAttendanceDeparture}) {
+export async function uploadAttendanceDeparture(
+  targetAttendanceId,
+  { newAttendanceDeparture }
+) {
   fetch(`${stafflinkURL_attendance}/${targetAttendanceId}`, {
     method: "PUT",
     headers: {
@@ -127,29 +133,32 @@ export async function uploadAttendanceDeparture(targetAttendanceId, {newAttendan
 }
 
 export async function getAttendance(employeeId) {
-  const targetAttendance = await fetch(`${stafflinkURL_attendance}/${employeeId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-  }).then(json => json.json())
+  const targetAttendance = await fetch(
+    `${stafflinkURL_attendance}/${employeeId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    }
+  ).then((json) => json.json());
 
-  return targetAttendance
+  return targetAttendance;
 }
 
 export async function deleteAttendance(employeeId) {
-  await fetch(`${stafflinkURL_attendance}/${employeeId}` , {
+  await fetch(`${stafflinkURL_attendance}/${employeeId}`, {
     method: "DELETE",
-  })
+  });
 }
 
 // NEWS
 
 export async function saveNews(news) {
-  fetch('https://employees-api-oite.onrender.com/news', {
+  fetch("https://employees-api-oite.onrender.com/news", {
     method: "POST",
-    body: news
-  })
+    body: news,
+  });
 }
 
 export async function listNews() {
@@ -158,9 +167,9 @@ export async function listNews() {
     headers: {
       "Content-Type": "Application/json",
     },
-  }).then(json => json.json())
+  }).then((json) => json.json());
 
-  return news
+  return news;
 }
 
 export async function deleteNews(newsId) {
@@ -171,7 +180,7 @@ export async function deleteNews(newsId) {
 
 // TOLKEN
 
-export async function uploadTolken(targetTolken, {newTolkenNumber}) {
+export async function uploadTolken(targetTolken, { newTolkenNumber }) {
   fetch(`${stafflinkURL_tolken}/${targetTolken}`, {
     method: "PUT",
     headers: {
@@ -180,7 +189,7 @@ export async function uploadTolken(targetTolken, {newTolkenNumber}) {
     body: JSON.stringify({
       newTolkenNumber,
     }),
-  })
+  });
 }
 
 export async function getTolken() {
@@ -188,8 +197,21 @@ export async function getTolken() {
     method: "GET",
     headers: {
       "Content-Type": "Application/json",
-    }
-  }).then(json => json.json())
+    },
+  }).then((json) => json.json());
 
-  return currentTolken
+  return currentTolken;
+}
+
+// VACATION
+
+export async function getAllVacations() {
+  const vacations = await fetch(stafflinkURL_vacation, {
+    method: "GET",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+  }).then((json) => json.json());
+
+  return vacations;
 }
