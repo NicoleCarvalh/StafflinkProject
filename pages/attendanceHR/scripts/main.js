@@ -1,17 +1,16 @@
-import { getAllAttendances, getEmployee, stafflinkURL_employeePhoto } from "../../../patternScripts/api/stafflink.js";
+import {
+  getAllAttendances,
+  getEmployee,
+  stafflinkURL_employeePhoto,
+} from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 allUtils.access();
 allUtils.sideMenu();
 allUtils.notes();
 
-getAllAttendances()
-.then((attendances) => {
-  if(attendances.length > 0) {
-    // createCompleteAttendanceObject(attendances).then((attendanceList) => {
-    //   listAttendance(attendanceList);
-    // });
-
+getAllAttendances().then((attendances) => {
+  if (attendances.length > 0) {
     listAttendance(attendances);
   }
 });
@@ -24,9 +23,7 @@ function listAttendance(attendanceList) {
     let empName = attendanceList[i].name;
     let empSector = attendanceList[i].sector;
     let empJourney =
-      attendanceList[i].journeyinit +
-      " - " +
-      attendanceList[i].journeyend;
+      attendanceList[i].journeyinit + " - " + attendanceList[i].journeyend;
     let registerDate = attendanceList[i].attendancedate;
     registerDate = registerDate.split("-").reverse().join("/");
     let empEntrance = attendanceList[i].entrance;
@@ -73,9 +70,12 @@ function listAttendance(attendanceList) {
     } else {
       tdExit.innerText = empExit;
       let overrun = calculateOverrun(empJourney, empEntrance, empExit);
-      tdOverrun.innerText = overrun.toFixed(2).toString().replace('.', ':');
 
-      overrun > 0.00 ? tdOverrun.classList.add('positive') : tdOverrun.classList.add('negative')
+      tdOverrun.innerText = overrun;
+
+      overrun.includes("-")
+        ? tdOverrun.classList.add("negative")
+        : tdOverrun.classList.add("positive");
     }
 
     let elementsToAdd = [
@@ -96,88 +96,34 @@ function listAttendance(attendanceList) {
   }
 }
 
-// async function createCompleteAttendanceObject(attendances) {
-//   let attendanceList = [];
-
-//   for (let i = 0; i < attendances.length; i++) {
-//     await getEmployee(attendances[i].employeeidattendance)
-//       .then((employee) => {
-//         let employeePhotoName = employee.employeephotoname;
-//         let employeeName = employee.name;
-//         let employeeSector = employee.sector;
-//         let employeeJourneyInit = employee.journeyinit;
-//         let employeeJourneyEnd = employee.journeyend;
-
-//         attendanceList.push({
-//           ...attendances[i],
-//           employeePhotoName,
-//           employeeName,
-//           employeeSector,
-//           employeeJourneyInit,
-//           employeeJourneyEnd,
-//           overrun: "00:00",
-//         });
-//       })
-//       .catch((error) => {
-//         console.log("Erro no then dos employees");
-//         console.log(error.message);
-//       });
-//   }
-
-//   return attendanceList;
-// }
-
 function calculateOverrun(journey, entrance, exit) {
-  // const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);
-  // const journeyEnd = new Date(`01/01/2023 ${journey.split(" - ")[1]}`);
-  // const entranceTime = new Date(`01/01/2023 ${entrance}`);
-  // const exitTime = new Date(`01/01/2023 ${exit}`);
+  const [journeyInit, journeyExit] = journey.split(" - ").map(parse);
 
-  // const expectedJourneyTime = journeyEnd - journeyInit;
+  const journeyInMinutes = journeyExit - journeyInit;
 
-  // const actualJourneyTime = exitTime - entranceTime;
+  const entranceInMinutes = parse(entrance);
+  const exitInMinutes = parse(exit);
 
-  // const differenceInHours =
-  //   (actualJourneyTime - expectedJourneyTime) / 1000 / 60 / 60;
+  const attendanceInMinutes = exitInMinutes - entranceInMinutes;
 
-  // const differenceInMinutes = Math.round((differenceInHours % 1) * 60);
+  const differenceInMinutes = Math.abs(attendanceInMinutes - journeyInMinutes);
 
-  // const sign = differenceInHours >= 0 ? "+" : "-";
-  // const formattedHours = Math.floor(Math.abs(differenceInHours)).toString().padStart(2, "0");;
-  // const formattedMinutes = differenceInMinutes.toString().padStart(2, "0");
+  if (differenceInMinutes != 0) {
+    let hours = Math.floor(differenceInMinutes / 60);
+    let minutes = differenceInMinutes - hours * 60;
 
-  // return `${sign}${formattedHours}:${formattedMinutes}`;
+    let formattedMinutes = minutes.toString().padStart(2, "0");
 
-  const completejourney = journey.split(' - ')
-  const journeyInit = journey.split(' - ')[0]
-  const journeyExit = journey.split(' - ')[1]
+    if (attendanceInMinutes > journeyInMinutes) {
+      return `${hours}:${formattedMinutes}`;
+    } else {
+      let negativeHours = -hours;
+      return `${negativeHours}:${formattedMinutes}`;
+    }
+  }
+}
 
-  const journeyInitOnDate = new Date(`01/01/2023 ${journeyInit}`)
-  const journeyExitOnDate = new Date(`01/01/2023 ${journeyExit}`)
-
-  const journeyDifference = journeyExitOnDate.getTime() - journeyInitOnDate.getTime()
-  const journeyInHours = journeyDifference / 1000 / 60 / 60
-
-  // console.log(journeyInHours)
-  
-
-  const entranceAttendanceOnDate = new Date(`01/01/2023 ${entrance}`)
-  const exitAttendanceOnDate = new Date(`01/01/2023 ${exit}`)
-
-  const attendanceDifference = exitAttendanceOnDate.getTime() - entranceAttendanceOnDate.getTime()
-  const attendanceDifferenceInHours = attendanceDifference / 1000 / 60 / 60
-  const attendanceInHours = Math.abs(attendanceDifferenceInHours)
-
-  const difference = attendanceInHours - journeyInHours
-  // console.log(difference)
-  // const difference = journeyInHours - (journeyInHours - attendanceInHours)
-
-  // console.log(`Jornada (H) prevista: ${journeyInHours}`)
-  // console.log(`Jornada (H) feita: ${attendanceInHours}`)
-  // console.log(`Diferença: ${difference}`)
-  // console.log('---------------------')
-
-
-  // journeyInHours - differenceInHours
-  return difference
+function parse(time) {
+  const [hour, minute] = time.split(":").map((v) => parseInt(v));
+  return minute + hour * 60;
 }

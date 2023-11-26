@@ -12,7 +12,7 @@ getAttendance(currentUser.id)
   .then((attendance) => {
     document.getElementById("tbody").innerHTML = "";
 
-    if(attendance.length == 0){
+    if (attendance.length == 0) {
       document.getElementById("loading-div").remove();
       return;
     }
@@ -35,7 +35,7 @@ getAttendance(currentUser.id)
       let tdExit = document.createElement("td");
 
       let tdOverrun = document.createElement("td");
-      tdOverrun.className = "additional positive";
+      tdOverrun.className = "additional";
 
       if (empExit == null) {
         tdExit.innerText = "-";
@@ -44,6 +44,12 @@ getAttendance(currentUser.id)
         tdExit.innerText = empExit;
         let overrun = calculateOverrun(empJourney, empEntrance, empExit);
         tdOverrun.innerText = overrun;
+
+        tdOverrun.innerText = overrun;
+
+        overrun.includes("-")
+          ? tdOverrun.classList.add("negative")
+          : tdOverrun.classList.add("positive");
       }
 
       let elementsToAdd = [tdDate, tdEntrance, tdExit, tdOverrun];
@@ -53,30 +59,39 @@ getAttendance(currentUser.id)
       }
 
       document.getElementById("tbody").appendChild(trInfos);
-      
     }
     document.getElementById("loading-div").remove();
   })
   .catch((err) => console.log(`Algo deu errado. Erro: ${err.message}`));
 
 function calculateOverrun(journey, entrance, exit) {
-  const journeyInit = new Date(`01/01/2023 ${journey.split(" - ")[0]}`);
-  const journeyEnd = new Date(`01/01/2023 ${journey.split(" - ")[1]}`);
-  const entranceTime = new Date(`01/01/2023 ${entrance}`);
-  const exitTime = new Date(`01/01/2023 ${exit}`);
+  const [journeyInit, journeyExit] = journey.split(" - ").map(parse);
 
-  const expectedJourneyTime = journeyEnd - journeyInit;
+  const journeyInMinutes = journeyExit - journeyInit;
 
-  const actualJourneyTime = exitTime - entranceTime;
+  const entranceInMinutes = parse(entrance);
+  const exitInMinutes = parse(exit);
 
-  const differenceInHours =
-    (actualJourneyTime - expectedJourneyTime) / 1000 / 60 / 60;
+  const attendanceInMinutes = exitInMinutes - entranceInMinutes;
 
-  const differenceInMinutes = Math.round((differenceInHours % 1) * 60);
+  const differenceInMinutes = Math.abs(attendanceInMinutes - journeyInMinutes);
 
-  const sign = differenceInHours >= 0 ? "+" : "-";
-  const formattedHours = Math.floor(Math.abs(differenceInHours));
-  const formattedMinutes = differenceInMinutes.toString().padStart(2, "0");
+  if (differenceInMinutes != 0) {
+    let hours = Math.floor(differenceInMinutes / 60);
+    let minutes = differenceInMinutes - hours * 60;
 
-  return `${sign}${formattedHours}:${formattedMinutes}`;
+    let formattedMinutes = minutes.toString().padStart(2, "0");
+
+    if (attendanceInMinutes > journeyInMinutes) {
+      return `${hours}:${formattedMinutes}`;
+    } else {
+      let negativeHours = -hours;
+      return `${negativeHours}:${formattedMinutes}`;
+    }
+  }
+}
+
+function parse(time) {
+  const [hour, minute] = time.split(":").map((v) => parseInt(v));
+  return minute + hour * 60;
 }

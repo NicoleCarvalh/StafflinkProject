@@ -5,7 +5,9 @@
 
 // const baseUrl = 'https://employees-api-oite.onrender.com'
 
-const baseUrl = 'http://localhost:5432'
+// const baseUrl = 'http://localhost:5432'
+
+const baseUrl = 'http://localhost:4040'
 
 // Employees
 const stafflinkURL_employee = `${baseUrl}/employees/`
