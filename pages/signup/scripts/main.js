@@ -31,9 +31,11 @@ const form = document.querySelector('form')
 const nextStepButton = document.getElementById('continue')
 
 const previousStepButton = document.getElementById('back')
-previousStepButton.addEventListener('click', () => {
+previousStepButton.addEventListener('click', async () => {
     if(currentStep <= 1) {
-        const backToLogin = confirm('Deseja voltar para a página de login?')
+        const backToLogin = await allUtils.toastConfirm({message: 'Confirme', description: 'Deseja voltar para a página de login?'})
+        .then((result) => result)
+        .catch((result) => result)
 
         backToLogin && (window.location.href = '/')
         return 
@@ -199,14 +201,16 @@ form.addEventListener('submit', (e) => {
         document.getElementById("loader").style.display = 'none';
         document.getElementById("continue").style.display = "block";
 
-        alert('Cadastro finalizado')
-        window.location.href = '/'
+        allUtils.toastAlert({message: 'Tudo certo', description: 'Cadastro finalizado', className: 'info'}).then(() => {
+            window.location.href = '/'
+        })
     })
     .catch((error) => {
         document.getElementById("loader").style.display = 'none';
         document.getElementById("continue").style.display = "block";
         
-        alert('Algo deu errado. Favor, tente novamente.')
+        allUtils.toastAlert({message: 'Algo deu errado', description: 'Favor, tente novamente', className: 'danger'})
+
         console.log(`Algo deu errado. Erro: ${error.message}`)
     })
 })

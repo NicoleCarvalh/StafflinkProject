@@ -4,6 +4,7 @@ import { list } from "../main.js";
 import { deleteLocalData, getLocalData, setLocalData } from "../../../../patternScripts/localStorageControl/getData.js";
 import { setUserInfos } from "../../../../patternScripts/components/sideMenu/index.js";
 import { setSystemAccess } from "../../../../patternScripts/accessSystemControl/accessByRole.js";
+import { allUtils } from "../../../../patternScripts/main.js";
 
 let dataHasChanged = false
 
@@ -56,8 +57,11 @@ function employeePopup(allDatas) {
     deleteEmployeeBtn.textContent = 'Excluir funcionário'
     deleteEmployeeBtn.id = 'deleteEmployee'
 
-    deleteEmployeeBtn.addEventListener('click', () => {
-        const deleteConfirm = confirm('Você deseja mesmo exluir este funcionário de todos os dados da empresa?')
+    deleteEmployeeBtn.addEventListener('click', async () => {
+        const deleteConfirm = await allUtils.toastConfirm({message: 'Confirme', description: 'Você deseja mesmo exluir este funcionário de todos os dados da empresa?'})
+        .then((result) => result)
+        .catch((result) => result)
+
         if(!deleteConfirm) return
 
         Promise.all([
@@ -65,15 +69,15 @@ function employeePopup(allDatas) {
             deleteAttendance(allDatas.id)
         ])
         .then(() => {
-            alert('O funcionário foi deletado.')
-
-            if(allDatas.id === getLocalData('user').user.id) {
-                deleteLocalData('user')
-                window.location.href = '/'
-            } else {
-                getEmployees().then(data => list(data))
-                closeButton.click()
-            }
+            allUtils.toastAlert({message: 'Tudo certo', description: 'O funcionário foi deletado.', className: 'info'}).then(() => {
+                if(allDatas.id === getLocalData('user').user.id) {
+                    deleteLocalData('user')
+                    window.location.href = '/'
+                } else {
+                    getEmployees().then(data => list(data))
+                    closeButton.click()
+                }
+            })
         })
     })
 
@@ -138,7 +142,11 @@ function updateEmployeeForm(ev, employee) {
 
     updateEmployee(employee.id, employeeData)
     .then(() => {
-        alert('Os dados do(a) funcionário(a) foram alterados')
+        allUtils.toastAlert({
+            message: 'Tudo certo', 
+            description: 'Os dados do funcionário foram alterados', 
+            className: 'info'
+        })
 
         const currentUser = getLocalData('user')
         if(employee.id == currentUser.user.id) {
@@ -160,7 +168,11 @@ function updateEmployeeForm(ev, employee) {
         getEmployees().then(data => list(data))
     })
     .catch((error) => {
-        alert(`Infelizmente algo deu errado :/ \n  Erro: ${error.message}`)
+        allUtils.toastAlert({
+            message: 'Algo deu errado', 
+            description: error.message, 
+            className: 'danger'
+        })
 
         console.log(`Algo deu errado. Erro: ${error.message}`)
     })

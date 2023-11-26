@@ -1,6 +1,5 @@
 import { setSystemAccess } from "../../../patternScripts/accessSystemControl/accessByRole.js";
 import { getEmployee } from "../../../patternScripts/api/stafflink.js";
-import { getLocalData } from "../../../patternScripts/localStorageControl/getData.js";
 import { allUtils } from "../../../patternScripts/main.js";
 
 // allUtils.access({user: {access}})
@@ -17,11 +16,11 @@ form.addEventListener('submit', async (event) => {
     const password = event.target.querySelector('input[type=password]')
 
     const networkAlert = setTimeout(() => {
-        alert('Parece que houve algum problema de conexão :/ \nRecarregue a página e tente novamente')
+        allUtils.toastAlert({message: 'Problema de conexão', description: 'Recarregue a página e tente novamente', className: 'info'})
 
         document.getElementById("loader").style.display = 'none';
         document.getElementById("btnLogin").style.display = "block";
-    }, 25 * 1000)
+    }, 5 * 1000)
 
     const foundEmployee = await getEmployee(null, {email: email.value, password: password.value})
     .then(employee => {
@@ -37,7 +36,7 @@ form.addEventListener('submit', async (event) => {
         return employee ?? false
     })
     .catch((error) => {
-        alert(`Parece que algo deu errado :/ \nFavor, tente novamente`)
+        allUtils.toastAlert({message: 'Parece que algo deu errado', description: 'Favor, tente novamente', className: 'info'})
 
         clearTimeout(networkAlert)
         
@@ -49,7 +48,7 @@ form.addEventListener('submit', async (event) => {
         email.style.borderColor = "red"
         password.style.borderColor = "red"
 
-        alert('Dados inválidos')
+        allUtils.toastAlert({message: 'Dados inválidos', description: 'Senha e/ou e-mail estão incorretos.', className: 'danger'})
 
         document.getElementById("loader").style.display = 'none';
         document.getElementById("btnLogin").style.display = "block";

@@ -71,10 +71,10 @@ function updateUserData(event) {
         document.getElementById("loader").style.display = 'none';
         document.getElementById("register").style.display = "block";
 
-        alert('Seus dados foram alterados')
+        allUtils.toastAlert({message: 'Tudo certo', description: 'Seus dados foram alterados', className: 'info'})
     })
     .catch((error) => {
-        alert(`Infelizmente algo deu errado :/ \n  Erro: ${error.message}`)
+        allUtils.toastAlert({message: 'Algo deu errado', description: error.message, className: 'danger'})
 
         console.log(`Algo deu errado. Erro: ${error.message}`)
     })

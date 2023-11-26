@@ -115,10 +115,12 @@ function list(json) {
 
     newsBtn.setAttribute("data-id", newsID);
     newsBtn.innerText = "Deletar";
-    newsBtn.addEventListener("click", (event) => {
+    newsBtn.addEventListener("click", async (event) => {
       let btnID = event.target.getAttribute("data-id");
 
-      let warning = confirm("Você realmente deseja excluir a notícia?");
+      let warning = await allUtils.toastConfirm({message: 'Confirme', description: 'Você realmente deseja excluir a notícia?'})
+      .then((result) => result)
+      .catch((result) => result)
 
       if (!warning) return;
 

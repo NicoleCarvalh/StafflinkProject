@@ -54,11 +54,15 @@ document.getElementById("confirm").addEventListener("click", () => {
           });
 
         document.getElementById("tolkenEmployee").value = "";
-        alert("Ponto registrado com sucesso :)");
+
+        allUtils.toastAlert({message: 'Sucesso!', description: 'Registro realizado com sucesso', className: 'success'})
+
         document.getElementById("loading-div").innerHTML = "";
         document.getElementById("optionsTolken").style.display = 'flex';
       } else {
         alert("Tolken inválido");
+        allUtils.toastAlert({message: 'Token inválido', description: 'Verifique se o código esta correto', className: 'danger'})
+
         document.getElementById("loading-div").innerHTML = "";
         document.getElementById("optionsTolken").style.display = 'flex';
       }

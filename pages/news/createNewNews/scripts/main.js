@@ -48,7 +48,7 @@ form.addEventListener('submit', (ev) => {
 
     saveNews(allData)
     .then(() => {
-        alert('Notícia cadastrada com sucesso')
+        allUtils.toastAlert({message: 'Sucesso!', description: 'Notícia cadastrada', className: 'success'})
     })
     .catch(error => {
         console.log(error.message)

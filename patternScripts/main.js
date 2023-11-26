@@ -2,6 +2,7 @@ import { getCepInfos } from "./api/viacep.js";
 import { notesControl } from "./components/notes/index.js";
 import { sideMenuControl } from "./components/sideMenu/index.js";
 import { employeeTableActions } from "./components/tableActions/index.js";
+import { showToastAlert, showToastConfirm } from "./components/toastMessages/index.js";
 import { getLocalData, setLocalData, deleteLocalData } from "./localStorageControl/getData.js";
 import { accessControl } from "./windowControl/accessByDevice.js";
 import { mobileDeviceVerify } from "./windowControl/device.js";
@@ -23,5 +24,7 @@ export const allUtils = {
     // handlePageByCustomLink: handlePageByLink,
     notes: notesControl,
     getCepInfos: getCepInfos,
-    numberBRLFormater: Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL'})
+    numberBRLFormater: Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL'}),
+    toastAlert: showToastAlert,
+    toastConfirm: showToastConfirm
 }

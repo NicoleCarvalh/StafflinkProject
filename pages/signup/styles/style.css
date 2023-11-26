@@ -1024,6 +1024,87 @@ body .blurredOut {
   filter: blur(10px);
 }
 
+.toastify.on {
+  max-width: 90%;
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  background: unset;
+}
+.toastify.on > div {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+.toastify.on .messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+.toastify.on .messageContainer h1 {
+  font-size: 1.2rem;
+}
+.toastify.on .messageContainer p {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+.toastify.on .optionsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: unset;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.toastify.on .optionsContainer .closeButton {
+  border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+  flex: 1 0 auto;
+}
+.toastify.on .optionsContainer .closeButton:hover {
+  border-color: #f1f1f1;
+  background-color: #f1f1f1;
+  color: #000000;
+}
+.toastify.on .optionsContainer .confirmButton {
+  border: 2px solid rgb(13, 131, 235);
+  background-color: rgb(13, 131, 235);
+  color: #FFFFFF;
+  flex: 1 0 auto;
+}
+.toastify.on .optionsContainer .confirmButton:hover {
+  border: 2px solid rgb(6, 92, 168);
+  background-color: rgb(6, 92, 168);
+}
+.toastify.on button.toast-close {
+  position: absolute;
+  opacity: 0.7;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: 1.4rem;
+}
+.toastify.on button.toast-close:hover {
+  opacity: 1;
+  background: unset;
+}
+.toastify.on.info {
+  background-color: #029AA4;
+  color: #FFFFFF;
+}
+.toastify.on.danger {
+  background-color: #980D0D;
+  color: #FFFFFF;
+}
+.toastify.on.success {
+  background-color: #1B9C85;
+  color: #FFFFFF;
+}
+
 body {
   flex-direction: row;
   justify-content: inherit;

@@ -20,7 +20,11 @@ if(allUtils.getLocalData('user')?.sector === undefined && allUtils.getLocalData(
     notes.remove()
     optionsHeader.remove()
 
-    alert(`ATENÇÃO!\n\nVocê é o primeiro funcionário no sistema, e por isso deve se cadastrar como funcionário primeiro para que seja redirecionado novamente ao login e possa entrar com a sua conta! Caso já tenha criado a conta, volte ao login e entre com ela.`)
+    allUtils.toastAlert({
+        message: 'ATENÇÃO', 
+        description: 'Você é o primeiro funcionário no sistema, e por isso deve se cadastrar como funcionário primeiro! Caso já tenha criado a conta, volte ao login e entre com seus dados.', 
+        className: 'info'
+    })
 }
 
 import { generateEmptyEmployeeForm, throwFormEvents } from '../../../../patternScripts/components/employeeForm/index.js'
@@ -78,8 +82,7 @@ function saveNewEmployee() {
     } else {
         saveEmployee(employeeData)
         .then(() => {
-            alert('Novo funcionário cadastrado!')
-            console.log('Novo funcionário cadastrado')
+            allUtils.toastAlert({message: 'Sucesso!', description: 'Novo funcionário cadastrado', className: 'success'})
         })
         .catch((error) => console.log(`Algo deu errado. Erro: ${error.message}`))
     }

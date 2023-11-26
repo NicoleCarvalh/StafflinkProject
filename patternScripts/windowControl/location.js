@@ -1,5 +1,6 @@
 import { setSystemAccess } from "../accessSystemControl/accessByRole.js";
 import { getLocalData } from "../localStorageControl/getData.js";
+import { allUtils } from "../main.js";
 
 export const getCurrentPagePath = () => {
   const currentPath = window.location.href;
@@ -40,12 +41,14 @@ export const handlePageByLink = (element) => {
     return;
   }
 
-  element.addEventListener("click", (event) => {
+  element.addEventListener("click", async (event) => {
     const isHumanResources = verifySector('Recursos Humanos')
 
     switch (pageLinkElement){
       case "logout":
-          let logoutConfirmation = confirm("Deseja realmente sair?");
+          let logoutConfirmation = await allUtils.toastConfirm({message: 'Confirme', description: 'Deseja realmente sair?'})
+        .then((result) => result)
+        .catch((result) => result)
 
           if (logoutConfirmation) {
             setCurrentPagePath(pageLinkElement);

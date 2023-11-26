@@ -321,7 +321,8 @@ export function throwFormEvents(formId, sumitFormCallback) {
                 document.getElementById('city').value = infos.localidade
                 document.getElementById('state').value = infos.uf
             }).catch(error => {
-                alert('CEP inválido')
+                allUtils.toastAlert({message: 'CEP inválido', description: 'Verifique o CEP inserido', className: 'danger'})
+
                 cepInput.style.borderColor = "red"
                 return
             })
