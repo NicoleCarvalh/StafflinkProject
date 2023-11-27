@@ -155,7 +155,7 @@ export async function deleteAttendance(employeeId) {
 // NEWS
 
 export async function saveNews(news) {
-  fetch("https://employees-api-oite.onrender.com/news", {
+  fetch(stafflinkURL_news, {
     method: "POST",
     body: news,
   });
@@ -214,4 +214,20 @@ export async function getAllVacations() {
   }).then((json) => json.json());
 
   return vacations;
+}
+
+export async function saveVacation(vacation) {
+  fetch(stafflinkURL_vacation, {
+    method: "POST",
+    headers: {
+      "Content-Type": "Application/json",
+    },
+    body: JSON.stringify(vacation),
+  });
+}
+
+export async function deleteVacation(id) {
+  fetch(`${stafflinkURL_vacation}/${id}`, {
+    method: "DELETE",
+  });
 }

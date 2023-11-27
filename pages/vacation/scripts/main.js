@@ -1,71 +1,89 @@
 import {
-  getAllVacations
+  getAllVacations,
+  saveVacation,
+  deleteVacation,
 } from "../../../patternScripts/api/stafflink.js";
 import { allUtils } from "../../../patternScripts/main.js";
-allUtils.access()
 
-allUtils.sideMenu()
-allUtils.notes()
+allUtils.access();
+allUtils.sideMenu();
+allUtils.notes();
 
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  var calendar = $('#calendar').fullCalendar({
+document.addEventListener("DOMContentLoaded", async function () {
+  var calendar = $("#calendar").fullCalendar({
     selectable: true,
     selectHelper: true,
-    defaultView: 'month',
+    defaultView: "month",
     views: {
-      list: { buttonText: 'Lista' }
+      list: { buttonText: "Lista" },
     },
     header: {
-      left: 'title prev , next,',
-      center: '',
-      right: 'today , month , listMonth'
+      left: "title , prev , next",
+      center: "",
+      right: "today , month , listMonth",
     },
-    select: function(start, end) {
-      if(allUtils.getLocalData("user").access.sector != "Recursos Humanos"){
+    select: function (start, end) {
+      if (allUtils.getLocalData("user").access.sector != "Recursos Humanos") {
         return;
       }
-      var title = prompt('Evento para registrar:');
+      var title = prompt("Evento para registrar:");
       if (title) {
         var eventData = {
           title: title,
           start: start.format(),
-          end: end.format()
+          end: end.format(),
         };
-        calendar.fullCalendar('renderEvent', eventData, true);
-        registerEvent();
+        calendar.fullCalendar("renderEvent", eventData, true);
+        saveEventToAPI(eventData);
       }
-      calendar.fullCalendar('unselect');
-      console.log(eventData)
+      calendar.fullCalendar("unselect");
     },
-    eventClick: function(calEvent, jsEvent, view) {
-      if(allUtils.getLocalData("user").access.sector != "Recursos Humanos"){
+    eventClick: function (calEvent, jsEvent, view) {
+      if (allUtils.getLocalData("user").access.sector != "Recursos Humanos") {
         return;
       }
-      var deleteEvent = confirm('Tem certeza que deseja excluir esse evento?');
+      var deleteEvent = confirm("Tem certeza que deseja excluir esse evento?");
       if (deleteEvent) {
-        calendar.fullCalendar('removeEvents', calEvent._id);
-        registerEvent();
+        calendar.fullCalendar("removeEvents", calEvent._id);
+        deleteEventFromAPI(calEvent);
       }
     },
-    events: listEvents(),
-    locale: 'pt-br' 
+    events: await getAllVacations().then((json) => {
+      const events = json.map(function (event) {
+          return {
+            title: event.title,
+            start: event.start,
+            end: event.end,
+          };
+        })
+        console.log(events)
+        return events;
+      }),
+    eventColor: "#029AA4",
+    locale: "pt-br",
   });
-
-  function registerEvent() {
-    var events = calendar.fullCalendar('clientEvents').map(function(event) {
-      return {
-        title: event.title,
-        start: event.start.format(),
-        end: event.end.format()
-      };
-    });
-    localStorage.setItem('calendarEvents', JSON.stringify(events));
-  }
-
-  function listEvents() {
-    var storedEvents = localStorage.getItem('calendarEvents');
-    return storedEvents ? JSON.parse(storedEvents) : [];
-  }
 });
+
+async function saveEventToAPI(eventData) {
+  console.log(eventData);
+  try {
+    await saveVacation({
+      title: eventData.title,
+      start: eventData.start,
+      end: eventData.end,
+    });
+
+    console.log("Evento salvo");
+  } catch (error) {
+    console.error("Erro ao salvar evento:", error);
+  }
+}
+
+async function deleteEventFromAPI(event) {
+  try {
+    await deleteVacation(event.id);
+    console.log("Evento excluído");
+  } catch (error) {
+    console.error("Erro ao excluir evento:", error);
+  }
+}
