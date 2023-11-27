@@ -70,12 +70,27 @@ function saveNewEmployee() {
 
         updateEmployee(currentUser.user.id, employeeData).then(() => {
             getEmployee(currentUser.user.id).then((data) => {
-                setLocalData('user', {
-                    user: {...data},
-                    access: true
-                })
-                setSystemAccess().then(() => {
-                    window.location.reload()
+                allUtils.toastAlert({message: 'Tudo certo', description: 'Seus dados foram atualizados'})
+                
+                fetch(`https://stafflink-chat-server.onrender.com/updateUser/${currentUser.user.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'Application/json'
+                    },
+                    body: JSON.stringify({
+                        username: currentUser.user.name,
+                        email: currentUser.user.email, 
+                        password: currentUser.user.password,
+                        avatarImage: currentUser.user.employeephotoname
+                    })
+                }).then(() => {
+                    setLocalData('user', {
+                        user: {...data},
+                        access: true
+                    })
+                    setSystemAccess().then(() => {
+                        window.location.reload()
+                    })
                 })
             })
         })

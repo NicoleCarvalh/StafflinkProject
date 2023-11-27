@@ -1,4 +1,4 @@
-import { deleteNews, getEmployees, listNews, stafflinkURL_newsPhoto } from "../../../patternScripts/api/stafflink.js";
+import { deleteNews, getEmployees, listNews, stafflinkURL_employeePhoto, stafflinkURL_newsPhoto } from "../../../patternScripts/api/stafflink.js";
 import { getLocalData } from "../../../patternScripts/localStorageControl/getData.js";
 import { allUtils } from "../../../patternScripts/main.js";
 allUtils.access();
@@ -42,6 +42,11 @@ function showBirthdays(json) {
 
     let imgEmployee = document.createElement("img");
     imgEmployee.src = `${stafflinkURL_employeePhoto}/${employeePhoto}`;
+    imgEmployee.onerror = () => {
+      imgEmployee.src = '/assets/images/Stafflink_favicon_dark.svg'
+    }
+
+    imgEmployee.alt = employeeName
 
     document.getElementsByClassName("bDayImgs")[0].appendChild(imgEmployee);
 
@@ -105,6 +110,10 @@ function list(json) {
 
     let imgNews = document.createElement("img");
     imgNews.src = `${stafflinkURL_newsPhoto}/${newsImg}`;
+    imgNews.onerror = () => {
+      imgNews.src = '/assets/images/Stafflink_favicon_dark.svg'
+    }
+
     imgNews.alt = "Imagem da notícia";
 
     divNewsImg.appendChild(imgNews);

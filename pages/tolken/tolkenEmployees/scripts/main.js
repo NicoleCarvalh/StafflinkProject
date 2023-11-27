@@ -60,7 +60,6 @@ document.getElementById("confirm").addEventListener("click", () => {
         document.getElementById("loading-div").innerHTML = "";
         document.getElementById("optionsTolken").style.display = 'flex';
       } else {
-        alert("Tolken inválido");
         allUtils.toastAlert({message: 'Token inválido', description: 'Verifique se o código esta correto', className: 'danger'})
 
         document.getElementById("loading-div").innerHTML = "";

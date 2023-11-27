@@ -20,7 +20,7 @@ form.addEventListener('submit', async (event) => {
 
         document.getElementById("loader").style.display = 'none';
         document.getElementById("btnLogin").style.display = "block";
-    }, 5 * 1000)
+    }, 60 * 1000)
 
     const foundEmployee = await getEmployee(null, {email: email.value, password: password.value})
     .then(employee => {

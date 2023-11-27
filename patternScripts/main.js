@@ -2,7 +2,7 @@ import { getCepInfos } from "./api/viacep.js";
 import { notesControl } from "./components/notes/index.js";
 import { sideMenuControl } from "./components/sideMenu/index.js";
 import { employeeTableActions } from "./components/tableActions/index.js";
-import { showToastAlert, showToastConfirm } from "./components/toastMessages/index.js";
+import { showToastAlert, showToastConfirm, showToastPrompt } from "./components/toastMessages/index.js";
 import { getLocalData, setLocalData, deleteLocalData } from "./localStorageControl/getData.js";
 import { accessControl } from "./windowControl/accessByDevice.js";
 import { mobileDeviceVerify } from "./windowControl/device.js";
@@ -10,6 +10,16 @@ import { getCurrentPagePath, setCurrentPagePath, handlePageByLink } from "./wind
 
 const allCustomLinks = document.querySelectorAll("[data-link-to]");
 allCustomLinks?.forEach((element) => handlePageByLink(element));
+
+const allImages = document.querySelectorAll('img')
+
+allImages.forEach(image => {
+    image.addEventListener('load',() => {
+        image.onerror = () => {
+            image.src = '/assets/images/Stafflink_favicon_dark.svg'
+        }
+    })
+})
 
 export const allUtils = {
     sideMenu: sideMenuControl,
@@ -26,5 +36,6 @@ export const allUtils = {
     getCepInfos: getCepInfos,
     numberBRLFormater: Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL'}),
     toastAlert: showToastAlert,
-    toastConfirm: showToastConfirm
+    toastConfirm: showToastConfirm,
+    toastPrompt: showToastPrompt
 }

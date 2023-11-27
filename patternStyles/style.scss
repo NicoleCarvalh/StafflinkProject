@@ -14,7 +14,8 @@ body {
 }
 
 .toastify.on {
-    max-width: 90%;
+    width: 90%;
+    max-width: 500px;
     padding: 1.5rem 2rem;
     border-radius: .5rem;
     background: unset;
@@ -38,6 +39,25 @@ body {
 
     .optionsContainer {
         @include flexBox($a: center, $g: 1rem, $fw: wrap);
+
+        &:has(#prompt_input) {
+            flex-direction: column;
+
+            #prompt_input, .confirmButton{
+                flex: 1 0 auto;
+                width: 100%;
+            }
+        }
+
+        #prompt_input {
+            border: 2px solid $bg-secondary;
+            color: $bg-secondary;
+
+            &::placeholder {
+                color: $bg-secondary;
+                opacity: .8;
+            }
+        }
 
         .closeButton {
             border-color: $bg-secondary;

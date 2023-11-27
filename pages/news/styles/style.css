@@ -1061,25 +1061,44 @@ body .blurredOut {
   gap: 1rem;
   flex-wrap: wrap;
 }
-.toastify.on .optionsContainer .closeButton {
+.toastify.on .optionsContainer:has(#prompt_input) {
+  flex-direction: column;
+}
+.toastify.on .optionsContainer:has(#prompt_input) #prompt_input, .toastify.on .optionsContainer:has(#prompt_input) .confirmButton {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.toastify.on .optionsContainer #prompt_input {
   border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+}
+.toastify.on .optionsContainer #prompt_input::-moz-placeholder {
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+.toastify.on .optionsContainer #prompt_input::placeholder {
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+.toastify.on .optionsContainer .closeButton {
+  border-color: #FFFFFF;
   color: #FFFFFF;
   flex: 1 0 auto;
 }
 .toastify.on .optionsContainer .closeButton:hover {
-  border-color: #f1f1f1;
-  background-color: #f1f1f1;
+  border-color: #F1F1F1;
+  background-color: #F1F1F1;
   color: #000000;
 }
 .toastify.on .optionsContainer .confirmButton {
-  border: 2px solid rgb(13, 131, 235);
-  background-color: rgb(13, 131, 235);
-  color: #FFFFFF;
+  border-color: #F1F1F1;
+  background-color: #F1F1F1;
+  color: #000000;
   flex: 1 0 auto;
 }
 .toastify.on .optionsContainer .confirmButton:hover {
-  border: 2px solid rgb(6, 92, 168);
-  background-color: rgb(6, 92, 168);
+  border-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 .toastify.on button.toast-close {
   position: absolute;
@@ -1170,7 +1189,6 @@ main .news .newsContent h2 {
           text-decoration: 3px underline #029AA4;
   text-underline-offset: 5px;
   padding-bottom: 1rem;
-  font-style: italic;
 }
 main .news .newsContent p {
   text-align: justify;
@@ -1192,7 +1210,6 @@ main .news .newsContent .newsImg {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
   width: 40%;
 }
 main .news .newsContent img {

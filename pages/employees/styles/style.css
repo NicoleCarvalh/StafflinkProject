@@ -1025,7 +1025,8 @@ body .blurredOut {
 }
 
 .toastify.on {
-  max-width: 90%;
+  width: 90%;
+  max-width: 500px;
   padding: 1.5rem 2rem;
   border-radius: 0.5rem;
   background: unset;
@@ -1061,25 +1062,44 @@ body .blurredOut {
   gap: 1rem;
   flex-wrap: wrap;
 }
-.toastify.on .optionsContainer .closeButton {
+.toastify.on .optionsContainer:has(#prompt_input) {
+  flex-direction: column;
+}
+.toastify.on .optionsContainer:has(#prompt_input) #prompt_input, .toastify.on .optionsContainer:has(#prompt_input) .confirmButton {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.toastify.on .optionsContainer #prompt_input {
   border: 2px solid #FFFFFF;
+  color: #FFFFFF;
+}
+.toastify.on .optionsContainer #prompt_input::-moz-placeholder {
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+.toastify.on .optionsContainer #prompt_input::placeholder {
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+.toastify.on .optionsContainer .closeButton {
+  border-color: #FFFFFF;
   color: #FFFFFF;
   flex: 1 0 auto;
 }
 .toastify.on .optionsContainer .closeButton:hover {
-  border-color: #f1f1f1;
-  background-color: #f1f1f1;
+  border-color: #F1F1F1;
+  background-color: #F1F1F1;
   color: #000000;
 }
 .toastify.on .optionsContainer .confirmButton {
-  border: 2px solid rgb(13, 131, 235);
-  background-color: rgb(13, 131, 235);
-  color: #FFFFFF;
+  border-color: #F1F1F1;
+  background-color: #F1F1F1;
+  color: #000000;
   flex: 1 0 auto;
 }
 .toastify.on .optionsContainer .confirmButton:hover {
-  border: 2px solid rgb(6, 92, 168);
-  background-color: rgb(6, 92, 168);
+  border-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 .toastify.on button.toast-close {
   position: absolute;

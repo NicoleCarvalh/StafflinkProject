@@ -139,7 +139,7 @@ const stringForm = `
 
             <div class="field small">
                 <label for="number">Número</label>
-                <input type="number" name="number" id="number" required>
+                <input type="number" name="number" id="number" min="0" required>
             </div>
 
             <div class="field">

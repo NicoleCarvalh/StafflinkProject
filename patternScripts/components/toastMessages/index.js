@@ -1,12 +1,35 @@
 export function showToastAlert(props) {
     return new Promise((resolve) => {
-        createCustomToastfy({...props, confirmActions: {onClickConfirm: resolve}}).showToast()
+        createCustomToastfy({
+            ...props, 
+            confirmActions: {onClickConfirm: resolve}
+        }).showToast()
     });
 }
 
 export function showToastConfirm(props) {
     return new Promise((resolve, reject) => {
-        createCustomToastfy({...props, confirmActions: {onClickConfirm: resolve, onClickCancel: reject}}).showToast()
+        createCustomToastfy({
+            ...props, 
+            options: {
+                ...props,
+                duration: -1,
+            },
+            confirmActions: {onClickConfirm: resolve, onClickCancel: reject}
+        }).showToast()
+    });
+}
+
+export function showToastPrompt(props) {
+    return new Promise((resolve, reject) => {
+        createCustomToastfy({
+            ...props,
+            options: {
+                ...props,
+                duration: -1,
+            },
+            confirmActions: {...props, promptEvent: resolve, onClickConfirm: resolve}
+        }).showToast()
     });
 }
 
@@ -26,24 +49,23 @@ function createCustomToastfy({
     const customToast = Toastify({
         text: message,
         ...{
-            ...options,
-            // duration: 3000,
-            duration: -1,
+            duration: 5000,
             gravity: "top",
             position: "right",
-            // close: true,
+            close: true,
+            ...options,
         },
         className,
         style: {
             ...styles ?? {},
         },
-        node: createToastElements(message, description, {confirmEvent: confirmActions?.onClickConfirm, cancelEvent: confirmActions?.onClickCancel})
+        node: createToastElements(message, description, {promptInputPlaceholder: confirmActions?.promptInputPlaceholder, promptEvent: confirmActions?.promptEvent, confirmEvent: confirmActions?.onClickConfirm, cancelEvent: confirmActions?.onClickCancel})
     })
 
     return customToast
 }
 
-function createToastElements(message, description, {confirmEvent, cancelEvent}) {
+function createToastElements(message, description, {promptInputPlaceholder, promptEvent, confirmEvent, cancelEvent}) {
     const allElements = []
     const toastContainer = document.createElement('div')
 
@@ -76,15 +98,30 @@ function createToastElements(message, description, {confirmEvent, cancelEvent}) 
         })
 
         optionsContainer.appendChild(closeButton)
+    } 
+
+    if(promptInputPlaceholder && promptEvent) {
+        const input = document.createElement('input')
+        input.type = 'text'
+        input.placeholder = promptInputPlaceholder
+        input.id = 'prompt_input'
+
+        optionsContainer.appendChild(input)
     }
 
     const confirmButton = document.createElement('button')
-    confirmButton.innerText = 'Ok'
+    confirmButton.innerText = promptInputPlaceholder ? 'Confirmar' : 'Ok'
     confirmButton.className = 'confirmButton'
 
     confirmButton.addEventListener('click', () => {
         if(confirmEvent) {
-            confirmEvent(true)
+
+            if(promptInputPlaceholder && promptEvent) {
+                const inputElement = document.getElementById('prompt_input').value
+                promptEvent(inputElement)
+            } else {
+                confirmEvent(true)
+            }
         }
 
         document.querySelector('.toastify').remove()

@@ -1062,24 +1062,24 @@ body .blurredOut {
   flex-wrap: wrap;
 }
 .toastify.on .optionsContainer .closeButton {
-  border: 2px solid #FFFFFF;
+  border-color: #FFFFFF;
   color: #FFFFFF;
   flex: 1 0 auto;
 }
 .toastify.on .optionsContainer .closeButton:hover {
-  border-color: #f1f1f1;
-  background-color: #f1f1f1;
+  border-color: #F1F1F1;
+  background-color: #F1F1F1;
   color: #000000;
 }
 .toastify.on .optionsContainer .confirmButton {
-  border: 2px solid rgb(13, 131, 235);
-  background-color: rgb(13, 131, 235);
-  color: #FFFFFF;
+  border-color: #F1F1F1;
+  background-color: #F1F1F1;
+  color: #000000;
   flex: 1 0 auto;
 }
 .toastify.on .optionsContainer .confirmButton:hover {
-  border: 2px solid rgb(6, 92, 168);
-  background-color: rgb(6, 92, 168);
+  border-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 .toastify.on button.toast-close {
   position: absolute;

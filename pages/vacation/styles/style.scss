@@ -16,6 +16,14 @@ body {
 
     padding: 1rem;
 
+    table tr td {
+        cursor: copy !important;
+    }
+
+    .fc-content {
+        cursor: pointer !important;
+    }
+
     .fc-toolbar {
         background-image: none;
         padding-top: 10px;

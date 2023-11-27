@@ -65,6 +65,10 @@ export function setUserInfos() {
     userPhotoImage.src = '/assets/images/Stafflink_favicon_dark.svg'
   } else {
     userPhotoImage.src = stafflinkURL_employeePhoto + currentUser.employeephotoname;
+
+    userPhotoImage.onerror = () => {
+      userPhotoImage.src = '/assets/images/Stafflink_favicon_dark.svg'
+    }
   }
 
   userName.textContent =

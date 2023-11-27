@@ -92,6 +92,11 @@ export function list(json) {
     spanEmployeePhoto.className = "employeePhoto";
     let imgEmployeePhoto = document.createElement("img");
     imgEmployeePhoto.src = stafflinkURL_employeePhoto + employeePhoto;
+    
+    imgEmployeePhoto.onerror = () => {
+      imgEmployeePhoto.src = '/assets/images/Stafflink_favicon_dark.svg'
+    }
+
     imgEmployeePhoto.alt = "funcionário";
     spanEmployeePhoto.appendChild(imgEmployeePhoto);
 
