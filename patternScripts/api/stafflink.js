@@ -183,7 +183,7 @@ export async function listNews() {
 }
 
 export async function deleteNews(newsId) {
-  fetch(`${stafflinkURL_news}/${newsId}`, {
+  await fetch(`${stafflinkURL_news}/${newsId}`, {
     method: "DELETE",
   });
 }

@@ -41,7 +41,7 @@ function showBirthdays(json) {
     let employeeBirthday = json[i].birthday;
 
     let imgEmployee = document.createElement("img");
-    imgEmployee.src = `${stafflinkURL_employeePhoto}/${employeePhoto}`;
+    imgEmployee.src = stafflinkURL_employeePhoto + employeePhoto;
     imgEmployee.onerror = () => {
       imgEmployee.src = '/assets/images/Stafflink_favicon_dark.svg'
     }
@@ -133,8 +133,7 @@ function list(json) {
 
       if (!warning) return;
 
-      deleteNews(btnID)
-      .then(() => {
+      deleteNews(btnID).then(() => {
         window.location.reload();
       });
     });

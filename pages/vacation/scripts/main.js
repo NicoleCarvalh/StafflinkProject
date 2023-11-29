@@ -28,10 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
       // var title = prompt("Evento para registrar:");
       var title = await allUtils.toastPrompt({message: 'Cadastro de um novo evento', description: 'Digite o evento que deseja cadastrar', promptInputPlaceholder: 'Ex: Férias do funcionário Carlos', })
-      .then(data => {
-        console.log(data)
-        return data
-      })
+      .then(data => data)
       .catch(error => error)
       // allUtils.toastConfirm({message: 'Confirme', description: 'Tem certeza que deseja excluir esse evento?'})
 
@@ -92,8 +89,6 @@ async function saveEventToAPI(eventData) {
       start: eventData.start,
       end: eventData.end,
     });
-
-    console.log("Evento salvo");
   } catch (error) {
     console.error("Erro ao salvar evento:", error);
   }
@@ -102,7 +97,6 @@ async function saveEventToAPI(eventData) {
 async function deleteEventFromAPI(eventId) {
   try {
     await deleteVacation(eventId);
-    console.log("Evento excluído");
   } catch (error) {
     console.error("Erro ao excluir evento:", error);
   }

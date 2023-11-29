@@ -14,7 +14,6 @@ const handleNotesContainer = () => {
     notesContainer.classList.toggle("visible")
 
     allButtonOnNotesContainer.forEach((button) => {
-        console.log(button)
         const tabindex = button.getAttribute('data-tabindex')
         button.setAttribute('tabindex', tabindex)
     })

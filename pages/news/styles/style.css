@@ -1025,7 +1025,8 @@ body .blurredOut {
 }
 
 .toastify.on {
-  max-width: 90%;
+  width: 90%;
+  max-width: 500px;
   padding: 1.5rem 2rem;
   border-radius: 0.5rem;
   background: unset;

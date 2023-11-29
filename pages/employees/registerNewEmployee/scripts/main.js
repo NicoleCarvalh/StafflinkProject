@@ -5,7 +5,13 @@ allUtils.sideMenu()
 
 let firstLogin = false
 
-if(allUtils.getLocalData('user')?.sector === undefined && allUtils.getLocalData('user')?.access?.sector === undefined) {
+if(
+    allUtils.getLocalData('user')?.sector === undefined 
+    && 
+    allUtils.getLocalData('user')?.access?.sector === undefined 
+    || 
+    allUtils.getLocalData('user')?.access?.sector === null
+) {
     firstLogin = true
 
     const sideMenu = document.getElementById("side_menu");
@@ -23,7 +29,10 @@ if(allUtils.getLocalData('user')?.sector === undefined && allUtils.getLocalData(
     allUtils.toastAlert({
         message: 'ATENÇÃO', 
         description: 'Você é o primeiro funcionário no sistema, e por isso deve se cadastrar como funcionário primeiro! Caso já tenha criado a conta, volte ao login e entre com seus dados.', 
-        className: 'info'
+        className: 'info',
+        options: {
+            duration: -1
+        }
     })
 }
 
@@ -70,7 +79,7 @@ function saveNewEmployee() {
 
         updateEmployee(currentUser.user.id, employeeData).then(() => {
             getEmployee(currentUser.user.id).then((data) => {
-                allUtils.toastAlert({message: 'Tudo certo', description: 'Seus dados foram atualizados'})
+                allUtils.toastAlert({message: 'Tudo certo', description: 'Seus dados foram atualizados! Aguarde que logo a página será recarregada e o acesso liberado!'})
                 
                 fetch(`https://stafflink-chat-server.onrender.com/updateUser/${currentUser.user.id}`, {
                     method: 'PUT',

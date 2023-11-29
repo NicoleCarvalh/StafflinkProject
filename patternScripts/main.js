@@ -16,7 +16,9 @@ const allImages = document.querySelectorAll('img')
 allImages.forEach(image => {
     image.addEventListener('load',() => {
         image.onerror = () => {
-            image.src = '/assets/images/Stafflink_favicon_dark.svg'
+            if(image.id !== 'preview') {
+                image.src = '/assets/images/Stafflink_favicon_dark.svg'
+            }
         }
     })
 })

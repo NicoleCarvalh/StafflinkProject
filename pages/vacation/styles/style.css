@@ -1024,13 +1024,14 @@ body .blurredOut {
   filter: blur(10px);
 }
 
-.toastify.on {
-  max-width: 90%;
+.toastify.toastify-right.toastify-top {
+  width: 90%;
+  max-width: 500px;
   padding: 1.5rem 2rem;
   border-radius: 0.5rem;
   background: unset;
 }
-.toastify.on > div {
+.toastify.toastify-right.toastify-top > div {
   display: flex;
   flex-direction: column;
   align-items: unset;
@@ -1038,7 +1039,7 @@ body .blurredOut {
   gap: 1rem;
   flex-wrap: nowrap;
 }
-.toastify.on .messageContainer {
+.toastify.toastify-right.toastify-top .messageContainer {
   display: flex;
   flex-direction: column;
   align-items: unset;
@@ -1046,14 +1047,14 @@ body .blurredOut {
   gap: 0.5rem;
   flex-wrap: nowrap;
 }
-.toastify.on .messageContainer h1 {
+.toastify.toastify-right.toastify-top .messageContainer h1 {
   font-size: 1.2rem;
 }
-.toastify.on .messageContainer p {
+.toastify.toastify-right.toastify-top .messageContainer p {
   font-size: 0.8rem;
   opacity: 0.75;
 }
-.toastify.on .optionsContainer {
+.toastify.toastify-right.toastify-top .optionsContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1061,65 +1062,65 @@ body .blurredOut {
   gap: 1rem;
   flex-wrap: wrap;
 }
-.toastify.on .optionsContainer:has(#prompt_input) {
+.toastify.toastify-right.toastify-top .optionsContainer:has(#prompt_input) {
   flex-direction: column;
 }
-.toastify.on .optionsContainer:has(#prompt_input) #prompt_input, .toastify.on .optionsContainer:has(#prompt_input) .confirmButton {
+.toastify.toastify-right.toastify-top .optionsContainer:has(#prompt_input) #prompt_input, .toastify.toastify-right.toastify-top .optionsContainer:has(#prompt_input) .confirmButton {
   flex: 1 0 auto;
   width: 100%;
 }
-.toastify.on .optionsContainer #prompt_input {
+.toastify.toastify-right.toastify-top .optionsContainer #prompt_input {
   border: 2px solid #FFFFFF;
   color: #FFFFFF;
 }
-.toastify.on .optionsContainer #prompt_input::-moz-placeholder {
+.toastify.toastify-right.toastify-top .optionsContainer #prompt_input::-moz-placeholder {
   color: #FFFFFF;
   opacity: 0.8;
 }
-.toastify.on .optionsContainer #prompt_input::placeholder {
+.toastify.toastify-right.toastify-top .optionsContainer #prompt_input::placeholder {
   color: #FFFFFF;
   opacity: 0.8;
 }
-.toastify.on .optionsContainer .closeButton {
+.toastify.toastify-right.toastify-top .optionsContainer .closeButton {
   border-color: #FFFFFF;
   color: #FFFFFF;
   flex: 1 0 auto;
 }
-.toastify.on .optionsContainer .closeButton:hover {
+.toastify.toastify-right.toastify-top .optionsContainer .closeButton:hover {
   border-color: #F1F1F1;
   background-color: #F1F1F1;
   color: #000000;
 }
-.toastify.on .optionsContainer .confirmButton {
+.toastify.toastify-right.toastify-top .optionsContainer .confirmButton {
   border-color: #F1F1F1;
   background-color: #F1F1F1;
   color: #000000;
   flex: 1 0 auto;
 }
-.toastify.on .optionsContainer .confirmButton:hover {
+.toastify.toastify-right.toastify-top .optionsContainer .confirmButton:hover {
   border-color: #FFFFFF;
   background-color: #FFFFFF;
 }
-.toastify.on button.toast-close {
+.toastify.toastify-right.toastify-top button.toast-close {
   position: absolute;
   opacity: 0.7;
   right: 0.5rem;
   top: 0.5rem;
   font-size: 1.4rem;
 }
-.toastify.on button.toast-close:hover {
+.toastify.toastify-right.toastify-top button.toast-close:hover {
   opacity: 1;
   background: unset;
 }
-.toastify.on.info {
+.toastify.toastify-right.toastify-top.info {
   background-color: #029AA4;
   color: #FFFFFF;
 }
-.toastify.on.danger {
+.toastify.toastify-right.toastify-top.danger {
   background-color: #980D0D;
   color: #FFFFFF;
 }
-.toastify.on.success {
+.toastify.toastify-right.toastify-top.success {
   background-color: #1B9C85;
   color: #FFFFFF;
 }
@@ -1323,6 +1324,14 @@ body {
   z-index: 10;
 }
 
+.fc-left h2 {
+  font-weight: 200 !important;
+}
+
+.fc-unthemed td.fc-today {
+  background-color: rgba(2, 154, 164, 0.2);
+}
+
 #calendar {
   padding: 1rem;
 }
@@ -1350,6 +1359,7 @@ body {
 }
 #calendar .fc-state-default {
   border: 2px solid #029AA4;
+  background: none;
   background-image: none;
   background-repeat: space;
   border-radius: 5px;

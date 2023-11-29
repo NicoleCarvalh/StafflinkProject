@@ -12,6 +12,9 @@ allUtils.notes();
 getAllAttendances().then((attendances) => {
   if (attendances.length > 0) {
     listAttendance(attendances);
+  } else {
+    document.getElementById("tbody").innerHTML = "";
+    allUtils.toastAlert({message: 'Sem registros', description: 'Ainda não existem registros no controle de ponto'})
   }
 });
 
