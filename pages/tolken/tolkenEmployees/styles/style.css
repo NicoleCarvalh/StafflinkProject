@@ -2493,7 +2493,7 @@ main h1 {
   margin-bottom: 1rem;
 }
 main p {
-  width: 350px;
+  max-width: 350px;
   text-align: center;
 }
 main .optionsTolken {
