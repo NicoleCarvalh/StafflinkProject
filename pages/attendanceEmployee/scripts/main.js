@@ -14,6 +14,8 @@ getAttendance(currentUser.id)
 
     if (attendance.length == 0) {
       document.getElementById("loading-div").remove();
+      allUtils.toastAlert({message: 'Sem registros', description: 'Ainda não existem registros no controle de ponto'})
+      
       return;
     }
 
