@@ -28,7 +28,7 @@ form.addEventListener('submit', async (event) => {
             user: {
                 ...employee,
                 name: employee?.name ?? 'Administrador',
-                office: employee?.name ?? 'Administrador'
+                office: employee?.office ?? 'Administrador'
             }, 
             access: true
         })

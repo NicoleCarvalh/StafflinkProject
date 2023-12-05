@@ -5,11 +5,11 @@ import { allUtils } from "../main.js";
 // export const stafflinkURL_employeePhoto =
 //   "http://localhost:4040/employees/photo/";
 
-const baseUrl = 'https://employees-api-oite.onrender.com'
+// const baseUrl = 'https://employees-api-oite.onrender.com'
 
 // const baseUrl = 'http://localhost:5432'
 
-// const baseUrl = "http://localhost:4040";
+const baseUrl = "http://localhost:4040";
 
 // Employees
 const stafflinkURL_employee = `${baseUrl}/employees/`;
@@ -65,11 +65,16 @@ export async function saveEmployee(employeeObject) {
 }
 
 export async function getEmployees() {
-  const results = await fetch(stafflinkURL_employee).catch(error => {
-    allUtils.toastAlert({message: 'Huum... problemas', description: 'Parece que houve um erro interno no servidor. Favor recarregue a página.', className: 'danger'})
+  const results = await fetch(stafflinkURL_employee).catch((error) => {
+    allUtils.toastAlert({
+      message: "Huum... problemas",
+      description:
+        "Parece que houve um erro interno no servidor. Favor recarregue a página.",
+      className: "danger",
+    });
 
-    return
-  })
+    return;
+  });
 
   const employees = await results.json();
 
@@ -109,10 +114,16 @@ export async function getAllAttendances() {
     headers: {
       "Content-Type": "Application/json",
     },
-  }).then((json) => json.json())
-  .catch(error => {
-    allUtils.toastAlert({message: 'Huum... problemas', description: 'Parece que houve um erro interno no servidor. Favor recarregue a página.', className: 'danger'})
   })
+    .then((json) => json.json())
+    .catch((error) => {
+      allUtils.toastAlert({
+        message: "Huum... problemas",
+        description:
+          "Parece que houve um erro interno no servidor. Favor recarregue a página.",
+        className: "danger",
+      });
+    });
 
   return attendances;
 }
@@ -190,8 +201,8 @@ export async function deleteNews(newsId) {
 
 // TOLKEN
 
-export async function uploadTolken(targetTolken, { newTolkenNumber }) {
-  fetch(`${stafflinkURL_tolken}/${targetTolken}`, {
+export async function updateTolken(currentTolken, { newTolkenNumber }) {
+  fetch(`${stafflinkURL_tolken}/${currentTolken}`, {
     method: "PUT",
     headers: {
       "Content-Type": "Application/json",
