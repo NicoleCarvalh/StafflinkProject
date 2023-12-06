@@ -2445,8 +2445,10 @@ main {
   background-color: #029AA4;
 }
 main .title {
-  font-size: 1.5rem;
   text-align: center;
+}
+main .title h1 {
+  font-size: clamp(2.8rem, 2vw, 7rem);
 }
 main #tolkenArea {
   background-color: #f1f1f1;
@@ -2455,7 +2457,7 @@ main #tolkenArea {
   color: #015E64;
 }
 main #tolkenArea span {
-  font-size: 9rem;
+  font-size: clamp(5.5rem, 2vw, 11rem);
 }
 main #progressBar {
   border-radius: 2px;

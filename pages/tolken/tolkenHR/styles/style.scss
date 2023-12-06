@@ -12,7 +12,11 @@ main {
     background-color: #029AA4;
 
     .title {
-        font-size: 1.5rem;
+
+        h1 {
+            font-size: clamp(2.8rem, 2vw, 7rem);
+        }
+        
         text-align: center;
     }
 
@@ -23,7 +27,7 @@ main {
         color: #015E64;
 
         span {
-            font-size: 9rem;
+            font-size: clamp(5.5rem, 2vw, 11rem);
         }
     }
 
