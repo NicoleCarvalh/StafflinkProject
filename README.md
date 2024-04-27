@@ -3,6 +3,9 @@
 ## Overview
 Stafflink is a university project aimed at developing a comprehensive system for managing Human Resources in companies, particularly small to medium-sized enterprises. The project's objective is to enhance agility and productivity in HR procedures at a low cost.
 
+## Design in FIGMA
+Here is the link to access the design in Figma Platform: https://www.figma.com/file/BWM5dOjlo7eHIRDRPfzsiA/Projeto-Integrador---Stafflink?type=design&node-id=6%3A7&mode=design&t=DY6DiXTeDXW8VeJq-1
+
 ## Team
 This project was developed collaboratively by a team of four colleagues, with each member contributing to design, documentation, and code.
 
